@@ -1,0 +1,24 @@
+{
+	"name": "@tradeshift/react-components",
+	"version": "0.0.0-semantically-released",
+	"description": "New @tradeshift package",
+	"author": "Tradeshift",
+	"license": "MIT",
+	"publishConfig": {
+		"registry": "https://npm-upload.tradeshift.net/repository/npm-internal/"
+	},
+	"scripts": {
+		"build": "tradeshift-scripts build",
+		"test": "tradeshift-scripts test",
+		"lint": "tradeshift-scripts lint",
+		"format": "tradeshift-scripts format",
+		"validate": "tradeshift-scripts validate",
+		"precommit": "tradeshift-scripts precommit",
+		"typecheck": "tsc --pretty"
+	},
+	"dependencies": {},
+	"devDependencies": {
+		"tradeshift-scripts": "^2.2.2",
+		"typescript": "^3.4.5"
+	}
+}
