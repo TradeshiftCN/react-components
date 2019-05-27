@@ -10,10 +10,6 @@
         "doc":"usage"
       },
       {
-        "label":"配置",
-        "doc":"config"
-      },
-      {
         "label":"开发",
         "doc":"develop"
       }

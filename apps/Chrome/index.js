@@ -38,7 +38,7 @@ function renderNavBottom () {
       <div className="components__navbar-bottom-image">
         <img
           className="components__navbar-bottom-image-icon"
-          src="/svg/avatarPlaceholder.svg"
+          src="./svg/avatarPlaceholder.svg"
           alt="TS"
         />
       </div>
