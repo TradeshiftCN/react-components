@@ -56,6 +56,26 @@
       {
         "name":"Button",
         "cn":"按钮"
+      },
+      {
+        "name":"Spinner",
+        "cn":"加载器"
+      },
+      {
+        "name":"Pager",
+        "cn":"分页器"
+      },
+      {
+        "name":"Actions",
+        "cn":"操作"
+      },
+      {
+        "name":"Search",
+        "cn":"搜索"
+      },
+      {
+        "name":"Tabs",
+        "cn":"标签页"
       }
     ]
   },
@@ -67,29 +87,24 @@
     "defaultOpen":false,
     "components":[
       {
-        "icon":"retweet",
         "name":"Layout",
         "cn":"布局"
       },
       {
-        "icon":"retweet",
         "name":"Header",
         "cn":"顶栏"
       },
       {
-        "icon":"retweet",
-        "name":"ToolBar",
-        "cn":"工具栏"
-      },
-      {
-        "icon":"retweet",
         "name":"Footer",
         "cn":"底栏"
       },
       {
-        "icon":"retweet",
+        "name":"ToolBar",
+        "cn":"工具栏"
+      },
+      {
         "name":"SideBar",
-        "cn":"侧栏"
+        "cn":"侧边栏"
       }
     ]
   },
@@ -106,11 +121,15 @@
       },
       {
         "name":"notification",
-        "cn":"通知提醒框"
+        "cn":"通知框"
+      },
+      {
+        "name":"Modal",
+        "cn":"模态框"
       },
       {
         "name":"Aside",
-        "cn":"侧边栏"
+        "cn":"侧边框"
       }
     ]
   },
@@ -132,6 +151,10 @@
       {
         "name":"Switch",
         "cn":"开关"
+      },
+      {
+        "name":"DatePicker",
+        "cn":"日期选择器"
       }
     ]
   },
@@ -145,10 +168,6 @@
       {
         "name":"Table",
         "cn":"表格"
-      },
-      {
-        "name":"Pager",
-        "cn":"分页器"
       }
     ]
   },
@@ -160,17 +179,20 @@
     "defaultOpen":true,
     "components":[
       {
-        "icon":"retweet",
+        "name":"Avatar",
+        "cn":"头像"
+      },
+      {
+        "name":"Card",
+        "cn":"卡片"
+      },
+      {
         "name":"Board",
         "cn":"面板"
       },
       {
-        "name":"Spinner",
-        "cn":"加载中"
-      },
-      {
-        "name":"Tabs",
-        "cn":"标签页"
+        "name":"Note",
+        "cn":"备注"
       },
       {
         "name":"Tag",
@@ -181,8 +203,12 @@
         "cn":"文字溢出"
       },
       {
+        "name":"Time",
+        "cn":"时间"
+      },
+      {
         "name":"Tooltip",
-        "cn":"提示框"
+        "cn":"提示贴"
       },
       {
         "name":"Upload",

@@ -4,7 +4,7 @@
 git clone git@github.com:Tradeshift/react-components.git
 cd react-components
 npm i
-npm run site:dev
+npm start
 ```
 
 打开浏览器访问 http://localhost:3003 ， 更多本地开发文档参见 [Development Instructions][dev-instructions-url] .

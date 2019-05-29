@@ -6,6 +6,7 @@ import Imported, { whenComponentsReady } from 'react-imported-component'
 import { HashRouter } from './HashRouter'
 import Chrome from './apps/Chrome'
 import App from './apps/index'
+import 'earth-ui/dist/earth-ui.min.css'
 
 const asyncComponent = path =>
   Imported(() => {
@@ -30,7 +31,15 @@ const WIP = [
   'Board',
   'Tabs',
   'Tag',
-  'Upload'
+  'Upload',
+  'Modal',
+  'Note',
+  'Search',
+  'DatePicker',
+  'Card',
+  'Time',
+  'Avatar',
+  'Actions'
 ]
 
 const getComponentDoc = component => {

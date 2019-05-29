@@ -1,12 +1,7 @@
 import { Link } from '@reach/router'
 import Icon from '@tradeshift/react-components/lib/Icon'
 import Header from '@tradeshift/react-components/lib/Header'
-import {
-  Nav,
-  NavItem,
-  NavItemGroup,
-  SubNav
-} from '@tradeshift/react-components/lib/Nav'
+import { Nav, NavItem, NavItemGroup, SubNav } from 'earth-ui/lib/Nav'
 import { Tab, TabList, Tabs } from '@tradeshift/react-components/lib/Tabs'
 import Tooltip from '@tradeshift/react-components/lib/Tooltip'
 import PropTypes from 'prop-types'
