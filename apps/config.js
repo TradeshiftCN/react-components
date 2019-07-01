@@ -1,3 +1,3 @@
-import navConfig from './apps.json'
+import navConfig from './apps.json';
 
-export const nav = navConfig
+export const nav = navConfig;

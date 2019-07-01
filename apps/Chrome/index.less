@@ -1,6 +1,6 @@
-@import "~ui-variables";
-@import "~ui-mixins";
-@import "~dox";
+@import '~ui-variables';
+@import '~ui-mixins';
+@import '~dox';
 
 .components {
   &__navbar-top {
@@ -55,13 +55,14 @@
       }
     }
     &-user {
-      transition: opacity .2925s cubic-bezier(0,0,.2,1);
+      transition: opacity 0.2925s cubic-bezier(0, 0, 0.2, 1);
       padding: @ui-unit-half 0 @ui-unit-half @ui-unit-half;
       height: @ui-unit-triple;
       width: 80px;
       float: left;
       width: ~'calc(100% - 180px)';
-      &-name, &-company {
+      &-name,
+      &-company {
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
@@ -76,7 +77,8 @@
         font-size: @ui-fontsize-mini;
       }
     }
-    &-settings, &-logout {
+    &-settings,
+    &-logout {
       float: right;
       width: @ui-unit-triple;
       height: @ui-unit-triple;

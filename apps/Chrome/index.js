@@ -1,33 +1,30 @@
-import { Link } from '@reach/router'
-import Icon from '@tradeshift/react-components/lib/Icon'
-import Header from '@tradeshift/react-components/lib/Header'
-import { Nav, NavItem, NavItemGroup, SubNav } from 'earth-ui/lib/Nav'
-import { Tab, TabList, Tabs } from '@tradeshift/react-components/lib/Tabs'
-import Tooltip from '@tradeshift/react-components/lib/Tooltip'
-import PropTypes from 'prop-types'
-import React from 'react'
-import { Layout, LayoutContent, LayoutSidebar } from 'widgets/Layout'
-import Scrollbar from 'widgets/Scrollbar'
-import { navigate } from '../../HashRouter'
-import { nav as components } from '../config.js'
-import pkg from '../../../package.json'
-import './index.less'
+import { Link } from '@reach/router';
+import Header from '@tradeshift/react-components/lib/Header';
+import { Nav, NavItem, NavItemGroup, SubNav } from 'earth-ui/lib/Nav';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { Layout, LayoutContent, LayoutSidebar } from 'widgets/Layout';
+import Scrollbar from 'widgets/Scrollbar';
+import { navigate } from '../../HashRouter';
+import { nav as components } from '../config.js';
+import pkg from '../../../package.json';
+import './index.less';
 
-const getTabsByComponentName = (components, componentName) => {
-  for (let c of components) {
-    if (c.name === componentName) {
-      return c.tabs
-    }
-    if (c.components) {
-      const tabs = getTabsByComponentName(c.components, componentName)
-      if (tabs) return tabs
-    }
-  }
-}
+// const getTabsByComponentName = (components, componentName) => {
+//   for (let c of components) {
+//     if (c.name === componentName) {
+//       return c.tabs
+//     }
+//     if (c.components) {
+//       const tabs = getTabsByComponentName(c.components, componentName)
+//       if (tabs) return tabs
+//     }
+//   }
+// }
 
-const routerWithDynamicSegments = ['components/', 'start/', 'design/']
+const routerWithDynamicSegments = ['components/', 'start/'];
 
-function renderNavBottom () {
+function renderNavBottom() {
   return (
     <div className="components__navbar-bottom">
       <div className="components__navbar-bottom-image">
@@ -43,98 +40,66 @@ function renderNavBottom () {
         }`}</span>
         <span className="components__navbar-bottom-user-company">Chinese</span>
       </div>
-      {/* <div className="components__navbar-bottom-logout"> */}
-      {/*  <Tooltip title="Unfinished feature"> */}
-      {/*    <Icon type="logout" className="components__navbar-bottom-logout-icon" /> */}
-      {/*  </Tooltip> */}
-      {/* </div> */}
-      <div className="components__navbar-bottom-settings">
-        <Tooltip title="Unfinished feature">
-          <Icon
-            type="settings"
-            className="components__navbar-bottom-settings-icon"
-          />
-        </Tooltip>
-      </div>
     </div>
-  )
+  );
 }
 
 class Components extends React.Component {
-  constructor (props) {
-    super()
-    this.componentsMap = {}
+  constructor(props) {
+    super();
+    this.componentsMap = {};
     this.state = {
       open: false
-    }
+    };
   }
 
-  toggle (open) {
-    this.setState({ open })
+  toggle(open) {
+    this.setState({ open });
   }
 
-  switchRoute (route) {
+  switchRoute(route) {
     if (route) {
-      navigate(`/${route}`)
+      navigate(`/${route}`);
     }
   }
 
   handleItemClick = props => {
-    this.toggle(false)
-    this.switchRoute(props.id)
-  }
+    this.toggle(false);
+    this.switchRoute(props.id);
+  };
 
   handleTabClick = doc => {
-    this.switchRoute(doc)
-  }
+    this.switchRoute(doc);
+  };
 
-  renderTitle (docName) {
-    const nameBeforeSlash = docName.split('/')[0]
+  renderTitle(docName) {
+    const nameBeforeSlash = docName.split('/')[0];
     const nameAfterSlash = routerWithDynamicSegments.some(v =>
       docName.includes(v)
     )
       ? docName.split('/')[1]
-      : docName
+      : docName;
     const componentName = (nameBeforeSlash === 'components'
       ? nameAfterSlash
       : nameBeforeSlash
-    ).split('-')[0]
-    const component = this.componentsMap[componentName]
-    const { name = '', cn = '' } = component || {}
-    const title = name === 'intro' ? 'Tradeshift UI' : `${name} ${cn}`
-    const tabs = getTabsByComponentName(components, name)
+    ).split('-')[0];
+    const component = this.componentsMap[componentName];
+    const { name = '', cn = '' } = component || {};
+    const title = name === 'intro' ? 'Tradeshift UI' : `${name} ${cn}`;
+    // const tabs = getTabsByComponentName(components, name)
     return (
       <Header
         className="components__title"
         icon="./svg/appLogo.svg"
         title={title}
-      >
-        {!!tabs && (
-          <Tabs activeKey={nameAfterSlash}>
-            <TabList>
-              {!!tabs.length &&
-                tabs.map(tab => (
-                  <Tab
-                    activeKey={tab.doc}
-                    key={tab.doc}
-                    onClick={() =>
-                      this.handleTabClick(`${nameBeforeSlash}/${tab.doc}`)
-                    }
-                  >
-                    {tab.label}
-                  </Tab>
-                ))}
-            </TabList>
-          </Tabs>
-        )}
-      </Header>
-    )
+      />
+    );
   }
 
-  renderNavItem (item, position, path) {
-    this.componentsMap[item.name] = item
+  renderNavItem(item, position, path) {
+    this.componentsMap[item.name] = item;
     if (position === 'outside') {
-      const id = item.tabs ? `${item.path}/${item.tabs[0].doc}` : item.name
+      const id = item.tabs ? `${item.path}/${item.tabs[0].doc}` : item.name;
       return (
         <NavItem
           id={id}
@@ -142,30 +107,30 @@ class Components extends React.Component {
           title={item.cn}
           icon={`./svg/icons.svg#${item.icon}`}
         />
-      )
+      );
     }
     const nameAfterSlash =
-      (item.tabs && item.tabs.length && item.tabs[0].doc) || item.name
-    const id = path ? `${path}/${nameAfterSlash}` : nameAfterSlash
+      (item.tabs && item.tabs.length && item.tabs[0].doc) || item.name;
+    const id = path ? `${path}/${nameAfterSlash}` : nameAfterSlash;
     return (
       <NavItem id={id} key={item.name}>
         <span>{item.name}</span>
         <span className="chinese">{item.cn}</span>
       </NavItem>
-    )
+    );
   }
 
-  renderNavItemGroup (itemGroup) {
+  renderNavItemGroup(itemGroup) {
     return (
       <NavItemGroup title={itemGroup.group} key={itemGroup.group}>
         {itemGroup.components.map(component => this.renderNavItem(component))}
       </NavItemGroup>
-    )
+    );
   }
 
-  render () {
-    const { open } = this.state
-    let { children, '*': childComponentPath } = this.props
+  render() {
+    const { open } = this.state;
+    let { children, '*': childComponentPath } = this.props;
     return (
       <div className="components">
         <Layout open={open} onToggle={open => this.toggle(open)}>
@@ -270,7 +235,7 @@ class Components extends React.Component {
               >
                 {components.map(item => {
                   if (!item.components) {
-                    return this.renderNavItem(item, 'outside')
+                    return this.renderNavItem(item, 'outside');
                   }
                   return (
                     <SubNav
@@ -281,16 +246,16 @@ class Components extends React.Component {
                     >
                       {item.components.map(itemGroup => {
                         if (itemGroup.group) {
-                          return this.renderNavItemGroup(itemGroup)
+                          return this.renderNavItemGroup(itemGroup);
                         }
                         return this.renderNavItem(
                           itemGroup,
                           'inside',
                           item.path
-                        )
+                        );
                       })}
                     </SubNav>
-                  )
+                  );
                 })}
               </Nav>
             </Scrollbar>
@@ -304,13 +269,13 @@ class Components extends React.Component {
           </LayoutContent>
         </Layout>
       </div>
-    )
+    );
   }
 }
 
 Components.propTypes = {
   children: PropTypes.node,
   '*': PropTypes.string
-}
+};
 
-export default Components
+export default Components;
