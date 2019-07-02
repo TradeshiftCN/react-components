@@ -42,7 +42,7 @@
     ]
   },
   {
-    "icon": "docs-icon-grid",
+    "icon": "docs-icon-modules-1",
     "path": "components",
     "name": "Other Components",
     "cn": "其它组件",
