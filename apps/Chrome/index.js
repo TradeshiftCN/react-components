@@ -46,10 +46,11 @@ function renderNavItem(item, position, path) {
     (item.tabs && item.tabs.length && item.tabs[0].doc) || item.name;
   const id = path ? `${path}/${nameAfterSlash}` : nameAfterSlash;
   return (
-    <NavItem id={id} key={item.name}>
-      <span>{item.name}</span>
-      <span className="chinese">{item.cn}</span>
-    </NavItem>
+    <NavItem
+      id={id}
+      key={item.name}
+      title={item.cn}
+    />
   );
 }
 
