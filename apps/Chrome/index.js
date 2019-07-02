@@ -6,21 +6,9 @@ import React from 'react';
 import { Layout, LayoutContent, LayoutSidebar } from 'widgets/Layout';
 import Scrollbar from 'widgets/Scrollbar';
 import { navigate } from '../../HashRouter';
-import { nav as components } from '../config.js';
+import { nav } from '../config.js';
 import pkg from '../../../package.json';
 import './index.less';
-
-// const getTabsByComponentName = (components, componentName) => {
-//   for (let c of components) {
-//     if (c.name === componentName) {
-//       return c.tabs
-//     }
-//     if (c.components) {
-//       const tabs = getTabsByComponentName(c.components, componentName)
-//       if (tabs) return tabs
-//     }
-//   }
-// }
 
 const routerWithDynamicSegments = ['components/', 'start/'];
 
@@ -233,7 +221,7 @@ class Components extends React.Component {
                 indent={20}
                 className="components__navbar-menu"
               >
-                {components.map(item => {
+                {nav.map(item => {
                   if (!item.components) {
                     return this.renderNavItem(item, 'outside');
                   }

@@ -12,24 +12,45 @@
     ]
   },
   {
-    "icon": "docs-icon-time-bomb",
+    "icon": "docs-icon-window-application-6",
     "path": "components",
-    "name": "TimeLine",
-    "cn": "时间线",
-    "tabs": [
+    "name": "Layout Components",
+    "cn": "布局组件",
+    "defaultOpen": false,
+    "components": [
       {
-        "doc": "TimeLine"
+        "name": "Header",
+        "cn": "顶栏"
       }
     ]
   },
   {
-    "icon": "docs-icon-time-bomb",
+    "icon": "docs-icon-grid",
     "path": "components",
-    "name": "TimeLineHorizontal",
-    "cn": "水平时间线",
-    "tabs": [
+    "name": "Table Components",
+    "cn": "表格组件",
+    "defaultOpen": false,
+    "components": [
       {
-        "doc": "TimeLineHorizontal"
+        "name": "Table",
+        "cn": "表格"
+      }
+    ]
+  },
+  {
+    "icon": "docs-icon-modules-1",
+    "path": "components",
+    "name": "Other Components",
+    "cn": "其它组件",
+    "defaultOpen": false,
+    "components": [
+      {
+        "name": "TimeLineHorizontal",
+        "cn": "水平时间线"
+      },
+      {
+        "name": "TimeLine",
+        "cn": "时间线"
       }
     ]
   }
