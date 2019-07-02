@@ -99,17 +99,17 @@ Tooltip.defaultProps = Object.assign(Tooltip.defaultProps || {}, {
 git clone git@github.com:Tradeshift/react-components.git
 cd react-components
 npm i
-npm run site:dev
+npm start
 ```
 
-Open your browser and visit http://127.0.0.1:3003 , see more at [Development Instructions][dev-instructions-url] .
+Open your browser and visit http://localhost:3003 , see more at [Development Instructions][dev-instructions-url] .
 
 #### Create a new component
 
 ```bash
 npm run create MyComponent
 ```
-Open: http://localhost:3003/apps/components/MyComponent
+Open: http://localhost:3003/#/components/MyComponent
 
 ## Changelog
 

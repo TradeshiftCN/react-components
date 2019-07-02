@@ -1,0 +1,61 @@
+[
+  {
+    "icon": "docs-icon-space-rocket",
+    "path": "start",
+    "name": "start",
+    "cn": "开始",
+    "tabs": [
+      {
+        "label": "使用",
+        "doc": "usage"
+      },
+      {
+        "label": "开发",
+        "doc": "develop"
+      }
+    ]
+  },
+  {
+    "icon": "docs-icon-window-application-6",
+    "path": "components",
+    "name": "Layout Components",
+    "cn": "布局组件",
+    "defaultOpen": false,
+    "components": [
+      {
+        "name": "Header",
+        "cn": "顶栏"
+      }
+    ]
+  },
+  {
+    "icon": "docs-icon-grid",
+    "path": "components",
+    "name": "Table Components",
+    "cn": "表格组件",
+    "defaultOpen": false,
+    "components": [
+      {
+        "name": "Table",
+        "cn": "表格"
+      }
+    ]
+  },
+  {
+    "icon": "docs-icon-modules-1",
+    "path": "components",
+    "name": "Other Components",
+    "cn": "其它组件",
+    "defaultOpen": false,
+    "components": [
+      {
+        "name": "TimeLineHorizontal",
+        "cn": "水平时间线"
+      },
+      {
+        "name": "TimeLine",
+        "cn": "时间线"
+      }
+    ]
+  }
+]

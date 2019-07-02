@@ -1,0 +1,25 @@
+/**
+ * @title 基本功能
+ * @renderModel left
+ */
+import TimeLine from '@tradeshift/react-components/lib/TimeLine'
+
+const TimeLineBasic = () => {
+  const timelines = [
+      {
+          time: '2019-07-01T07:20:28.473Z',
+          status: '处理成功',
+          name: 'puff'
+      },
+      {
+          time: '2019-06-30T05:54:50.891Z',
+          status: '创建成功',
+          name: 'puff'
+      }
+  ];
+  return (
+     <TimeLine timelines={timelines} activeIndex={0} />
+  )
+}
+
+@component TimeLine
