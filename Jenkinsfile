@@ -16,7 +16,6 @@ pipeline {
         stage('Initialise PR') {
             when { changeRequest() }
             steps {
-                githubNotify(status: 'PENDING', context: 'sonarqube', description: 'Not analysed')
                 githubNotify(status: 'PENDING', context: 'semantic-release', description: 'Not analysed')
             }
         }
@@ -70,16 +69,6 @@ pipeline {
             }
             steps {
                 semanticVersion()
-            }
-        }
-
-        stage('Sonarqube') {
-            steps {
-                sonarqube(extraOptions: '\
-                    -Dsonar.exclusions="build/**/*, coverage/**/*, dist/**/*" \
-                    -Dsonar.coverage.exclusions="**/*.spec.js,**/__mocks__/**/*.js,**/__tests__/**/*.js" \
-                    -Dsonar.javascript.lcov.reportPaths="coverage/lcov.info" \
-                ')
             }
         }
     }

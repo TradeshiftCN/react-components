@@ -1,0 +1,70 @@
+@import '../../styles/ts-runtime.less';
+
+.timeline {
+  padding-left: @ts-unit;
+  position: relative;
+  width: 100%;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: @ts-unit-quarter;
+    width: 2px;
+    background-color: @ts-color-gray;
+  }
+  .content {
+    color: @ts-color-slate-lighter;
+    border-bottom: dashed 1px @ts-color-gray;
+    padding-bottom: @ts-unit-half;
+    padding-left: @ts-unit-quarter;
+    opacity: 0.6;
+    .time {
+      color: @ts-color-slate;
+      font-size: @ts-fontsize;
+      line-height: @ts-unit;
+      margin-bottom: @ts-unit-quarter;
+      margin-top: @ts-unit-quarter;
+      font-weight: @ts-fontweight-semibold;
+    }
+
+    .status,
+    .number {
+      font-size: @ts-fontsize-mini;
+    }
+  }
+
+  .circle {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: @ts-unit;
+    height: @ts-unit;
+    background-color: @ts-color-gray;
+    border-radius: @ts-unit-half;
+    border: solid 1px @ts-color-white;
+  }
+
+  &.active {
+    .content {
+      opacity: 1;
+      .time {
+        margin-top: 0;
+      }
+    }
+    .circle {
+      background-color: @ts-color-blue;
+      top: 0;
+      &::before {
+        content: '';
+        position: absolute;
+        left: 1px;
+        top: 1px;
+        width: 18px;
+        height: 18px;
+        border-radius: @ts-unit-half;
+        border: solid 1px @ts-color-white;
+      }
+    }
+  }
+}
