@@ -1,6 +1,6 @@
 import { Link } from '@reach/router';
 import Header from '@tradeshift/react-components/lib/Header';
-import { Nav, NavItem, NavItemGroup, SubNav } from 'earth-ui/lib/Nav';
+import { Nav, NavItem, SubNav } from 'earth-ui/lib/Nav';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Layout, LayoutContent, LayoutSidebar } from 'widgets/Layout';
@@ -9,8 +9,6 @@ import { navigate } from '../../HashRouter';
 import { nav } from '../config.js';
 import pkg from '../../../package.json';
 import './index.less';
-
-const routerWithDynamicSegments = ['components/', 'start/'];
 
 function renderNavBottom() {
   return (
@@ -32,10 +30,32 @@ function renderNavBottom() {
   );
 }
 
+function renderNavItem(item, position, path) {
+  if (position === 'outside') {
+    const id = item.tabs ? `${item.path}/${item.tabs[0].doc}` : item.name;
+    return (
+      <NavItem
+        id={id}
+        key={item.name}
+        title={item.cn}
+        icon={`./svg/icons.svg#${item.icon}`}
+      />
+    );
+  }
+  const nameAfterSlash =
+    (item.tabs && item.tabs.length && item.tabs[0].doc) || item.name;
+  const id = path ? `${path}/${nameAfterSlash}` : nameAfterSlash;
+  return (
+    <NavItem id={id} key={item.name}>
+      <span>{item.name}</span>
+      <span className="chinese">{item.cn}</span>
+    </NavItem>
+  );
+}
+
 class Components extends React.Component {
   constructor(props) {
     super();
-    this.componentsMap = {};
     this.state = {
       open: false
     };
@@ -55,66 +75,6 @@ class Components extends React.Component {
     this.toggle(false);
     this.switchRoute(props.id);
   };
-
-  handleTabClick = doc => {
-    this.switchRoute(doc);
-  };
-
-  renderTitle(docName) {
-    const nameBeforeSlash = docName.split('/')[0];
-    const nameAfterSlash = routerWithDynamicSegments.some(v =>
-      docName.includes(v)
-    )
-      ? docName.split('/')[1]
-      : docName;
-    const componentName = (nameBeforeSlash === 'components'
-      ? nameAfterSlash
-      : nameBeforeSlash
-    ).split('-')[0];
-    const component = this.componentsMap[componentName];
-    const { name = '', cn = '' } = component || {};
-    const title = name === 'intro' ? 'Tradeshift UI' : `${name} ${cn}`;
-    // const tabs = getTabsByComponentName(components, name)
-    return (
-      <Header
-        className="components__title"
-        icon="./svg/appLogo.svg"
-        title={title}
-      />
-    );
-  }
-
-  renderNavItem(item, position, path) {
-    this.componentsMap[item.name] = item;
-    if (position === 'outside') {
-      const id = item.tabs ? `${item.path}/${item.tabs[0].doc}` : item.name;
-      return (
-        <NavItem
-          id={id}
-          key={item.name}
-          title={item.cn}
-          icon={`./svg/icons.svg#${item.icon}`}
-        />
-      );
-    }
-    const nameAfterSlash =
-      (item.tabs && item.tabs.length && item.tabs[0].doc) || item.name;
-    const id = path ? `${path}/${nameAfterSlash}` : nameAfterSlash;
-    return (
-      <NavItem id={id} key={item.name}>
-        <span>{item.name}</span>
-        <span className="chinese">{item.cn}</span>
-      </NavItem>
-    );
-  }
-
-  renderNavItemGroup(itemGroup) {
-    return (
-      <NavItemGroup title={itemGroup.group} key={itemGroup.group}>
-        {itemGroup.components.map(component => this.renderNavItem(component))}
-      </NavItemGroup>
-    );
-  }
 
   render() {
     const { open } = this.state;
@@ -221,25 +181,22 @@ class Components extends React.Component {
                 indent={20}
                 className="components__navbar-menu"
               >
-                {nav.map(item => {
-                  if (!item.components) {
-                    return this.renderNavItem(item, 'outside');
+                {nav.map(navItem => {
+                  if (!navItem.components) {
+                    return renderNavItem(navItem, 'outside');
                   }
                   return (
                     <SubNav
-                      key={item.name}
-                      title={item.cn}
-                      defaultOpen={item.defaultOpen}
-                      icon={`./svg/icons.svg#${item.icon}`}
+                      key={navItem.name}
+                      title={navItem.cn}
+                      defaultOpen={navItem.defaultOpen}
+                      icon={`./svg/icons.svg#${navItem.icon}`}
                     >
-                      {item.components.map(itemGroup => {
-                        if (itemGroup.group) {
-                          return this.renderNavItemGroup(itemGroup);
-                        }
-                        return this.renderNavItem(
-                          itemGroup,
+                      {navItem.components.map(item => {
+                        return renderNavItem(
+                          item,
                           'inside',
-                          item.path
+                          navItem.path
                         );
                       })}
                     </SubNav>
@@ -250,7 +207,11 @@ class Components extends React.Component {
             {renderNavBottom()}
           </LayoutSidebar>
           <LayoutContent>
-            {childComponentPath && this.renderTitle(childComponentPath)}
+            {childComponentPath && <Header
+              className="components__title"
+              icon="./svg/appLogo.svg"
+              title={'Tradeshift React components'}
+            />}
             <div className="components__content-wrapper">
               <div className="components__content">{children}</div>
             </div>
