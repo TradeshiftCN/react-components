@@ -1,16 +1,14 @@
-import React from 'react';
-import Markdown from 'widgets/Markdown';
-import html from '../../../CHANGELOG.md';
-import './index.less';
+import React from 'react'
+import Markdown from 'widgets/Markdown'
+import html from '../../../CHANGELOG.md'
+import './index.less'
 
-const Changelog = () => {
+export default () => {
   return (
     <div className="changelog">
       {/* <Center> */}
       <Markdown html={html} />
       {/* </Center> */}
     </div>
-  );
-};
-
-export default Changelog;
+  )
+}

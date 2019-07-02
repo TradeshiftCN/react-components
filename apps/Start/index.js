@@ -1,22 +1,21 @@
-import React from 'react';
-import { Col, Row } from 'earth-ui/lib/Layout';
-import Markdown from 'widgets/Markdown';
-import PropTypes from 'prop-types';
+import React from 'react'
+import { Col, Row } from '@tradeshift/react-components/lib/Layout'
+import Markdown from 'widgets/Markdown'
 
-const asyncComponent = fileName => import(`./${fileName}.md`);
+const asyncComponent = fileName => import(`./${fileName}.md`)
 
-class Start extends React.Component {
-  constructor(props) {
-    super();
+export default class extends React.Component {
+  constructor (props) {
+    super()
     this.state = {
       md: ''
-    };
+    }
     asyncComponent(props.routeProps.tab).then(md => {
-      this.setState({ md });
-    });
+      this.setState({ md })
+    })
   }
 
-  render() {
+  render () {
     return (
       <div className="start">
         <Row>
@@ -25,12 +24,6 @@ class Start extends React.Component {
           </Col>
         </Row>
       </div>
-    );
+    )
   }
 }
-
-Start.propTypes = {
-  routeProps: PropTypes.object
-};
-
-export default Start;

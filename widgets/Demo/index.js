@@ -1,38 +1,47 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import cx from 'classnames';
-import { Board, BoardBody, BoardHeader } from 'earth-ui/lib/Board';
-import { Tab, TabList, TabPanel, Tabs } from 'earth-ui/lib/Tabs';
-import { Col, Row } from 'earth-ui/lib/Layout';
-import Markdown from 'widgets/Markdown';
-import Code from 'widgets/Code';
-import * as type from '../../../src/components/_utils/type';
-import './index.less';
+import React from 'react'
+import PropTypes from 'prop-types'
+import cx from 'classnames'
+import {
+  Board,
+  BoardBody,
+  BoardHeader
+} from '@tradeshift/react-components/lib/Board'
+import {
+  Tab,
+  TabList,
+  TabPanel,
+  Tabs
+} from '@tradeshift/react-components/lib/Tabs'
+import { Col, Row } from '@tradeshift/react-components/lib/Layout'
+import Markdown from 'widgets/Markdown'
+import Code from 'widgets/Code'
+import * as type from '../../../src/components/_utils/type'
+import './index.less'
 
-function trimCode(code) {
+function trimCode (code) {
   if (!type.isString(code)) {
-    return;
+    return
   }
-  const snippet = code.split(';')[1];
-  const snippetArray = snippet.split('\n');
-  const lastSnippetItem = snippetArray[snippetArray.length - 1];
-  const indent = lastSnippetItem.length - lastSnippetItem.trim().length;
-  return snippetArray.map((v, i) => (i === 0 ? v : v.slice(indent))).join('\n');
+  const snippet = code.split(';')[1]
+  const snippetArray = snippet.split('\n')
+  const lastSnippetItem = snippetArray[snippetArray.length - 1]
+  const indent = lastSnippetItem.length - lastSnippetItem.trim().length
+  return snippetArray.map((v, i) => (i === 0 ? v : v.slice(indent))).join('\n')
 }
 
 class Demo extends React.Component {
-  constructor(props) {
-    super();
+  constructor (props) {
+    super()
     this.state = {
       open: false
-    };
+    }
   }
 
   handleToggle = () => {
-    this.setState({ open: !this.state.open });
-  };
+    this.setState({ open: !this.state.open })
+  }
 
-  render() {
+  render () {
     const {
       className,
       title,
@@ -41,8 +50,8 @@ class Demo extends React.Component {
       code,
       renderModel,
       children
-    } = this.props;
-    const { open } = this.state;
+    } = this.props
+    const { open } = this.state
     const renderInLeft = () => {
       return (
         <Row className={cx('demo', { demo__open: open }, className)}>
@@ -70,8 +79,8 @@ class Demo extends React.Component {
             {note && <Markdown html={note} />}
           </Col>
         </Row>
-      );
-    };
+      )
+    }
     const renderInRight = () => {
       return (
         <Row
@@ -96,8 +105,8 @@ class Demo extends React.Component {
             {note && <Markdown html={note} />}
           </Col>
         </Row>
-      );
-    };
+      )
+    }
     const renderInFull = () => {
       return (
         <Row className={cx('demo', { demo__open: !open }, className)}>
@@ -106,8 +115,8 @@ class Demo extends React.Component {
             {desc && <div className="demo__desc">{desc}</div>}
           </Col>
         </Row>
-      );
-    };
+      )
+    }
     const renderInRun = () => {
       return (
         <Row
@@ -132,15 +141,15 @@ class Demo extends React.Component {
             {note && <Markdown html={note} />}
           </Col>
         </Row>
-      );
-    };
+      )
+    }
     const render = {
       left: renderInLeft,
       right: renderInRight,
       full: renderInFull,
       run: renderInRun
-    };
-    return render[renderModel]();
+    }
+    return render[renderModel]()
   }
 }
 
@@ -152,6 +161,6 @@ Demo.propTypes = {
   note: PropTypes.string,
   code: PropTypes.string,
   renderModel: PropTypes.oneOf(['left', 'right', 'full', 'run'])
-};
+}
 
-export default Demo;
+export default Demo
