@@ -37,13 +37,17 @@
 		"coverage": "coveralls",
 		"test": "jest --config=config/jest.config.json",
 		"****** OTHERS *****": "",
-		"commit": "git-cz",
 		"validate": "tradeshift-scripts validate"
 	},
 	"config": {
 		"commitizen": {
 			"path": "node_modules/cz-conventional-changelog"
 		}
+	},
+	"peerDependencies": {
+		"react": ">=16.0.0",
+		"react-dom": ">=16.0.0",
+		"prop-types": ">=15.0.0"
 	},
 	"dependencies": {
 		"classlist": "^1.0.1",
@@ -68,7 +72,6 @@
 		"babel-jest": "^23.6.0",
 		"babel-loader": "^8.0.4",
 		"chalk": "^2.4.2",
-		"commitizen": "^2.9.6",
 		"compression": "^1.7.2",
 		"css-loader": "^0.28.7",
 		"cz-conventional-changelog": "^2.1.0",
@@ -109,7 +112,6 @@
 		"react-imported-component": "^5.2.3",
 		"rimraf": "^2.6.2",
 		"standard": "^12.0.1",
-		"standard-version": "^4.3.0",
 		"style-loader": "^0.19.0",
 		"styled-components": "^4.1.1",
 		"tradeshift-scripts": "^2.2.2",

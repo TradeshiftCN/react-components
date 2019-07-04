@@ -1,26 +1,14 @@
 import { Link } from '@reach/router';
 import Header from '@tradeshift/react-components/lib/Header';
-import { Nav, NavItem, NavItemGroup, SubNav } from 'earth-ui/lib/Nav';
+import { Nav, NavItem } from 'earth-ui/lib/Nav';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Layout, LayoutContent, LayoutSidebar } from 'widgets/Layout';
 import Scrollbar from 'widgets/Scrollbar';
 import { navigate } from '../../HashRouter';
-import { nav as components } from '../config.js';
+import { nav } from '../config.js';
 import pkg from '../../../package.json';
 import './index.less';
-
-// const getTabsByComponentName = (components, componentName) => {
-//   for (let c of components) {
-//     if (c.name === componentName) {
-//       return c.tabs
-//     }
-//     if (c.components) {
-//       const tabs = getTabsByComponentName(c.components, componentName)
-//       if (tabs) return tabs
-//     }
-//   }
-// }
 
 const routerWithDynamicSegments = ['components/', 'start/'];
 
@@ -68,10 +56,6 @@ class Components extends React.Component {
     this.switchRoute(props.id);
   };
 
-  handleTabClick = doc => {
-    this.switchRoute(doc);
-  };
-
   renderTitle(docName) {
     const nameBeforeSlash = docName.split('/')[0];
     const nameAfterSlash = routerWithDynamicSegments.some(v =>
@@ -86,7 +70,6 @@ class Components extends React.Component {
     const component = this.componentsMap[componentName];
     const { name = '', cn = '' } = component || {};
     const title = name === 'intro' ? 'Tradeshift UI' : `${name} ${cn}`;
-    // const tabs = getTabsByComponentName(components, name)
     return (
       <Header
         className="components__title"
@@ -117,14 +100,6 @@ class Components extends React.Component {
         <span>{item.name}</span>
         <span className="chinese">{item.cn}</span>
       </NavItem>
-    );
-  }
-
-  renderNavItemGroup(itemGroup) {
-    return (
-      <NavItemGroup title={itemGroup.group} key={itemGroup.group}>
-        {itemGroup.components.map(component => this.renderNavItem(component))}
-      </NavItemGroup>
     );
   }
 
@@ -233,29 +208,11 @@ class Components extends React.Component {
                 indent={20}
                 className="components__navbar-menu"
               >
-                {components.map(item => {
-                  if (!item.components) {
-                    return this.renderNavItem(item, 'outside');
+                {nav.map(navItem => {
+                  if (!navItem.components) {
+                    return this.renderNavItem(navItem, 'outside');
                   }
-                  return (
-                    <SubNav
-                      key={item.name}
-                      title={item.cn}
-                      defaultOpen={item.defaultOpen}
-                      icon={`./svg/icons.svg#${item.icon}`}
-                    >
-                      {item.components.map(itemGroup => {
-                        if (itemGroup.group) {
-                          return this.renderNavItemGroup(itemGroup);
-                        }
-                        return this.renderNavItem(
-                          itemGroup,
-                          'inside',
-                          item.path
-                        );
-                      })}
-                    </SubNav>
-                  );
+                  return this.renderNavItem(navItem, 'inside', navItem.path);
                 })}
               </Nav>
             </Scrollbar>

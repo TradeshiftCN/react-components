@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import { Row, Col } from 'earth-ui/lib/Layout';
-import Button from 'earth-ui/lib/Button';
 import './index.less';
 
 class Layout extends Component {
@@ -51,14 +50,7 @@ const LayoutContent = (props, { layout }) => {
   const { children } = props;
   return (
     <Col className="layout__content" onClick={() => layout.close()}>
-      {/* <Scrollbar className="layout__content-scrollbar"> */}
-      <Button
-        icon="bars"
-        className="layout__toggle"
-        onClick={e => layout.toggle(e)}
-      />
       {children}
-      {/* </Scrollbar> */}
     </Col>
   );
 };
