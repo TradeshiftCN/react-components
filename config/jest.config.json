@@ -1,5 +1,6 @@
 {
   "roots": ["<rootDir>/../"],
+  "setupFiles": ["../config/jest.setup.js"],
   "testEnvironment": "jest-environment-jsdom-global",
   "testMatch": [
     "**/__tests__/**/*.(js|jsx|ts|tsx)?(x)",
@@ -15,5 +16,6 @@
   ],
   "globals": {
     "prefixCls": true
-  }
+  },
+  "snapshotSerializers": ["enzyme-to-json/serializer"]
 }

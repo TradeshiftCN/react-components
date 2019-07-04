@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`#presentational# TimeLine should render TimeLine 1`] = `
+<div>
+  <div
+    className="timeline active"
+    key="2019-07-01T07:20:28.473Z"
+  >
+    <i
+      className="circle"
+    />
+    <div
+      className="content"
+    >
+      <div
+        className="time"
+      >
+        2019-07-01 15:20
+      </div>
+      <div
+        className="status"
+      >
+        处理成功
+      </div>
+      <div
+        className="number"
+      >
+        puff
+      </div>
+    </div>
+  </div>
+  <div
+    className="timeline false"
+    key="2019-06-30T05:54:50.891Z"
+  >
+    <i
+      className="circle"
+    />
+    <div
+      className="content"
+    >
+      <div
+        className="time"
+      >
+        2019-06-30 13:54
+      </div>
+      <div
+        className="status"
+      >
+        创建成功
+      </div>
+      <div
+        className="number"
+      >
+        puff
+      </div>
+    </div>
+  </div>
+</div>
+`;
