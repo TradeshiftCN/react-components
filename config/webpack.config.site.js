@@ -7,7 +7,7 @@ const Prism = require('../site/3rdParty/prism/prism.js');
 const sitePath = path.resolve(__dirname, '../site');
 const sourcePath = path.resolve(__dirname, '../src');
 const outputPath = path.resolve(__dirname, '../site/dist');
-
+const Uglify = require('uglifyjs-webpack-plugin');
 const isProduction = process.env.SITE_ENV === 'production';
 
 rimraf.sync(outputPath);
@@ -124,12 +124,14 @@ if (isProduction) {
     })
   );
   config.plugins.push(
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      },
-      output: {
-        comments: false
+    new Uglify({
+      uglifyOptions: {
+        compress: {
+          warnings: false
+        },
+        output: {
+          comments: false
+        }
       }
     })
   );
