@@ -212,11 +212,7 @@ class Components extends React.Component {
                   if (!navItem.components) {
                     return this.renderNavItem(navItem, 'outside');
                   }
-                  return this.renderNavItem(
-                    navItem,
-                    'inside',
-                    navItem.path
-                  );
+                  return this.renderNavItem(navItem, 'inside', navItem.path);
                 })}
               </Nav>
             </Scrollbar>
