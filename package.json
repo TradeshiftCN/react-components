@@ -55,7 +55,6 @@
 		"focus-trap": "^3.0.0",
 		"invariant": "^2.2.2",
 		"marked": "^0.5.2",
-		"moment": "^2.24.0",
 		"react-update": "^0.4.4"
 	},
 	"devDependencies": {

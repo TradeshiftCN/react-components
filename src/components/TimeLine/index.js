@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
 import './index.less';
 
 const TimeLine = props => {
@@ -14,9 +13,7 @@ const TimeLine = props => {
         >
           <i className="circle" />
           <div className="content">
-            <div className="time">
-              {moment(timeline.time).format('YYYY-MM-DD HH:mm')}
-            </div>
+            <div className="time">{timeline.time}</div>
             <div className="status">{timeline.status}</div>
             <div className="number">{timeline.name}</div>
           </div>
