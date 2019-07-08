@@ -42,7 +42,8 @@ pipeline {
                 CODECOV_TOKEN="4b261399-ecbf-48ce-b85f-d631723f078d"
             }
             steps {
-                sh "npm run validate && codecov"
+                sh "npm run validate"
+                sh "npm run report-coverage"
             }
             post {
                 always {
