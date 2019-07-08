@@ -34,9 +34,8 @@
 		"format": "tradeshift-scripts format",
 		"precommit": "tradeshift-scripts precommit",
 		"****** TEST *****": "",
-		"coverage": "jest --coverage --config=config/jest.config.json && codecov",
 		"test": "jest --config=config/jest.config.json",
-		"report-coverage": "cat ./coverage/lcov.info | codecov",
+		"report-coverage": "jest --coverage --config=config/jest.config.json && codecov",
 		"****** OTHERS *****": "",
 		"validate": "tradeshift-scripts validate"
 	},
