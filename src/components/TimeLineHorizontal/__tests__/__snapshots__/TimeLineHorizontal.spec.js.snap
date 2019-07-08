@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`#presentational# TimeLineHorizontal should render TimeLineHorizontal 1`] = `
+exports[`TimeLineHorizontal should renders correctly 1`] = `
 <div
   className="time-line-container"
 >

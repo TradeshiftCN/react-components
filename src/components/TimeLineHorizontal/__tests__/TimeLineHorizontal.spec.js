@@ -2,8 +2,8 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import TimeLineHorizontal from '../index';
 
-describe('#presentational# TimeLineHorizontal', () => {
-  it('should render TimeLineHorizontal', () => {
+describe('TimeLineHorizontal', () => {
+  it('should renders correctly', () => {
     const props = {
       configData: {
         items: [

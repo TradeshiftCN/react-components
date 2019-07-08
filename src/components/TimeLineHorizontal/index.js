@@ -2,95 +2,81 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './index.less';
 
-class TimeLineHorizontal extends React.Component {
-  constructor(props) {
-    super(props);
-    this.configData = this.props.configData;
-
-    this.findElement = this.findElement.bind(this);
-    this.getStateClass = this.getStateClass.bind(this);
+const getStateClass = (itemIndex, currentReadyStateIndex, lastIndex) => {
+  if (
+    itemIndex < currentReadyStateIndex &&
+    itemIndex !== currentReadyStateIndex - 1
+  ) {
+    return 'ready';
   }
-
-  findElement(element) {
-    return element.title === this.configData.currentState;
+  if (itemIndex === currentReadyStateIndex - 1) {
+    return 'left-of-current-state';
   }
-
-  getStateClass(itemIndex, currentReadyStateIndex, lastIndex) {
-    if (
-      itemIndex < currentReadyStateIndex &&
-      itemIndex !== currentReadyStateIndex - 1
-    ) {
-      return 'ready';
-    }
-    if (itemIndex === currentReadyStateIndex - 1) {
-      return 'left-of-current-state';
-    }
-    if (itemIndex === currentReadyStateIndex && itemIndex === lastIndex) {
-      return 'current-end';
-    }
-    if (itemIndex === currentReadyStateIndex) {
-      return 'current';
-    }
-    if (itemIndex > currentReadyStateIndex && itemIndex !== lastIndex) {
-      return 'un-ready';
-    }
-    if (itemIndex === lastIndex) {
-      return 'end';
-    }
+  if (itemIndex === currentReadyStateIndex && itemIndex === lastIndex) {
+    return 'current-end';
   }
+  if (itemIndex === currentReadyStateIndex) {
+    return 'current';
+  }
+  if (itemIndex > currentReadyStateIndex && itemIndex !== lastIndex) {
+    return 'un-ready';
+  }
+  if (itemIndex === lastIndex) {
+    return 'end';
+  }
+};
 
-  render() {
-    const { configData } = this.props;
-    return (
-      <div className="time-line-container">
-        {configData.items.map((item, index, arr) => {
-          const currentReadyStateIndex = configData.items.findIndex(
-            this.findElement
-          );
-          let stateNode = null;
-          if (index === currentReadyStateIndex) {
-            stateNode = (
-              <div>
-                <div
-                  className={`circle ${this.getStateClass(
-                    index,
-                    currentReadyStateIndex,
-                    arr.length - 1
-                  )}`}
-                />
-                <div className="out-circle" />
-              </div>
-            );
-          } else {
-            stateNode = (
+const TimeLineHorizontal = props => {
+  const { configData } = props;
+  return (
+    <div className="time-line-container">
+      {configData.items.map((item, index, arr) => {
+        const currentReadyStateIndex = configData.items.findIndex(
+          element => element.title === configData.currentState
+        );
+        let stateNode = null;
+        if (index === currentReadyStateIndex) {
+          stateNode = (
+            <div>
               <div
-                className={`circle ${this.getStateClass(
+                className={`circle ${getStateClass(
                   index,
                   currentReadyStateIndex,
                   arr.length - 1
                 )}`}
               />
-            );
-          }
-          return (
+              <div className="out-circle" />
+            </div>
+          );
+        } else {
+          stateNode = (
             <div
-              key={item.title}
-              className={`time-line-node ${this.getStateClass(
+              className={`circle ${getStateClass(
                 index,
                 currentReadyStateIndex,
                 arr.length - 1
               )}`}
-            >
-              {stateNode}
-              <div>{item.title}</div>
-              <div>({item.description})</div>
-            </div>
+            />
           );
-        })}
-      </div>
-    );
-  }
-}
+        }
+        return (
+          <div
+            key={item.title}
+            className={`time-line-node ${getStateClass(
+              index,
+              currentReadyStateIndex,
+              arr.length - 1
+            )}`}
+          >
+            {stateNode}
+            <div>{item.title}</div>
+            <div>({item.description})</div>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
 
 TimeLineHorizontal.propTypes = {
   // TimeLineHorizontal配置对象

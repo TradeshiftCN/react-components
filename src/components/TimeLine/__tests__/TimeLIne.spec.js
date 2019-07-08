@@ -2,8 +2,8 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import TimeLine from '../index';
 
-describe('#presentational# TimeLine', () => {
-  it('should render TimeLine', () => {
+describe('TimeLine', () => {
+  it('should render correctly', () => {
     const props = {
       timelines: [
         {
