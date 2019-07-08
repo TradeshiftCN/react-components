@@ -17,6 +17,5 @@
   "globals": {
     "prefixCls": true
   },
-  "snapshotSerializers": ["enzyme-to-json/serializer"],
-  "collectCoverageFrom": ["/src/components/**/*.js"]
+  "snapshotSerializers": ["enzyme-to-json/serializer"]
 }
