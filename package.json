@@ -34,8 +34,8 @@
 		"format": "tradeshift-scripts format",
 		"precommit": "tradeshift-scripts precommit",
 		"****** TEST *****": "",
-		"test": "jest --config=config/jest.config.json --coverage",
-		"report-coverage": "cat ./coverage/lcov.info | codecov",
+		"test": "jest --config=config/jest.config.json",
+		"report-coverage": "codecov",
 		"****** OTHERS *****": "",
 		"validate": "tradeshift-scripts validate"
 	},
@@ -72,7 +72,7 @@
 		"babel-jest": "^23.6.0",
 		"babel-loader": "^8.0.4",
 		"chalk": "^2.4.2",
-		"codecov.io": "^0.1.6",
+		"codecov": "^3.5.0",
 		"compression": "^1.7.2",
 		"css-loader": "^0.28.7",
 		"cz-conventional-changelog": "^2.1.0",
@@ -127,9 +127,5 @@
 		"webpack-hot-middleware": "^2.21.0",
 		"webpack-livereload-plugin": "^1.0.0",
 		"webpack-merge": "^4.1.2"
-	},
-	"jest": {
-		"coverageDirectory": "./coverage/",
-		"collectCoverage": true
 	}
 }
