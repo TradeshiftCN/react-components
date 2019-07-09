@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import PrismCode from './PrismCode';
-import './index.less';
+import '../../styles/index.less';
 
 const Code = props => {
   const { className, lang = 'jsx', children } = props;
