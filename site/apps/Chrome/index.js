@@ -1,5 +1,5 @@
 import { Link } from '@reach/router';
-import Header from '@tradeshift/react-components/lib/Header';
+import Header from '../Header';
 import { Nav, NavItem } from 'earth-ui/lib/Nav';
 import PropTypes from 'prop-types';
 import React from 'react';
