@@ -34,10 +34,9 @@
 		"format": "tradeshift-scripts format",
 		"precommit": "tradeshift-scripts precommit",
 		"****** TEST *****": "",
-		"coverage": "coveralls",
-		"test": "jest --config=config/jest.config.json",
+		"test": "jest --config=jest.config.json",
+		"report-coverage": "codecov",
 		"****** OTHERS *****": "",
-		"commit": "git-cz",
 		"validate": "tradeshift-scripts validate"
 	},
 	"config": {
@@ -45,13 +44,17 @@
 			"path": "node_modules/cz-conventional-changelog"
 		}
 	},
+	"peerDependencies": {
+		"react": ">=16.0.0",
+		"react-dom": ">=16.0.0",
+		"prop-types": ">=15.0.0"
+	},
 	"dependencies": {
 		"classlist": "^1.0.1",
 		"classnames": "^2.2.5",
 		"focus-trap": "^3.0.0",
 		"invariant": "^2.2.2",
 		"marked": "^0.5.2",
-		"moment": "^2.24.0",
 		"react-update": "^0.4.4"
 	},
 	"devDependencies": {
@@ -63,16 +66,20 @@
 		"@babel/preset-env": "^7.1.6",
 		"@babel/preset-react": "^7.0.0",
 		"@reach/router": "^1.1.1",
+		"@types/jest": "^24.0.15",
 		"babel-core": "^7.0.0-bridge.0",
 		"babel-eslint": "^10.0.1",
 		"babel-jest": "^23.6.0",
 		"babel-loader": "^8.0.4",
 		"chalk": "^2.4.2",
-		"commitizen": "^2.9.6",
+		"codecov": "^3.5.0",
 		"compression": "^1.7.2",
 		"css-loader": "^0.28.7",
 		"cz-conventional-changelog": "^2.1.0",
 		"earth-ui": "^0.4.0",
+		"enzyme": "^3.10.0",
+		"enzyme-adapter-react-16": "^1.14.0",
+		"enzyme-to-json": "^3.3.5",
 		"express": "^4.16.3",
 		"extract-text-webpack-plugin": "^3.0.2",
 		"file-loader": "^1.1.10",
@@ -109,10 +116,10 @@
 		"react-imported-component": "^5.2.3",
 		"rimraf": "^2.6.2",
 		"standard": "^12.0.1",
-		"standard-version": "^4.3.0",
 		"style-loader": "^0.19.0",
 		"styled-components": "^4.1.1",
 		"tradeshift-scripts": "^2.2.2",
+		"uglifyjs-webpack-plugin": "1.1.5",
 		"url-loader": "^0.6.2",
 		"webpack": "^3.12.0",
 		"webpack-dashboard": "^1.1.1",

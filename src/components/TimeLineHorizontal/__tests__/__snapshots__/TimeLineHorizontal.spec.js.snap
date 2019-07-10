@@ -1,0 +1,153 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TimeLineHorizontal should renders correctly 1`] = `
+<div
+  className="time-line-container"
+>
+  <div
+    className="time-line-node ready"
+    key="已经完成的小圆圈"
+  >
+    <div
+      className="circle ready"
+    />
+    <div>
+      已经完成的小圆圈
+    </div>
+    <div>
+      (
+      完成啦啦啦
+      )
+    </div>
+  </div>
+  <div
+    className="time-line-node left-of-current-state"
+    key="又一个小圆圈"
+  >
+    <div
+      className="circle left-of-current-state"
+    />
+    <div>
+      又一个小圆圈
+    </div>
+    <div>
+      (
+      好像也完成了呀
+      )
+    </div>
+  </div>
+  <div
+    className="time-line-node current"
+    key="当前小圆圈"
+  >
+    <div>
+      <div
+        className="circle current"
+      />
+      <div
+        className="out-circle"
+      />
+    </div>
+    <div>
+      当前小圆圈
+    </div>
+    <div>
+      (
+      正在完成它
+      )
+    </div>
+  </div>
+  <div
+    className="time-line-node un-ready"
+    key="没完成的小圆圈"
+  >
+    <div
+      className="circle un-ready"
+    />
+    <div>
+      没完成的小圆圈
+    </div>
+    <div>
+      (
+      马上就完成它
+      )
+    </div>
+  </div>
+  <div
+    className="time-line-node end"
+    key="最后一个小圆圈"
+  >
+    <div
+      className="circle end"
+    />
+    <div>
+      最后一个小圆圈
+    </div>
+    <div>
+      (
+      终于最后啦啊
+      )
+    </div>
+  </div>
+</div>
+`;
+
+exports[`TimeLineHorizontal should renders correctly when current is the end 1`] = `
+<div
+  className="time-line-container"
+>
+  <div
+    className="time-line-node ready"
+    key="已经完成的小圆圈"
+  >
+    <div
+      className="circle ready"
+    />
+    <div>
+      已经完成的小圆圈
+    </div>
+    <div>
+      (
+      完成啦啦啦
+      )
+    </div>
+  </div>
+  <div
+    className="time-line-node left-of-current-state"
+    key="又一个小圆圈"
+  >
+    <div
+      className="circle left-of-current-state"
+    />
+    <div>
+      又一个小圆圈
+    </div>
+    <div>
+      (
+      好像也完成了呀
+      )
+    </div>
+  </div>
+  <div
+    className="time-line-node current-end"
+    key="最后一个小圆圈"
+  >
+    <div>
+      <div
+        className="circle current-end"
+      />
+      <div
+        className="out-circle"
+      />
+    </div>
+    <div>
+      最后一个小圆圈
+    </div>
+    <div>
+      (
+      终于最后啦啊
+      )
+    </div>
+  </div>
+</div>
+`;

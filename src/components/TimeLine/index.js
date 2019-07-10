@@ -1,33 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
 import './index.less';
 
-class TimeLine extends React.Component {
-  render() {
-    const { timelines } = this.props;
-    return (
-      <div>
-        {timelines.map((timeline, index) => (
-          <div
-            className={`timeline ${this.props.activeIndex === index &&
-              'active'}`}
-            key={timeline.time}
-          >
-            <i className="circle" />
-            <div className="content">
-              <div className="time">
-                {moment(timeline.time).format('YYYY-MM-DD HH:mm')}
-              </div>
-              <div className="status">{timeline.status}</div>
-              <div className="number">{timeline.name}</div>
-            </div>
+const TimeLine = props => {
+  const { timelines, activeIndex } = props;
+  return (
+    <div>
+      {timelines.map((timeline, index) => (
+        <div
+          className={`timeline ${activeIndex === index && 'active'}`}
+          key={timeline.time}
+        >
+          <i className="circle" />
+          <div className="content">
+            <div className="time">{timeline.time}</div>
+            <div className="status">{timeline.status}</div>
+            <div className="number">{timeline.name}</div>
           </div>
-        ))}
-      </div>
-    );
-  }
-}
+        </div>
+      ))}
+    </div>
+  );
+};
 
 TimeLine.propTypes = {
   // TimeLine配置数组
