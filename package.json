@@ -34,7 +34,7 @@
 		"format": "tradeshift-scripts format",
 		"precommit": "tradeshift-scripts precommit",
 		"****** TEST *****": "",
-		"test": "jest --config=config/jest.config.json",
+		"test": "jest --config=jest.config.json",
 		"report-coverage": "codecov",
 		"****** OTHERS *****": "",
 		"validate": "tradeshift-scripts validate"

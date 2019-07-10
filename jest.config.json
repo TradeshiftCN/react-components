@@ -1,6 +1,5 @@
 {
-  "roots": ["<rootDir>/../"],
-  "setupFiles": ["../config/jest.setup.js"],
+  "setupFiles": ["./jest.setup.js"],
   "testEnvironment": "jest-environment-jsdom-global",
   "testMatch": [
     "**/__tests__/**/*.(js|jsx|ts|tsx)?(x)",
@@ -18,7 +17,7 @@
     "prefixCls": true
   },
   "snapshotSerializers": ["enzyme-to-json/serializer"],
-  "coverageDirectory": "../coverage/",
+  "coverageDirectory": "./coverage/",
   "collectCoverage": true,
-  "collectCoverageFrom": ["../src/components/**/*.js"]
+  "collectCoverageFrom": ["src/components/**/*.js"]
 }

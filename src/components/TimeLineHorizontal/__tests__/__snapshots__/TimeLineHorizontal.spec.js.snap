@@ -6,39 +6,131 @@ exports[`TimeLineHorizontal should renders correctly 1`] = `
 >
   <div
     className="time-line-node ready"
-    key="基本资料上传"
+    key="已经完成的小圆圈"
   >
     <div
       className="circle ready"
     />
     <div>
-      基本资料上传
+      已经完成的小圆圈
     </div>
     <div>
       (
-      将用于基本信息生成
+      完成啦啦啦
       )
     </div>
   </div>
   <div
     className="time-line-node left-of-current-state"
-    key="授信资料上传"
+    key="又一个小圆圈"
   >
     <div
       className="circle left-of-current-state"
     />
     <div>
-      授信资料上传
+      又一个小圆圈
     </div>
     <div>
       (
-      将用于融资授信
+      好像也完成了呀
+      )
+    </div>
+  </div>
+  <div
+    className="time-line-node current"
+    key="当前小圆圈"
+  >
+    <div>
+      <div
+        className="circle current"
+      />
+      <div
+        className="out-circle"
+      />
+    </div>
+    <div>
+      当前小圆圈
+    </div>
+    <div>
+      (
+      正在完成它
+      )
+    </div>
+  </div>
+  <div
+    className="time-line-node un-ready"
+    key="没完成的小圆圈"
+  >
+    <div
+      className="circle un-ready"
+    />
+    <div>
+      没完成的小圆圈
+    </div>
+    <div>
+      (
+      马上就完成它
+      )
+    </div>
+  </div>
+  <div
+    className="time-line-node end"
+    key="最后一个小圆圈"
+  >
+    <div
+      className="circle end"
+    />
+    <div>
+      最后一个小圆圈
+    </div>
+    <div>
+      (
+      终于最后啦啊
+      )
+    </div>
+  </div>
+</div>
+`;
+
+exports[`TimeLineHorizontal should renders correctly when current is the end 1`] = `
+<div
+  className="time-line-container"
+>
+  <div
+    className="time-line-node ready"
+    key="已经完成的小圆圈"
+  >
+    <div
+      className="circle ready"
+    />
+    <div>
+      已经完成的小圆圈
+    </div>
+    <div>
+      (
+      完成啦啦啦
+      )
+    </div>
+  </div>
+  <div
+    className="time-line-node left-of-current-state"
+    key="又一个小圆圈"
+  >
+    <div
+      className="circle left-of-current-state"
+    />
+    <div>
+      又一个小圆圈
+    </div>
+    <div>
+      (
+      好像也完成了呀
       )
     </div>
   </div>
   <div
     className="time-line-node current-end"
-    key="交易明细上传"
+    key="最后一个小圆圈"
   >
     <div>
       <div
@@ -49,11 +141,11 @@ exports[`TimeLineHorizontal should renders correctly 1`] = `
       />
     </div>
     <div>
-      交易明细上传
+      最后一个小圆圈
     </div>
     <div>
       (
-      将用于定制化融资
+      终于最后啦啊
       )
     </div>
   </div>

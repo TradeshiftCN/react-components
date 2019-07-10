@@ -8,19 +8,51 @@ describe('TimeLineHorizontal', () => {
       configData: {
         items: [
           {
-            title: '基本资料上传',
-            description: '将用于基本信息生成'
+            title: '已经完成的小圆圈',
+            description: '完成啦啦啦'
           },
           {
-            title: '授信资料上传',
-            description: '将用于融资授信'
+            title: '又一个小圆圈',
+            description: '好像也完成了呀'
           },
           {
-            title: '交易明细上传',
-            description: '将用于定制化融资'
+            title: '当前小圆圈',
+            description: '正在完成它'
+          },
+          {
+            title: '没完成的小圆圈',
+            description: '马上就完成它'
+          },
+          {
+            title: '最后一个小圆圈',
+            description: '终于最后啦啊'
           }
         ],
-        currentState: '交易明细上传'
+        currentState: '当前小圆圈'
+      }
+    };
+    const wrapper = shallow(<TimeLineHorizontal {...props} />);
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should renders correctly when current is the end', () => {
+    const props = {
+      configData: {
+        items: [
+          {
+            title: '已经完成的小圆圈',
+            description: '完成啦啦啦'
+          },
+          {
+            title: '又一个小圆圈',
+            description: '好像也完成了呀'
+          },
+          {
+            title: '最后一个小圆圈',
+            description: '终于最后啦啊'
+          }
+        ],
+        currentState: '最后一个小圆圈'
       }
     };
     const wrapper = shallow(<TimeLineHorizontal {...props} />);
