@@ -6,7 +6,7 @@
   - [Installation](#installation)
   - [Basic usage](#basic-usage)
   - [Use in create-react-app](#use-in-create-react-app)
-  - [Global config](#global-config)
+  - [Contribute](#contribute)
   - [Development](#development)
   - [Changelog](#changelog)
   - [Contributing](#contributing)
@@ -29,8 +29,7 @@ npm install @tradeshift/react-components
 ## Basic usage
 
 ```jsx
-import Button from '@tradeshift/react-components/lib/Button';
-import '@tradeshift/react-components/dist/ui.min.css';
+import { Button } from '@tradeshift/react-components';
 
 ReactDOM.render(<Button>Name</Button>, mountNode);
 ```
@@ -52,7 +51,7 @@ Modify `src/App.js`, import Button component from `@tradeshift/react-components`
 ```jsx
 import React, { Component } from 'react';
 import './App.css';
-import Button from '@tradeshift/react-components/lib/Button';
+import { Button } from '@tradeshift/react-components';
 
 class App extends Component {
   render() {
@@ -67,31 +66,14 @@ class App extends Component {
 export default App;
 ```
 
-Add `@tradeshift/react-components/dist/ui.min.css` at the top of `src/App.css` .
-
-```css
-@import '~@tradeshift/react-components/dist/ui.min.css';
-
-.App {
-  text-align: center;
-}
-
-...
-```
-
 Ok, you should now see a button displayed on the page. Next you can choose any components of `@tradeshift/react-components` to develop your application. Visit other workflows of `create-react-app` at its [User Guide][create-react-app-user-guide-url] .
 
-## Global config
 
-Just override or extend `defaultProps`, using [Tooltip][tooltip-url] as an example:
+## Contribute
 
-```jsx
-Tooltip.defaultProps = Object.assign(Tooltip.defaultProps || {}, {
-  triggerMode: 'click'
-})
-```
-
-> Those APIs will be stateful when global config is set and that's to say the final result is affected by the configuration. So try to configure it at a time and explain it to other developers.
+Any code pushed to master will be automatically released to `npm` with an appropriate semantic version.
+Releases are handled automatically by Jenkins via [semantic-release](https://github.com/semantic-release/semantic-release).
+Make sure to follow our commit guidelines when commiting. We support [commitizen](http://commitizen.github.io/cz-cli/) styles. Install it via `npm install -g commitizen` and use `git cz` instead of `git commit`.
 
 ## Development
 

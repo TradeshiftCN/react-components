@@ -1,10 +1,10 @@
 const path = require('path');
 const rimraf = require('rimraf');
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const Uglify = require('uglifyjs-webpack-plugin');
 const sourcePath = path.resolve(__dirname, '../src');
 const outputPath = path.resolve(__dirname, '../dist');
-const entryName = 'ui.min';
+const entryName = 'react-components';
 
 rimraf.sync(outputPath);
 
@@ -25,25 +25,21 @@ const config = {
       },
       {
         test: /\.less$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            'css-loader?minimize=true',
-            'postcss-loader?config.path=config/postcss.config.js',
-            'less-loader?javascriptEnabled=true'
-          ]
-        }),
+        use: [
+          'style-loader',
+          'css-loader?minimize=true',
+          'postcss-loader?config.path=config/postcss.config.js',
+          'less-loader?javascriptEnabled=true'
+        ],
         include: sourcePath
       },
       {
         test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            'css-loader',
-            'postcss-loader?config.path=config/postcss.config.js'
-          ]
-        }),
+        use: [
+          'style-loader',
+          'css-loader',
+          'postcss-loader?config.path=config/postcss.config.js'
+        ],
         include: sourcePath
       },
       {
@@ -82,10 +78,11 @@ const config = {
     new webpack.DefinePlugin({
       prefixCls: JSON.stringify('ts-rc')
     }),
-    new ExtractTextPlugin('[name].css'),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        properties: false
+    new Uglify({
+      uglifyOptions: {
+        compress: {
+          properties: false
+        }
       }
     })
   ]

@@ -2,7 +2,7 @@
  * @title 基本功能
  * @renderModel left
  */
-import TimeLineHorizontal from '@tradeshift/react-components/lib/TimeLineHorizontal'
+import { TimeLineHorizontal } from '@tradeshift/react-components'
 
 const TimeLineHorizontalBasic = () => {
   return (

@@ -4,7 +4,7 @@
 	"description": "React components library",
 	"author": "Tradeshift",
 	"license": "MIT",
-	"main": "lib/index.js",
+	"main": "dist/react-components.js",
 	"repository": "https://github.com/Tradeshift/react-components",
 	"homepage": "https://tradeshift.github.io/react-components",
 	"publishConfig": {
@@ -15,15 +15,14 @@
 		"npm": ">=6.4.0"
 	},
 	"files": [
-		"dist",
-		"lib"
+		"dist"
 	],
 	"scripts": {
 		"****** DEV *****": "",
 		"create": "node bin/create.js",
 		"start": "webpack --progress --config config/webpack.config.site.js && node-dev site/server.js",
 		"****** DIST *****": "",
-		"build": "npm run lib && npm run dist",
+		"build": "npm run dist",
 		"lib": "rimraf lib && NODE_ENV=production babel src -d lib --ignore __tests__ && gulp --gulpfile config/gulpfile.js",
 		"dist": "rimraf dist && webpack --progress --config config/webpack.config.js",
 		"site:dist": "rimraf site/dist && SITE_ENV=production webpack --progress --config config/webpack.config.site.js",

@@ -7,70 +7,45 @@ npm i @tradeshift/react-components
 ## 基础使用
 
 ```jsx
-import Button from '@tradeshift/react-components/lib/Button';
-import '@tradeshift/react-components/dist/ui.min.css';
+import { Button } from '@tradeshift/react-components';
 
 ReactDOM.render(<Button>Name</Button>, mountNode);
 ```
-
-## 在 create-react-app 中使用
-
-[create-react-app][create-react-app-url] 是业界最优秀的 React 应用开发工具之一，我们会尝试在 `create-react-app` 创建的工程中使用 `react-components` 组件。
-
-首先，需要在命令行中安装 `create-react-app` 工具，[详细安装说明][create-react-app-url] 。
-
-现在从 npm 安装并引入 `@tradeshift/react-components` 。
+## 本地启动
 
 ```bash
-npm i @tradeshift/react-components
+git clone git@github.com:Tradeshift/react-components.git
+cd react-components
+npm i
+npm start
 ```
 
-修改 `src/App.js`，引入 `@tradeshift/react-components` 的按钮组件。
+打开浏览器访问 http://localhost:3003 ， 更多本地开发文档参见 [Development Instructions][dev-instructions-url] .
 
-```jsx
-import React, { Component } from 'react';
-import './App.css';
-import Button from '@tradeshift/react-components/lib/Button';
+## 创建一个新组件
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-          <Button icon="add">添加</Button>
-      </div>
-    );
-  }
-}
-
-export default App;
+```bash
+npm run create MyComponent
 ```
+查看：http://localhost:3003/#/components/MyComponent
 
-修改 `src/App.css`，在文件顶部引入 `@tradeshift/react-components/dist/ui.min.css` 。
+## Contribute
 
-```css
-@import '~@tradeshift/react-components/dist/ui.min.css';
+Any code pushed to master will be automatically released to `npm` with an appropriate semantic version.
+Releases are handled automatically by Jenkins via [semantic release][semantic-release].
+Make sure to follow our commit guidelines when commiting. We support [commitizen][commitizen-cli] styles. Install it via 
+```bash
+npm install -g commitizen
+``` 
+and use  
+```bash
+git cz
+``` 
+instead of `git commit` 
 
-.App {
-  text-align: center;
-}
 
-...
-```
-
-现在你应该能看到页面上已经有了 `react-components` 的按钮组件，接下来就可以继续选用其他组件开发应用了。其他开发流程可以参考 [User Guide][create-react-app-user-guide-url] .
-
-## 组件全局配置
-
-覆盖或扩展 `defaultProps` 即可，以 [Tooltip][tooltip-url] 为例:
-
-```jsx
-Tooltip.defaultProps = Object.assign(Tooltip.defaultProps || {}, {
-  triggerMode: 'click'
-})
-```
-
-> 全局配置后，这些 API 会变成有状态的，即最终结果受配置影响，所以尽量一次性配置并向其它开发者说明。
-
-[tooltip-url]: /#/components/Tooltip
 [create-react-app-url]: https://github.com/facebookincubator/create-react-app
 [create-react-app-user-guide-url]: https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md
+[dev-instructions-url]: https://github.com/Tradeshift/react-components/wiki/Local-development
+[semantic-release]: https://github.com/semantic-release/semantic-release
+[commitizen-cli]: http://commitizen.github.io/cz-cli/

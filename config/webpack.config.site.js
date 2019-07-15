@@ -98,12 +98,11 @@ const config = {
     extensions: ['.js', '.jsx'],
     modules: [sitePath, 'node_modules'],
     alias: {
-      '@tradeshift/react-components/lib': `${sourcePath}/components`,
+      '@tradeshift/react-components': `${sourcePath}/components/index.js`,
       widgets: `${sitePath}/widgets`,
-      'ui-variables': `${sourcePath}/styles/ui-variables.less`,
-      'ui-mixins': `${sourcePath}/styles/ui-mixins.less`,
-      ui: `${sourcePath}/styles/index.less`,
-      dox: `${sitePath}/styles/index.less`
+      'ui-variables': `${sitePath}/styles/ui-variables.less`,
+      'ui-mixins': `${sitePath}/styles/ui-mixins.less`,
+      'dox-mixins': `${sitePath}/styles/dox-mixins.less`
     }
   },
   externals: {

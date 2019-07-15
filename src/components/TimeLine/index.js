@@ -9,7 +9,7 @@ const TimeLine = props => {
       {timelines.map((timeline, index) => (
         <div
           className={`timeline ${activeIndex === index && 'active'}`}
-          key={timeline.time}
+          key={timeline.id}
         >
           <i className="circle" />
           <div className="content">
@@ -27,6 +27,7 @@ TimeLine.propTypes = {
   // TimeLine配置数组
   timelines: PropTypes.arrayOf(
     PropTypes.shape({
+      id: PropTypes.string,
       time: PropTypes.string,
       status: PropTypes.string,
       name: PropTypes.string
