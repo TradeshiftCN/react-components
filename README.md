@@ -6,10 +6,9 @@
   - [Installation](#installation)
   - [Basic usage](#basic-usage)
   - [Use in create-react-app](#use-in-create-react-app)
-  - [Contribute](#contribute)
   - [Development](#development)
+  - [Contribute](#contribute)
   - [Changelog](#changelog)
-  - [Contributing](#contributing)
   - [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -68,13 +67,6 @@ export default App;
 
 Ok, you should now see a button displayed on the page. Next you can choose any components of `@tradeshift/react-components` to develop your application. Visit other workflows of `create-react-app` at its [User Guide][create-react-app-user-guide-url] .
 
-
-## Contribute
-
-Any code pushed to master will be automatically released to `npm` with an appropriate semantic version.
-Releases are handled automatically by Jenkins via [semantic-release](https://github.com/semantic-release/semantic-release).
-Make sure to follow our commit guidelines when commiting. We support [commitizen](http://commitizen.github.io/cz-cli/) styles. Install it via `npm install -g commitizen` and use `git cz` instead of `git commit`.
-
 ## Development
 
 ```bash
@@ -93,24 +85,25 @@ npm run create MyComponent
 ```
 Open: http://localhost:3003/#/components/MyComponent
 
+## Contribute
+
+Any code pushed to master will be automatically released to `npm` with an appropriate semantic version.
+Releases are handled automatically by Jenkins via [semantic-release][semantic-release-url].
+Make sure to follow our commit guidelines when commiting. We support [commitizen][commitizen-url] styles. Install it via `npm install -g commitizen` and use `git cz` instead of `git commit`.
+
 ## Changelog
 
 [CHANGELOG][changelog-url]
-
-## Contributing
-
-We welcome all contributions. Please read our [CONTRIBUTING.md][contributing-url] first. You can submit any ideas as [Pull Requests][pr-url] or as [GitHub issues][issue-url]. If you'd like to improve code, check out the [Development Instructions][dev-instructions-url] and have a good time! :)
 
 ## License
 
 Licensed as MIT, see [LICENSE.md](LICENSE.md).
 
 
-[tooltip-url]: https://tradeshift.github.io/react-components/components/Tooltip
+
 [dev-instructions-url]: https://github.com/Tradeshift/react-components/wiki/Local-development
 [changelog-url]: https://tradeshift.github.io/react-components/changelog
-[contributing-url]: https://github.com/Tradeshift/react-components/blob/master/.github/CONTRIBUTING.md
-[pr-url]: https://github.com/Tradeshift/react-components/pulls
-[issue-url]: https://github.com/Tradeshift/react-components/issues
+[semantic-release-url]: https://github.com/semantic-release/semantic-release
+[commitizen-url]: http://commitizen.github.io/cz-cli/
 [create-react-app-url]: https://github.com/facebookincubator/create-react-app
 [create-react-app-user-guide-url]: https://github.com/facebook/create-react-app/blob/master/packages/react-scripts/template/README.md

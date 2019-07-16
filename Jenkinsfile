@@ -39,7 +39,7 @@ pipeline {
 
         stage('Build and test') {
             environment {
-                CODECOV_TOKEN="4b261399-ecbf-48ce-b85f-d631723f078d"
+                CODECOV_TOKEN = credentials 'CODECOV-TOKEN'
             }
             steps {
                 sh "npm run validate"
