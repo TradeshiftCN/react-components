@@ -2,7 +2,7 @@
  * @title 基本功能
  * @renderModel left
  */
-import { TimeLine } from '@tradeshift/react-components'
+import { TimeLine } from '@tradeshift/react-components';
 
 const TimeLineBasic = () => {
   const timelines = [
@@ -22,6 +22,6 @@ const TimeLineBasic = () => {
   return (
      <TimeLine timelines={timelines} activeIndex={0} />
   )
-}
+};
 
 @component TimeLine

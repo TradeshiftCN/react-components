@@ -1,21 +1,18 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import cx from 'classnames'
-import './index.less'
-
-// remove this after created
-const prefixCls = 'ts-rc'
+import React from 'react';
+import PropTypes from 'prop-types';
+import cx from 'classnames';
+import './index.less';
 
 class <%= name %> extends React.Component {
   constructor () {
-    super()
+    super();
     this.state = {
 
     }
   }
 
   render () {
-    const { className, ...other } = this.props
+    const { className, ...other } = this.props;
     return (
       <div className={cx('<%= className %>', className)} {...other}>
         something...
@@ -29,6 +26,6 @@ class <%= name %> extends React.Component {
 
   // intro to test prop
   test: PropTypes.string
-}
+};
 
-export default <%= name %>
+export default <%= name %>;

@@ -8,14 +8,16 @@
   - [Use in create-react-app](#use-in-create-react-app)
   - [Development](#development)
   - [Contribute](#contribute)
-  - [Changelog](#changelog)
   - [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 # react-components
 
-[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release) [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release) 
+
+[![codecov](https://codecov.io/gh/Tradeshift/react-components/branch/master/graph/badge.svg)](https://codecov.io/gh/Tradeshift/react-components)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -91,18 +93,12 @@ Any code pushed to master will be automatically released to `npm` with an approp
 Releases are handled automatically by Jenkins via [semantic-release][semantic-release-url].
 Make sure to follow our commit guidelines when commiting. We support [commitizen][commitizen-url] styles. Install it via `npm install -g commitizen` and use `git cz` instead of `git commit`.
 
-## Changelog
-
-[CHANGELOG][changelog-url]
-
 ## License
 
 Licensed as MIT, see [LICENSE.md](LICENSE.md).
 
 
-
 [dev-instructions-url]: https://github.com/Tradeshift/react-components/wiki/Local-development
-[changelog-url]: https://tradeshift.github.io/react-components/changelog
 [semantic-release-url]: https://github.com/semantic-release/semantic-release
 [commitizen-url]: http://commitizen.github.io/cz-cli/
 [create-react-app-url]: https://github.com/facebookincubator/create-react-app

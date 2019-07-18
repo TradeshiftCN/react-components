@@ -50,8 +50,7 @@ const config = {
   },
   resolve: {
     alias: {
-      'ui-variables': `${sourcePath}/styles/ui-variables.less`,
-      'ui-mixins': `${sourcePath}/styles/ui-mixins.less`
+      'ts-variables': `${sourcePath}/styles/ts-runtime.less`
     }
   },
   externals: {

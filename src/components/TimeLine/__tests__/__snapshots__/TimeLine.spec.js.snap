@@ -4,6 +4,7 @@ exports[`TimeLine should render correctly 1`] = `
 <div>
   <div
     className="timeline active"
+    key="uuid1"
   >
     <i
       className="circle"
@@ -30,6 +31,7 @@ exports[`TimeLine should render correctly 1`] = `
   </div>
   <div
     className="timeline false"
+    key="uuid2"
   >
     <i
       className="circle"

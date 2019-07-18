@@ -102,7 +102,8 @@ const config = {
       widgets: `${sitePath}/widgets`,
       'ui-variables': `${sitePath}/styles/ui-variables.less`,
       'ui-mixins': `${sitePath}/styles/ui-mixins.less`,
-      'dox-mixins': `${sitePath}/styles/dox-mixins.less`
+      'dox-mixins': `${sitePath}/styles/dox-mixins.less`,
+      'ts-variables': `${sourcePath}/styles/ts-runtime.less`
     }
   },
   externals: {
