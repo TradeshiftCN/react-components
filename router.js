@@ -15,12 +15,8 @@ const asyncComponent = path =>
       !['/', 'InProgress'].includes(path) && NProgress.done();
     });
     return path.match('.dox')
-      ? import(
-          `../src/components/${path}` /* webpackChunkName: 'chunk-[request][index]' */
-        )
-      : import(
-          `./apps/${path}` /* webpackChunkName: 'chunk-[request][index]' */
-        );
+      ? import(`../src/components/${path}`)
+      : import(`./apps/${path}`);
   });
 
 const WIP = ['Table'];
@@ -34,19 +30,15 @@ const getComponentDoc = component => {
 
 const Start = routeProps =>
   React.createElement(asyncComponent('Start'), { routeProps: routeProps });
-const Changelog = () => React.createElement(asyncComponent('Changelog'));
 const Dox = routeProps =>
   React.createElement(asyncComponent(getComponentDoc(routeProps.component)));
 const NotFound = () => React.createElement(asyncComponent('NotFound'));
-
-console.log('history', history);
 
 ReactDOM.render(
   <LocationProvider history={HashRouter}>
     <Router>
       <App path="/">
         <Chrome path="/">
-          <Changelog path="/changelog" />
           <Start path="/start/:tab" />
           <Dox path="/components/:component" />
         </Chrome>

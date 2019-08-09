@@ -11,7 +11,7 @@ class Start extends React.Component {
     this.state = {
       md: ''
     };
-    asyncComponent(props.routeProps.tab).then(md => {
+    asyncComponent(props.routeProps.tab).then(({ default: md }) => {
       this.setState({ md });
     });
   }
