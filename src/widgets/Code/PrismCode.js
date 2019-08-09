@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Prism from '../../public/3rdParty/prism/prism.js';
+import Prism from '../../../public/3rdParty/prism/prism.js';
 
 export default class PrismCode extends React.PureComponent {
   static propTypes = {

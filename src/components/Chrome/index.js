@@ -7,7 +7,7 @@ import { Layout, LayoutContent, LayoutSidebar } from 'widgets/Layout';
 import Scrollbar from 'widgets/Scrollbar';
 import { navigate } from '../../HashRouter';
 import { nav } from '../config.js';
-import pkg from '../../../package.json';
+import pkg from '../../../../package.json';
 import './index.less';
 
 const routerWithDynamicSegments = ['components/', 'start/'];

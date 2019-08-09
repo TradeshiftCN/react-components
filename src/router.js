@@ -4,8 +4,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Imported, { whenComponentsReady } from 'react-imported-component';
 import { HashRouter } from './HashRouter';
-import Chrome from './apps/Chrome';
-import App from './apps/index';
+import Chrome from './components/Chrome';
+import App from './components/index';
 import 'earth-ui/dist/earth-ui.min.css';
 
 const asyncComponent = path =>
@@ -15,8 +15,8 @@ const asyncComponent = path =>
       !['/', 'InProgress'].includes(path) && NProgress.done();
     });
     return path.match('.dox')
-      ? import(`../src/components/${path}`)
-      : import(`./apps/${path}`);
+      ? import(`../../src/components/${path}`)
+      : import(`./components/${path}`);
   });
 
 const WIP = ['Table'];
