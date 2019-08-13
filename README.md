@@ -83,9 +83,9 @@ Open your browser and visit http://localhost:3003 , see more at [Development Ins
 #### Create a new component
 
 ```bash
-npm run create MyComponent
+npm run create
 ```
-Open: http://localhost:3003/#/components/MyComponent
+Open: https://tradeshift.github.io/react-components/#/Components/{ComponentName}
 
 ## Contribute
 

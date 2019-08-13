@@ -12,13 +12,7 @@
     "jest": true
   },
   "globals": {
-    "__CLIENT__": true,
-    "__SERVER__": true,
-    "__DEVELOPMENT__": true,
-    "__DEVTOOLS__": true,
-    "runtime": true,
-    "jsdom": true,
-    "prefixCls": true
+    "VERSION": true
   },
   "parser": "babel-eslint"
 }

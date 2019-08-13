@@ -43,8 +43,7 @@ jspm_packages
 
 # Project
 dist/
-lib/
-site/dist/
+styleguide-dist/
 
 # Lint
 .eslintcache

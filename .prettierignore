@@ -1,6 +1,3 @@
-.*/
-.*
-*-*.*.*
 package.json
 package-lock.json
 build/
@@ -14,5 +11,5 @@ locale/
 bundle/
 styles-for-grails
 3rdParty
-bin/template
+scripts/template
 coverage

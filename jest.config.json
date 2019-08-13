@@ -1,23 +1,17 @@
 {
-  "setupFiles": ["./jest.setup.js"],
-  "testEnvironment": "jest-environment-jsdom-global",
-  "testMatch": [
-    "**/__tests__/**/*.(js|jsx|ts|tsx)?(x)",
-    "**/?(*.)(spec|test).(js|jsx|ts|tsx)?(x)"
-  ],
-  "testURL": "http://localhost",
-  "transform": {
-    "^.+\\.js$": "babel-jest",
-    "^.+\\.(css|scss|less)$": "jest-css-modules"
-  },
-  "transformIgnorePatterns": [
-    "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$"
-  ],
-  "globals": {
-    "prefixCls": true
-  },
-  "snapshotSerializers": ["enzyme-to-json/serializer"],
-  "coverageDirectory": "./coverage/",
-  "collectCoverage": true,
-  "collectCoverageFrom": ["src/components/**/*.js"]
+	"collectCoverage": true,
+	"collectCoverageFrom": ["src/components/**/*.{js,jsx,ts,tsx}"],
+	"coverageDirectory": "./coverage/",
+	"globals": {
+		"VERSION": true
+	},
+	"moduleNameMapper": {
+		"\\.(css|less|scss|sss|styl)$": "<rootDir>/node_modules/jest-css-modules"
+	},
+	"setupFilesAfterEnv": ["./setupTests.js"],
+	"snapshotSerializers": ["enzyme-to-json/serializer"],
+	"testPathIgnorePatterns": ["/node_modules/", "<rootDir>/scripts/"],
+	"transform": {
+		"^.+\\.(jsx?|tsx?)$": "babel-jest"
+	}
 }

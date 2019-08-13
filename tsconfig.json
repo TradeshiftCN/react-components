@@ -1,0 +1,13 @@
+{
+	"compilerOptions": {
+		"target": "es5",
+		"module": "ESNext",
+		"jsx": "preserve",
+		"strict": true,
+		"moduleResolution": "node",
+		"esModuleInterop": true,
+		"sourceMap": true
+	},
+	"include": ["src/**/*"],
+	"exclude": ["node_modules", "**/*.spec.{ts,tsx}"]
+}
