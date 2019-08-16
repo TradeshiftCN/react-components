@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Table basic 1`] = `
+<Table
+  bodyStyle={Object {}}
+  columns={
+    Array [
+      Object {
+        "dataIndex": "id",
+        "title": "id",
+      },
+      Object {
+        "dataIndex": "value",
+        "title": "value",
+      },
+    ]
+  }
+  data={
+    Array [
+      Object {
+        "id": 1,
+        "value": 11,
+      },
+      Object {
+        "id": 2,
+        "value": 22,
+      },
+    ]
+  }
+  emptyText=""
+  onHeaderRow={[Function]}
+  onRow={[Function]}
+  prefixCls="ts-rc-table"
+  rowClassName={[Function]}
+  rowKey="id"
+  rowRef={[Function]}
+  scroll={Object {}}
+  showHeader={true}
+  style={Object {}}
+  useFixedHeader={false}
+/>
+`;

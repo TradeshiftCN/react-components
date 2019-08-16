@@ -1,104 +1,104 @@
-@import '~ts-variables';
+@import '../../style/variables/index';
 
 .time-line-container {
-  display: flex;
-  flex-direction: row;
-  margin: @ts-unit;
+	display: flex;
+	flex-direction: row;
+	margin: @ts-unit;
 
-  @node-box-width: @ts-unit * 9;
-  @inner-circle-width: @ts-unit;
+	@node-box-width: @ts-unit * 9;
+	@inner-circle-width: @ts-unit;
 
-  .time-line-node {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-    width: @node-box-width;
-    &.ready {
-      color: @ts-color-green;
-    }
-    &.left-of-current-state {
-      color: @ts-color-green;
-    }
-    &.current-end {
-      color: @ts-color-blue;
-    }
-    &.current {
-      color: @ts-color-blue;
-    }
-    &.un-ready {
-      color: @ts-color-gray;
-    }
-    &.end {
-      color: @ts-color-gray;
-    }
+	.time-line-node {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		position: relative;
+		width: @node-box-width;
+		&.ready {
+			color: @ts-color-green;
+		}
+		&.left-of-current-state {
+			color: @ts-color-green;
+		}
+		&.current-end {
+			color: @ts-color-blue;
+		}
+		&.current {
+			color: @ts-color-blue;
+		}
+		&.un-ready {
+			color: @ts-color-gray;
+		}
+		&.end {
+			color: @ts-color-gray;
+		}
 
-    .circle {
-      width: @inner-circle-width;
-      height: @inner-circle-width;
-      -moz-border-radius: @inner-circle-width;
-      -webkit-border-radius: @inner-circle-width;
-      border-radius: @inner-circle-width;
+		.circle {
+			width: @inner-circle-width;
+			height: @inner-circle-width;
+			-moz-border-radius: @inner-circle-width;
+			-webkit-border-radius: @inner-circle-width;
+			border-radius: @inner-circle-width;
 
-      .circle-after {
-        content: '';
-        position: absolute;
-        top: @inner-circle-width / 2;
-        bottom: 0;
-        left: @node-box-width / 2 + @inner-circle-width / 2;
-        width: @node-box-width - @inner-circle-width;
-        height: 2px;
-      }
+			.circle-after {
+				content: '';
+				position: absolute;
+				top: @inner-circle-width / 2;
+				bottom: 0;
+				left: @node-box-width / 2 + @inner-circle-width / 2;
+				width: @node-box-width - @inner-circle-width;
+				height: 2px;
+			}
 
-      &.ready {
-        background-color: @ts-color-green;
-        &::after {
-          .circle-after;
-          background-color: @ts-color-green;
-        }
-      }
-      &.left-of-current-state {
-        background-color: @ts-color-green;
-        &::after {
-          .circle-after;
-          width: @node-box-width - @inner-circle-width - @diff-outer-inner / 2;
-          background-color: @ts-color-green;
-        }
-      }
-      &.current-end {
-        background-color: @ts-color-blue;
-      }
-      &.current {
-        background-color: @ts-color-blue;
-        &::after {
-          .circle-after;
-          background-color: @ts-color-gray;
-        }
-      }
-      &.un-ready {
-        background-color: @ts-color-gray;
-        &::after {
-          .circle-after;
-          background-color: @ts-color-gray;
-        }
-      }
-      &.end {
-        background-color: @ts-color-gray;
-      }
-    }
+			&.ready {
+				background-color: @ts-color-green;
+				&::after {
+					.circle-after;
+					background-color: @ts-color-green;
+				}
+			}
+			&.left-of-current-state {
+				background-color: @ts-color-green;
+				&::after {
+					.circle-after;
+					width: @node-box-width - @inner-circle-width - @diff-outer-inner / 2;
+					background-color: @ts-color-green;
+				}
+			}
+			&.current-end {
+				background-color: @ts-color-blue;
+			}
+			&.current {
+				background-color: @ts-color-blue;
+				&::after {
+					.circle-after;
+					background-color: @ts-color-gray;
+				}
+			}
+			&.un-ready {
+				background-color: @ts-color-gray;
+				&::after {
+					.circle-after;
+					background-color: @ts-color-gray;
+				}
+			}
+			&.end {
+				background-color: @ts-color-gray;
+			}
+		}
 
-    @diff-outer-inner: 6px;
-    @outer-circle-width: @ts-unit + @diff-outer-inner;
-    .out-circle {
-      width: @outer-circle-width;
-      height: @outer-circle-width;
-      -moz-border-radius: @outer-circle-width;
-      -webkit-border-radius: @outer-circle-width;
-      border-radius: @outer-circle-width;
-      background-color: transparent;
-      border: @ts-color-blue 1px solid;
-      margin-top: -(@outer-circle-width + @inner-circle-width)/2;
-      margin-left: -@diff-outer-inner / 2;
-    }
-  }
+		@diff-outer-inner: 6px;
+		@outer-circle-width: @ts-unit + @diff-outer-inner;
+		.out-circle {
+			width: @outer-circle-width;
+			height: @outer-circle-width;
+			-moz-border-radius: @outer-circle-width;
+			-webkit-border-radius: @outer-circle-width;
+			border-radius: @outer-circle-width;
+			background-color: transparent;
+			border: @ts-color-blue 1px solid;
+			margin-top: -(@outer-circle-width + @inner-circle-width)/2;
+			margin-left: -@diff-outer-inner / 2;
+		}
+	}
 }

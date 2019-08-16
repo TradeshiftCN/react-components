@@ -24,6 +24,7 @@ module.exports = {
 			sectionDepth: 2
 		}
 	],
+	require: [path.resolve(__dirname, './src/style/index.less')],
 	template: {
 		favicon: 'favicon.ico',
 		head: {

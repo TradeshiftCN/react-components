@@ -16,6 +16,7 @@ function createComponent({ name, language }) {
 	const templateProps = {
 		name,
 		className:
+			'ts-rc-' +
 			name[0].toLowerCase() +
 			name.slice(1).replace(/([a-z])([A-Z])/g, (name, $1, $2) => `${$1}-${$2.toLowerCase()}`)
 	};
@@ -56,6 +57,15 @@ function createComponent({ name, language }) {
 
 		fs.rmdirSync(componentPath);
 	}
+
+	const styleFilePath = path.resolve(__dirname, '../src/style/index.less');
+
+	fs.appendFileSync(styleFilePath, `@import '../components/${name}/index';\n`, 'utf8');
+	fs.appendFileSync(
+		path.join(componentsPath, 'index.ts'),
+		`export { default as ${name} } from './${name}';\n`,
+		'utf8'
+	);
 }
 
 (async () => {
@@ -83,7 +93,7 @@ function createComponent({ name, language }) {
 			name: 'language',
 			initial: 0,
 			message: 'Please choose your program language',
-			choices: [{ title: 'JavaScript', value: 'js' }, { title: 'TypeScript', value: 'ts' }]
+			choices: [{ title: 'TypeScript', value: 'ts' }, { title: 'JavaScript', value: 'js' }]
 		}
 	];
 

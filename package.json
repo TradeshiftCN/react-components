@@ -5,6 +5,7 @@
   "author": "Tradeshift",
   "license": "MIT",
   "main": "dist/react-components.js",
+  "module": "dist/react-components.js",
   "repository": "https://github.com/Tradeshift/react-components",
   "homepage": "https://tradeshift.github.io/react-components",
   "publishConfig": {
@@ -15,14 +16,16 @@
     "npm": ">=6.4.0"
   },
   "files": [
-    "dist"
+    "dist",
+    "types"
   ],
   "scripts": {
-    "create": "node scripts/create-component",
+    "create-component": "node scripts/create-component",
     "start": "npm run styleguide",
-    "styleguide": "styleguidist server --open",
-    "gh-pages": "styleguidist build && gh-pages -d styleguide-dist --message 'auto-deployed by gh-pages'",
-    "build": "webpack --progress",
+    "styleguide": "styleguidist server",
+    "styleguide:build": "rimraf ./styleguide-dist && cross-env NODE_ENV=production styleguidist build",
+    "gh-pages": "npm run styleguide:build && gh-pages -d styleguide-dist --message 'auto-deployed by gh-pages'",
+    "build": "rimraf ./dist && cross-env NODE_ENV=production node scripts/build",
     "lint": "tradeshift-scripts lint",
     "format": "tradeshift-scripts format",
     "precommit": "tradeshift-scripts precommit",
@@ -41,26 +44,40 @@
     "prop-types": ">=15.0.0"
   },
   "dependencies": {
-    "classnames": "^2.2.5"
+    "classnames": "^2.0.0",
+    "lodash": "^4.0.0",
+    "rc-table": "^6.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-object-rest-spread": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.3.3",
     "@tradeshift/tradeshift-ui": "^12.3.0",
+    "@types/classnames": "^2.2.9",
+    "@types/enzyme": "^3.10.3",
     "@types/jest": "^24.0.17",
+    "@types/lodash": "^4.14.136",
     "@types/react": "^16.9.1",
     "@types/react-dom": "^16.8.5",
     "babel-jest": "^24.8.0",
     "babel-loader": "^8.0.6",
+    "babel-plugin-lodash": "^3.3.4",
     "codecov": "^3.5.0",
+    "core-js": "^3.2.1",
+    "cross-env": "^5.2.0",
     "css-loader": "^3.2.0",
+    "cssnano": "^4.1.10",
+    "cz-conventional-changelog": "^3.0.2",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "enzyme-to-json": "^3.4.0",
     "eslint": "^6.1.0",
     "file-loader": "^4.2.0",
+    "flush-promises": "^1.0.2",
+    "fork-ts-checker-webpack-plugin": "^1.5.0",
     "gh-pages": "^2.1.1",
     "glob": "^7.1.4",
     "jest": "^24.8.0",
@@ -69,6 +86,8 @@
     "less-loader": "^5.0.0",
     "mini-css-extract-plugin": "^0.8.0",
     "mustache": "^3.0.1",
+    "postcss": "^7.0.17",
+    "postcss-load-config": "^2.1.0",
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.7.0",
     "prettier": "^1.18.2",
@@ -77,13 +96,14 @@
     "react-docgen-typescript": "^1.12.5",
     "react-dom": "^16.8.0",
     "react-styleguidist": "^9.1.14",
+    "rimraf": "^3.0.0",
     "style-loader": "^1.0.0",
     "tradeshift-scripts": "^2.2.3",
     "ts-loader": "^6.0.4",
     "typescript": "^3.5.3",
     "url-loader": "^2.1.0",
     "webpack": "^4.39.1",
-    "webpack-cli": "^3.3.6",
-    "webpack-dev-server": "^3.8.0"
+    "webpack-merge": "^4.2.1",
+    "webpack-node-externals": "^1.7.2"
   }
 }

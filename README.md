@@ -29,6 +29,11 @@ npm install @tradeshift/react-components
 
 ## Basic usage
 
+### import styles in your entry
+```js
+import '@tradeshift/react-components/dist/react-components.css'
+```
+### import components
 ```jsx
 import { Button } from '@tradeshift/react-components';
 
@@ -83,9 +88,13 @@ Open your browser and visit http://localhost:3003 , see more at [Development Ins
 #### Create a new component
 
 ```bash
-npm run create
+npm run create-component
+? Please input component name (PascalCase), e.g. Panel, PanelHeader... » ComponentName 
+? Please choose your program language » - Use arrow-keys. Return to submit.
+>  TypeScript
+   JavaScript
 ```
-Open: https://tradeshift.github.io/react-components/#/Components/{ComponentName}
+Open: https://tradeshift.github.io/react-components/#/Components/ComponentName
 
 ## Contribute
 

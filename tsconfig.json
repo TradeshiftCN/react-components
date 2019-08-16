@@ -6,8 +6,12 @@
 		"strict": true,
 		"moduleResolution": "node",
 		"esModuleInterop": true,
-		"sourceMap": true
+		"sourceMap": true,
+		// "declaration": true,
+		// "declarationDir": "types",
+		"allowJs": true,
+		"outDir": "dist"
 	},
-	"include": ["src/**/*"],
+	"include": ["src/**/*", "typings/**/*"],
 	"exclude": ["node_modules", "**/*.spec.{ts,tsx}"]
 }
