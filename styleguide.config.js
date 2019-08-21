@@ -16,7 +16,7 @@ module.exports = {
 	sections: [
 		{
 			name: 'Get started',
-			content: 'docs/start.md'
+			content: 'README.md'
 		},
 		{
 			name: 'Components',

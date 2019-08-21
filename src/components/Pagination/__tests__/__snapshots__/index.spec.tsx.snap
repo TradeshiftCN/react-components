@@ -1,0 +1,596 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pagination basic 1`] = `
+<div
+  className="ts-rc-pagination"
+>
+  <button
+    disabled={true}
+    onClick={[Function]}
+    type="button"
+  >
+    <svg
+      height="20"
+      viewBox="0 0 24 24"
+      width="20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M6 6h2v12H6zm3.5 6l8.5 6V6z"
+      />
+    </svg>
+  </button>
+  <button
+    disabled={true}
+    onClick={[Function]}
+    type="button"
+  >
+    <svg
+      height="20"
+      viewBox="0 0 24 24"
+      width="20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M11 18V6l-8.5 6 8.5 6zm.5-6l8.5 6V6l-8.5 6z"
+      />
+    </svg>
+  </button>
+  <span
+    className="ts-rc-pagination-pages"
+  >
+    <button
+      className="ts-rc-pagination-btn--active"
+      key="1"
+      onClick={[Function]}
+      type="button"
+    >
+      <span>
+        1
+      </span>
+    </button>
+    <button
+      className=""
+      key="2"
+      onClick={[Function]}
+      type="button"
+    >
+      <span>
+        2
+      </span>
+    </button>
+    <button
+      className=""
+      key="3"
+      onClick={[Function]}
+      type="button"
+    >
+      <span>
+        3
+      </span>
+    </button>
+  </span>
+  <button
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    <svg
+      height="20"
+      viewBox="0 0 24 24"
+      width="20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z"
+      />
+    </svg>
+  </button>
+  <button
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    <svg
+      height="20"
+      viewBox="0 0 24 24"
+      width="20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"
+      />
+    </svg>
+  </button>
+</div>
+`;
+
+exports[`Pagination basic 2`] = `
+<div
+  className="ts-rc-pagination"
+>
+  <button
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    <svg
+      height="20"
+      viewBox="0 0 24 24"
+      width="20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M6 6h2v12H6zm3.5 6l8.5 6V6z"
+      />
+    </svg>
+  </button>
+  <button
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    <svg
+      height="20"
+      viewBox="0 0 24 24"
+      width="20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M11 18V6l-8.5 6 8.5 6zm.5-6l8.5 6V6l-8.5 6z"
+      />
+    </svg>
+  </button>
+  <span
+    className="ts-rc-pagination-pages"
+  >
+    <button
+      className=""
+      key="1"
+      onClick={[Function]}
+      type="button"
+    >
+      <span>
+        1
+      </span>
+    </button>
+    <button
+      className=""
+      key="2"
+      onClick={[Function]}
+      type="button"
+    >
+      <span>
+        2
+      </span>
+    </button>
+    <button
+      className="ts-rc-pagination-btn--active"
+      key="3"
+      onClick={[Function]}
+      type="button"
+    >
+      <span>
+        3
+      </span>
+    </button>
+    <button
+      className=""
+      key="4"
+      onClick={[Function]}
+      type="button"
+    >
+      <span>
+        4
+      </span>
+    </button>
+  </span>
+  <button
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    <svg
+      height="20"
+      viewBox="0 0 24 24"
+      width="20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z"
+      />
+    </svg>
+  </button>
+  <button
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    <svg
+      height="20"
+      viewBox="0 0 24 24"
+      width="20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"
+      />
+    </svg>
+  </button>
+</div>
+`;
+
+exports[`Pagination basic 3`] = `
+<div
+  className="ts-rc-pagination"
+>
+  <button
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    <svg
+      height="20"
+      viewBox="0 0 24 24"
+      width="20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M6 6h2v12H6zm3.5 6l8.5 6V6z"
+      />
+    </svg>
+  </button>
+  <button
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    <svg
+      height="20"
+      viewBox="0 0 24 24"
+      width="20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M11 18V6l-8.5 6 8.5 6zm.5-6l8.5 6V6l-8.5 6z"
+      />
+    </svg>
+  </button>
+  <span
+    className="ts-rc-pagination-pages ts-rc-pagination-pages--more"
+  >
+    <button
+      className=""
+      key="1"
+      onClick={[Function]}
+      type="button"
+    >
+      <span>
+        1
+      </span>
+    </button>
+    <button
+      className=""
+      key="2"
+      onClick={[Function]}
+      type="button"
+    >
+      <span>
+        2
+      </span>
+    </button>
+    <button
+      className="ts-rc-pagination-btn--active"
+      key="3"
+      onClick={[Function]}
+      type="button"
+    >
+      <span>
+        3
+      </span>
+    </button>
+    <button
+      className=""
+      key="4"
+      onClick={[Function]}
+      type="button"
+    >
+      <span>
+        4
+      </span>
+    </button>
+    <button
+      className=""
+      key="5"
+      onClick={[Function]}
+      type="button"
+    >
+      <span>
+        5
+      </span>
+    </button>
+  </span>
+  <button
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    <svg
+      height="20"
+      viewBox="0 0 24 24"
+      width="20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z"
+      />
+    </svg>
+  </button>
+  <button
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    <svg
+      height="20"
+      viewBox="0 0 24 24"
+      width="20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"
+      />
+    </svg>
+  </button>
+</div>
+`;
+
+exports[`Pagination basic 4`] = `
+<div
+  className="ts-rc-pagination"
+>
+  <button
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    <svg
+      height="20"
+      viewBox="0 0 24 24"
+      width="20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M6 6h2v12H6zm3.5 6l8.5 6V6z"
+      />
+    </svg>
+  </button>
+  <button
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    <svg
+      height="20"
+      viewBox="0 0 24 24"
+      width="20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M11 18V6l-8.5 6 8.5 6zm.5-6l8.5 6V6l-8.5 6z"
+      />
+    </svg>
+  </button>
+  <span
+    className="ts-rc-pagination-pages ts-rc-pagination-pages--more"
+  >
+    <button
+      className=""
+      key="1"
+      onClick={[Function]}
+      type="button"
+    >
+      <span>
+        1
+      </span>
+    </button>
+    <button
+      className=""
+      key="2"
+      onClick={[Function]}
+      type="button"
+    >
+      <span>
+        2
+      </span>
+    </button>
+    <button
+      className=""
+      key="3"
+      onClick={[Function]}
+      type="button"
+    >
+      <span>
+        3
+      </span>
+    </button>
+    <button
+      className=""
+      key="4"
+      onClick={[Function]}
+      type="button"
+    >
+      <span>
+        4
+      </span>
+    </button>
+    <button
+      className=""
+      key="5"
+      onClick={[Function]}
+      type="button"
+    >
+      <span>
+        5
+      </span>
+    </button>
+  </span>
+  <button
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    <svg
+      height="20"
+      viewBox="0 0 24 24"
+      width="20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z"
+      />
+    </svg>
+  </button>
+  <button
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    <svg
+      height="20"
+      viewBox="0 0 24 24"
+      width="20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"
+      />
+    </svg>
+  </button>
+</div>
+`;
+
+exports[`Pagination basic 5`] = `
+<div
+  className="ts-rc-pagination"
+>
+  <button
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    <svg
+      height="20"
+      viewBox="0 0 24 24"
+      width="20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M6 6h2v12H6zm3.5 6l8.5 6V6z"
+      />
+    </svg>
+  </button>
+  <button
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    <svg
+      height="20"
+      viewBox="0 0 24 24"
+      width="20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M11 18V6l-8.5 6 8.5 6zm.5-6l8.5 6V6l-8.5 6z"
+      />
+    </svg>
+  </button>
+  <span
+    className="ts-rc-pagination-pages ts-rc-pagination-pages--more"
+  >
+    <button
+      className=""
+      key="1"
+      onClick={[Function]}
+      type="button"
+    >
+      <span>
+        1
+      </span>
+    </button>
+    <button
+      className=""
+      key="2"
+      onClick={[Function]}
+      type="button"
+    >
+      <span>
+        2
+      </span>
+    </button>
+    <button
+      className=""
+      key="3"
+      onClick={[Function]}
+      type="button"
+    >
+      <span>
+        3
+      </span>
+    </button>
+    <button
+      className=""
+      key="4"
+      onClick={[Function]}
+      type="button"
+    >
+      <span>
+        4
+      </span>
+    </button>
+    <button
+      className="ts-rc-pagination-btn--active"
+      key="5"
+      onClick={[Function]}
+      type="button"
+    >
+      <span>
+        5
+      </span>
+    </button>
+  </span>
+  <button
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    <svg
+      height="20"
+      viewBox="0 0 24 24"
+      width="20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z"
+      />
+    </svg>
+  </button>
+  <button
+    disabled={false}
+    onClick={[Function]}
+    type="button"
+  >
+    <svg
+      height="20"
+      viewBox="0 0 24 24"
+      width="20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"
+      />
+    </svg>
+  </button>
+</div>
+`;

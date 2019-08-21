@@ -1,3 +1,5 @@
+### Basic Usage
+
 ```jsx
 <{{name}} />
 ```

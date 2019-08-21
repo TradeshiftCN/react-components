@@ -23,18 +23,18 @@
 
 ## Installation
 
-```
+```bash
 npm install @tradeshift/react-components
 ```
 
 ## Basic usage
 
-### import styles in your entry
-```js
+#### 1. import styles in your entry
+```js static
 import '@tradeshift/react-components/dist/react-components.css'
 ```
-### import components
-```jsx
+#### 2. import components
+```jsx static
 import { Button } from '@tradeshift/react-components';
 
 ReactDOM.render(<Button>Name</Button>, mountNode);
@@ -54,7 +54,7 @@ yarn add @tradeshift/react-components
 
 Modify `src/App.js`, import Button component from `@tradeshift/react-components`.
 
-```jsx
+```jsx static
 import React, { Component } from 'react';
 import './App.css';
 import { Button } from '@tradeshift/react-components';

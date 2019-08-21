@@ -1,0 +1,52 @@
+@import '../../style/variables/index';
+
+.ts-rc-pagination {
+	.button-color(@color) {
+		color: @color;
+		> svg {
+			fill: @color;
+		}
+	}
+	font-size: @ts-fontsize;
+	button {
+		width: @ts-unit-double;
+		height: @ts-unit-double;
+
+		> * {
+			vertical-align: middle;
+		}
+
+		&:disabled {
+			.button-color(@ts-color-gray);
+		}
+
+		&:not(:disabled) {
+			.button-color(@ts-color-blue);
+			&:hover {
+				.button-color(@ts-color-blue-dark);
+				text-decoration: none;
+			}
+			&.ts-rc-pagination-btn--active {
+				color: @ts-color-black;
+			}
+		}
+	}
+
+	&-pages {
+		display: inline-block;
+		font-weight: @ts-fontweight-semibold;
+		&--less button:first-child span {
+			direction: rtl;
+		}
+		&--less button:first-child span::before,
+		&--more button:last-child span::after {
+			content: '\2026';
+			// taking '...' out of flow without setting left/top
+			// it'll follow previous element but text-align: center won't calc it's width
+			position: absolute;
+			margin-top: 2px;
+			font-size: @ts-fontsize-mini;
+			font-weight: @ts-fontweight;
+		}
+	}
+}
