@@ -20,6 +20,9 @@ type TableProps<T> = {
 	rowClassName?: ((record: T, index: number, indent: string) => string) | string;
 	/** 无数据时显示 */
 	emptyText?: string | React.ReactNode;
+	className?: string;
+	/** identifier of the container div */
+	id?: string;
 	onChange?(query: { search: SearchData; sort: SortData<T> }): void;
 };
 

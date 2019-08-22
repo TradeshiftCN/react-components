@@ -7,6 +7,7 @@ type PaginationProps = {
 	defaultPage?: number;
 	page?: number;
 	pages?: number;
+	className?: string;
 	onChange?(page: number): void;
 };
 
@@ -28,7 +29,7 @@ class Pagination extends Component<PaginationProps, PaginationState> {
 	};
 
 	render() {
-		const { prefixCls, pages } = this.props;
+		const { prefixCls, pages, className } = this.props;
 		const { numbers } = this.state;
 		const current = this.page;
 
@@ -42,7 +43,7 @@ class Pagination extends Component<PaginationProps, PaginationState> {
 		const hasHiddenNext = numbers[numbers.length - 1] !== pages;
 
 		return (
-			<div className={prefixCls}>
+			<div className={cx(prefixCls, className)}>
 				<button type="button" disabled={!hasPrev} onClick={this.goFirst}>
 					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
 						<path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"></path>
