@@ -64,7 +64,7 @@ class Pagination extends Component<PaginationProps, PaginationState> {
 						<button
 							key={page}
 							type="button"
-							onClick={() => this.setCurrent(page)}
+							onClick={() => current !== page && this.setCurrent(page)}
 							className={cx({
 								[`${prefixCls}-btn--active`]: current === page
 							})}
@@ -91,9 +91,16 @@ class Pagination extends Component<PaginationProps, PaginationState> {
 		this.updateNumbers();
 	}
 
+	// TODO: use `getDerivedStateFromProps` when we don't support react v15 no longer
 	componentDidUpdate(prevProps: PaginationProps) {
 		if (prevProps.pages !== this.props.pages) {
+			// always update number
 			this.updateNumbers();
+		} else if (prevProps.page !== this.props.page) {
+			// updated page by user instead of onChange, page possible out of numbers
+			if (this.state.numbers.indexOf(this.page) === -1) {
+				this.updateNumbers();
+			}
 		}
 	}
 
@@ -108,10 +115,18 @@ class Pagination extends Component<PaginationProps, PaginationState> {
 			this.setState({ numbers: [] });
 			return;
 		}
+		const page = this.page;
+		let start: number | undefined, end: number | undefined;
 
+		// e.g. page = 7 pages = 8, should generate 3 4 5 6 7
+		if (page > 5) {
+			end = page;
+		} else {
+			start = 1;
+		}
 		// init numbers
-		const numbers = this.generateNumbers({ start: 1 });
-		if (numbers.indexOf(this.page) === -1) {
+		const numbers = this.generateNumbers({ start, end });
+		if (numbers.indexOf(page) === -1) {
 			this.setCurrent(numbers[0]);
 		}
 	}
@@ -128,9 +143,7 @@ class Pagination extends Component<PaginationProps, PaginationState> {
 			for (let i = start; i < start + 5 && i <= pages!; i++) {
 				numbers.push(i);
 			}
-		}
-
-		if (end) {
+		} else if (end) {
 			for (let i = end; i > end - 5 && i >= 1; i--) {
 				numbers.push(i);
 			}

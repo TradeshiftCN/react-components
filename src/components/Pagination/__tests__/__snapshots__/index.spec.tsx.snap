@@ -155,7 +155,7 @@ exports[`Pagination basic 2`] = `
       </span>
     </button>
     <button
-      className=""
+      className="ts-rc-pagination-btn--active"
       key="2"
       onClick={[Function]}
       type="button"
@@ -165,7 +165,7 @@ exports[`Pagination basic 2`] = `
       </span>
     </button>
     <button
-      className="ts-rc-pagination-btn--active"
+      className=""
       key="3"
       onClick={[Function]}
       type="button"
@@ -382,28 +382,8 @@ exports[`Pagination basic 4`] = `
     </svg>
   </button>
   <span
-    className="ts-rc-pagination-pages ts-rc-pagination-pages--more"
+    className="ts-rc-pagination-pages ts-rc-pagination-pages--more ts-rc-pagination-pages--less"
   >
-    <button
-      className=""
-      key="1"
-      onClick={[Function]}
-      type="button"
-    >
-      <span>
-        1
-      </span>
-    </button>
-    <button
-      className=""
-      key="2"
-      onClick={[Function]}
-      type="button"
-    >
-      <span>
-        2
-      </span>
-    </button>
     <button
       className=""
       key="3"
@@ -432,6 +412,26 @@ exports[`Pagination basic 4`] = `
     >
       <span>
         5
+      </span>
+    </button>
+    <button
+      className=""
+      key="6"
+      onClick={[Function]}
+      type="button"
+    >
+      <span>
+        6
+      </span>
+    </button>
+    <button
+      className="ts-rc-pagination-btn--active"
+      key="7"
+      onClick={[Function]}
+      type="button"
+    >
+      <span>
+        7
       </span>
     </button>
   </span>
@@ -507,50 +507,10 @@ exports[`Pagination basic 5`] = `
     </svg>
   </button>
   <span
-    className="ts-rc-pagination-pages ts-rc-pagination-pages--more"
+    className="ts-rc-pagination-pages ts-rc-pagination-pages--less"
   >
     <button
       className=""
-      key="1"
-      onClick={[Function]}
-      type="button"
-    >
-      <span>
-        1
-      </span>
-    </button>
-    <button
-      className=""
-      key="2"
-      onClick={[Function]}
-      type="button"
-    >
-      <span>
-        2
-      </span>
-    </button>
-    <button
-      className=""
-      key="3"
-      onClick={[Function]}
-      type="button"
-    >
-      <span>
-        3
-      </span>
-    </button>
-    <button
-      className=""
-      key="4"
-      onClick={[Function]}
-      type="button"
-    >
-      <span>
-        4
-      </span>
-    </button>
-    <button
-      className="ts-rc-pagination-btn--active"
       key="5"
       onClick={[Function]}
       type="button"
@@ -559,9 +519,49 @@ exports[`Pagination basic 5`] = `
         5
       </span>
     </button>
+    <button
+      className=""
+      key="6"
+      onClick={[Function]}
+      type="button"
+    >
+      <span>
+        6
+      </span>
+    </button>
+    <button
+      className=""
+      key="7"
+      onClick={[Function]}
+      type="button"
+    >
+      <span>
+        7
+      </span>
+    </button>
+    <button
+      className=""
+      key="8"
+      onClick={[Function]}
+      type="button"
+    >
+      <span>
+        8
+      </span>
+    </button>
+    <button
+      className="ts-rc-pagination-btn--active"
+      key="9"
+      onClick={[Function]}
+      type="button"
+    >
+      <span>
+        9
+      </span>
+    </button>
   </span>
   <button
-    disabled={false}
+    disabled={true}
     onClick={[Function]}
     type="button"
   >
@@ -577,7 +577,7 @@ exports[`Pagination basic 5`] = `
     </svg>
   </button>
   <button
-    disabled={false}
+    disabled={true}
     onClick={[Function]}
     type="button"
   >

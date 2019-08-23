@@ -15,7 +15,7 @@ describe('Pagination', () => {
 
 		wrapper.setProps({
 			pages: 4,
-			page: 3
+			page: 2
 		});
 		expect(wrapper).toMatchSnapshot();
 
@@ -33,7 +33,7 @@ describe('Pagination', () => {
 
 		wrapper.setProps({
 			pages: 9,
-			page: 5
+			page: 9
 		});
 		expect(wrapper).toMatchSnapshot();
 
