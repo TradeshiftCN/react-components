@@ -23,13 +23,7 @@ const styles = ({ base, baseBackground, fontFamily }) => ({
 		flex: 'none'
 	},
 	sidebarContent: {
-		flex: '1'
-	},
-	sidebarFooter: {
-		flex: 'none',
-		padding: '8px 16px',
-		fontFamily: fontFamily.base,
-		fontSize: '13px'
+		flex: 1
 	},
 	content: {
 		flex: 1,
@@ -46,7 +40,6 @@ export function StyleGuideRenderer({ classes, children, toc, hasSidebar }) {
 						<Logo />
 					</header>
 					<div className={classes.sidebarContent}>{toc}</div>
-					<footer className={classes.sidebarFooter}>tradeshift-react-components v{VERSION}</footer>
 				</div>
 			)}
 			<main className={classes.content}>{children}</main>

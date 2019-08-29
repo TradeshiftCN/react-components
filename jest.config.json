@@ -2,9 +2,6 @@
 	"collectCoverage": true,
 	"collectCoverageFrom": ["src/components/**/*.{js,jsx,ts,tsx}"],
 	"coverageDirectory": "./coverage/",
-	"globals": {
-		"VERSION": true
-	},
 	"moduleNameMapper": {
 		"\\.(css|less|scss|sss|styl)$": "<rootDir>/node_modules/jest-css-modules"
 	},

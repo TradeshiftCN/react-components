@@ -6,7 +6,7 @@ const componentsPath = path.resolve(__dirname, 'styleguide/components');
 const isTsRegex = /\.tsx?$/i;
 
 module.exports = {
-	// title: 'Tradeshift React Components',
+	title: 'Tradeshift React Components',
 	serverPort: process.env.PORT || 3003,
 	webpackConfig: require('./styleguide/webpack.config'),
 	usageMode: 'expand',
@@ -16,7 +16,7 @@ module.exports = {
 	sections: [
 		{
 			name: 'Get started',
-			content: 'README.md'
+			content: 'docs/start.md'
 		},
 		{
 			name: 'Components',
@@ -49,24 +49,24 @@ module.exports = {
 				paddingLeft: '16px'
 			},
 			item: {
-				lineHeight: '28px'
-			},
-			link: {
-				display: 'block',
-				transition: 'color 0.2s !important',
-				'&, &:link, &:visited': {
-					color: 'rgba(255,255,255,0.8) !important'
-				},
-				'&:hover, &:active': {
-					color: '#fff !important'
+				lineHeight: '28px',
+				'& > a': {
+					display: 'block',
+					cursor: 'pointer !important',
+					transition: 'color 0.2s !important',
+					'&, &:link, &:visited': {
+						color: 'rgba(255,255,255,0.8)'
+					},
+					'&:hover, &:active': {
+						color: '#fff'
+					}
 				}
 			}
 		}
 	},
 	styleguideComponents: {
 		Logo: path.join(componentsPath, 'Logo'),
-		StyleGuideRenderer: path.join(componentsPath, 'StyleGuide'),
-		ComponentsListRenderer: path.join(componentsPath, 'ComponentsList')
+		StyleGuideRenderer: path.join(componentsPath, 'StyleGuide')
 	},
 	propsParser(filePath, source, resolver, handlers) {
 		if (isTsRegex.test(filePath)) {

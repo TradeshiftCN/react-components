@@ -181,9 +181,9 @@ body {
 	font-weight: 400;
 	color: hsl(204, 25%, 8%);
 	font-size: 14px;
-	line-height: 20px;
+	/* line-height: 20px; */
 	position: relative;
-	cursor: default;
+	/* cursor: default; */
 }
 .ts-ready body {
 	visibility: visible !important;

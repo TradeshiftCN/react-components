@@ -15,7 +15,7 @@
 # react-components
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
-[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release) 
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
 [![codecov](https://codecov.io/gh/Tradeshift/react-components/branch/master/graph/badge.svg)](https://codecov.io/gh/Tradeshift/react-components)
 
@@ -30,10 +30,13 @@ npm install @tradeshift/react-components
 ## Basic usage
 
 #### 1. import styles in your entry
+
 ```js static
-import '@tradeshift/react-components/dist/react-components.css'
+import '@tradeshift/react-components/dist/react-components.css';
 ```
+
 #### 2. import components
+
 ```jsx static
 import { Button } from '@tradeshift/react-components';
 
@@ -56,17 +59,18 @@ Modify `src/App.js`, import Button component from `@tradeshift/react-components`
 
 ```jsx static
 import React, { Component } from 'react';
+import '@tradeshift/react-components/dist/react-components.css';
 import './App.css';
 import { Button } from '@tradeshift/react-components';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-          <Button icon="add">Add</Button>
-      </div>
-    );
-  }
+	render() {
+		return (
+			<div className="App">
+				<Button icon="add">Add</Button>
+			</div>
+		);
+	}
 }
 
 export default App;
@@ -89,11 +93,12 @@ Open your browser and visit http://localhost:3003 , see more at [Development Ins
 
 ```bash
 npm run create-component
-? Please input component name (PascalCase), e.g. Panel, PanelHeader... » ComponentName 
+? Please input component name (PascalCase), e.g. Panel, PanelHeader... » ComponentName
 ? Please choose your program language » - Use arrow-keys. Return to submit.
 >  TypeScript
    JavaScript
 ```
+
 Open: https://tradeshift.github.io/react-components/#/Components/ComponentName
 
 ## Contribute
@@ -105,7 +110,6 @@ Make sure to follow our commit guidelines when commiting. We support [commitizen
 ## License
 
 Licensed as MIT, see [LICENSE.md](LICENSE.md).
-
 
 [dev-instructions-url]: https://github.com/Tradeshift/react-components/wiki/Local-development
 [semantic-release-url]: https://github.com/semantic-release/semantic-release

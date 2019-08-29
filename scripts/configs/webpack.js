@@ -1,9 +1,7 @@
 const path = require('path');
-const webpack = require('webpack');
 
 const rootPath = path.resolve(__dirname, '../../');
 const sourcePath = path.resolve(rootPath, 'src');
-const version = require('../../package.json').version;
 
 module.exports = {
 	mode: 'production',
@@ -42,10 +40,5 @@ module.exports = {
 		alias: {
 			'@tradeshift/react-components': `${sourcePath}/components/index.ts`
 		}
-	},
-	plugins: [
-		new webpack.DefinePlugin({
-			VERSION: JSON.stringify(version)
-		})
-	]
+	}
 };

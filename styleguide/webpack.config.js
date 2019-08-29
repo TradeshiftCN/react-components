@@ -1,18 +1,11 @@
 const path = require('path');
-const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const sourcePath = path.resolve(__dirname, '../src');
 const isDev = process.env.NODE_ENV === 'development';
-const version = require('../package.json').version;
 let lessLoaders = ['css-loader', 'postcss-loader', 'less-loader'];
-const plugins = [
-	new webpack.DefinePlugin({
-		VERSION: JSON.stringify(version)
-	}),
-	new ForkTsCheckerWebpackPlugin()
-];
+const plugins = [new ForkTsCheckerWebpackPlugin()];
 
 if (isDev) {
 	lessLoaders = lessLoaders.map(loader => `${loader}?sourceMap`);

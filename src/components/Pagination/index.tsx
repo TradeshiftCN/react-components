@@ -5,7 +5,9 @@ import _ from 'lodash';
 type PaginationProps = {
 	prefixCls?: string;
 	defaultPage?: number;
+	/** current page */
 	page?: number;
+	/** total pages number */
 	pages?: number;
 	className?: string;
 	onChange?(page: number): void;
