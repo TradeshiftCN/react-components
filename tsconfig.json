@@ -1,5 +1,6 @@
 {
 	"compilerOptions": {
+		"rootDir": "src",
 		"target": "es5",
 		"module": "ESNext",
 		"jsx": "preserve",
@@ -7,11 +8,10 @@
 		"moduleResolution": "node",
 		"esModuleInterop": true,
 		"sourceMap": true,
-		// "declaration": true,
-		// "declarationDir": "types",
-		"allowJs": true,
+		"declaration": true,
+		"declarationDir": "types",
 		"outDir": "dist"
 	},
 	"include": ["src/**/*", "typings/**/*"],
-	"exclude": ["node_modules", "**/*.spec.{ts,tsx}"]
+	"exclude": ["node_modules", "**/*.spec.tsx", "**/*.spec.ts"]
 }

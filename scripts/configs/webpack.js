@@ -5,7 +5,7 @@ const sourcePath = path.resolve(rootPath, 'src');
 
 module.exports = {
 	mode: 'production',
-	entry: { 'react-components': ['./src/components/index.ts'] },
+	entry: { 'react-components': ['./src/index.js'] },
 	output: {
 		path: path.join(rootPath, 'dist'),
 		publicPath: ''
@@ -38,7 +38,7 @@ module.exports = {
 	resolve: {
 		extensions: ['.js', '.jsx', '.ts', '.tsx'],
 		alias: {
-			'@tradeshift/react-components': `${sourcePath}/components/index.ts`
+			'@tradeshift/react-components': `${sourcePath}/index.js`
 		}
 	}
 };

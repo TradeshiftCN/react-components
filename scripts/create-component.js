@@ -5,8 +5,9 @@ const prompts = require('prompts');
 const mustache = require('mustache');
 const glob = require('glob');
 const componentNameRegex = /^[A-Z][A-Za-z]*$/;
+const sourcePath = path.resolve(__dirname, '../src');
 const templatePath = path.resolve(__dirname, 'template');
-const componentsPath = path.resolve(__dirname, '../src/components');
+const componentsPath = path.resolve(sourcePath, 'components');
 
 function createComponent({ name, language }) {
 	if (!name || !language) {
@@ -62,8 +63,8 @@ function createComponent({ name, language }) {
 
 	fs.appendFileSync(styleFilePath, `@import '../components/${name}/index';\n`, 'utf8');
 	fs.appendFileSync(
-		path.join(componentsPath, 'index.ts'),
-		`export { default as ${name} } from './${name}';\n`,
+		path.join(sourcePath, 'index.js'),
+		`export { default as ${name} } from './components/${name}';\n`,
 		'utf8'
 	);
 }

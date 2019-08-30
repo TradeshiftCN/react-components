@@ -24,7 +24,7 @@
     "styleguide": "styleguidist server",
     "styleguide:build": "rimraf ./styleguide-dist && cross-env NODE_ENV=production styleguidist build",
     "gh-pages": "npm run styleguide:build && gh-pages -d styleguide-dist --message 'auto-deployed by gh-pages'",
-    "build": "rimraf ./dist && cross-env NODE_ENV=production node scripts/build",
+    "build": "rimraf ./dist ./types && cross-env NODE_ENV=production node scripts/build",
     "lint": "tradeshift-scripts lint",
     "format": "tradeshift-scripts format",
     "precommit": "tradeshift-scripts precommit",

@@ -60,7 +60,7 @@ const config = {
 	resolve: {
 		extensions: ['.js', '.jsx', '.ts', '.tsx'],
 		alias: {
-			'@tradeshift/react-components': `${sourcePath}/components/index.js`
+			'@tradeshift/react-components': `${sourcePath}/index.js`
 		}
 	},
 	plugins,
