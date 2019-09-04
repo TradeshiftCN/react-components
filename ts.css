@@ -196,7 +196,7 @@ body {
 body {
 	word-wrap: break-word;
 }
-p,
+/* p,
 ul,
 ol,
 dl,
@@ -208,7 +208,7 @@ form,
 table,
 figure {
 	margin: 0 0 20px 0;
-}
+} 
 p:last-child,
 ul:last-child,
 ol:last-child,
@@ -221,7 +221,7 @@ form:last-child,
 table:last-child,
 figure:last-child {
 	margin-bottom: 0;
-}
+} */
 nav,
 menu {
 	list-style: none;
