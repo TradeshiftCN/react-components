@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 
-type {{name}}Props = {};
+export type {{name}}Props = {};
 type {{name}}State = {};
+
+const prefixCls = '{{className}}';
 
 class {{name}} extends Component<{{name}}Props, {{name}}State> {
     render() {
         return (
-            <div className="{{className}}">
+            <div className={prefixCls}>
                 {{name}}
             </div>
         );

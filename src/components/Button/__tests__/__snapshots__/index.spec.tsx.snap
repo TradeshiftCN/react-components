@@ -1,0 +1,72 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button basic 1`] = `
+<button
+  className="ts-rc-button ts-rc-button--default"
+  disabled={false}
+>
+  <span
+    key=".0"
+  >
+    btn
+  </span>
+</button>
+`;
+
+exports[`Button basic 2`] = `
+<button
+  className="ts-rc-button ts-rc-button--primary ts-rc-button--small ts-rc-button--loading"
+  disabled={true}
+>
+  <span
+    key=".0"
+  >
+    btn
+  </span>
+</button>
+`;
+
+exports[`Button children 1`] = `
+<button
+  className="ts-rc-button ts-rc-button--default"
+  disabled={false}
+>
+  <span
+    key=".0"
+  >
+    text 
+  </span>
+  <b
+    key=".1"
+  >
+    element
+  </b>
+</button>
+`;
+
+exports[`Button icon 1`] = `
+<button
+  className="ts-rc-button ts-rc-button--default ts-rc-button--circle"
+  disabled={false}
+>
+  <i
+    className="ts-icon-test"
+  />
+</button>
+`;
+
+exports[`Button icon 2`] = `
+<button
+  className="ts-rc-button ts-rc-button--default"
+  disabled={false}
+>
+  <i
+    className="ts-icon-test"
+  />
+  <span
+    key=".0"
+  >
+    text
+  </span>
+</button>
+`;

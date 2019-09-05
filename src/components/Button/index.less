@@ -1,0 +1,109 @@
+@import '../../style/variables/index';
+
+@keyframes ts-rc-move-progress-bar {
+	0% {
+		background-position: 0 0;
+	}
+	100% {
+		background-position: 40px 40px;
+	}
+}
+
+.ts-rc-button {
+	display: inline-block;
+	padding-left: @ts-unit;
+	padding-right: @ts-unit;
+	border: 1px solid transparent;
+	line-height: @ts-unit-double - 2px;
+	border-radius: @ts-unit;
+	transition: @ts-transition-now;
+	font-size: @ts-fontsize;
+	position: relative;
+	&:not(:disabled):hover {
+		text-decoration: none;
+	}
+	& + & {
+		margin-left: 5px;
+	}
+	&--small {
+		padding-left: @ts-unit-half;
+		padding-right: @ts-unit-half;
+		line-height: @ts-unit - 2px;
+		font-size: @ts-fontsize-small;
+	}
+	&--default {
+		border-color: @ts-color-gray-light;
+		color: @ts-color-black;
+		&:hover {
+			background-color: @ts-color-gray-lighter;
+		}
+	}
+	&--primary {
+		background-color: @ts-color-blue;
+		border-color: @ts-color-blue;
+		color: @ts-color-white;
+		&:hover {
+			background-color: @ts-color-blue-dark;
+		}
+	}
+	&--warning {
+		background-color: @ts-color-orange;
+		color: @ts-color-white;
+		border-color: @ts-color-white;
+	}
+	&--danger {
+		background-color: @ts-color-red;
+		color: @ts-color-white;
+		border-color: @ts-color-white;
+	}
+	&--circle {
+		padding-left: 0;
+		padding-right: 0;
+		width: @ts-unit-double;
+		border-radius: @ts-unit;
+	}
+	&--loading {
+		&,
+		&:hover {
+			background-color: transparent;
+			border-color: transparent;
+			cursor: default;
+		}
+		& > * {
+			visibility: hidden;
+		}
+		&::after {
+			content: '';
+			display: block;
+			position: absolute;
+			visibility: visible;
+			left: 0;
+			top: @ts-unit-half;
+			right: 0;
+			bottom: @ts-unit-half;
+			background-image: linear-gradient(
+				-45deg,
+				hsla(198, 20%, 83%, 0.65) 25%,
+				hsla(200, 21%, 92%, 0.65) 25%,
+				hsla(200, 21%, 92%, 0.65) 50%,
+				hsla(198, 20%, 83%, 0.65) 50%,
+				hsla(198, 20%, 83%, 0.65) 75%,
+				hsla(200, 21%, 92%, 0.65) 75%,
+				hsla(200, 21%, 92%, 0.65)
+			);
+			background-size: @ts-unit-double @ts-unit-double;
+			border-radius: inherit;
+			animation: ts-rc-move-progress-bar 1s linear infinite;
+		}
+	}
+	& > span {
+		text-transform: uppercase;
+	}
+	& > i {
+		font-size: @ts-fontsize-icon;
+		vertical-align: middle;
+	}
+	& > * + * {
+		margin-left: 8px;
+	}
+}

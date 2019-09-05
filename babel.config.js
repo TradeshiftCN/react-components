@@ -6,9 +6,14 @@ module.exports = {
 				modules: false
 			}
 		],
-		'@babel/preset-react'
+		'@babel/preset-react',
+		'@babel/preset-typescript'
 	],
-	plugins: ['lodash'],
+	plugins: [
+		'lodash',
+		'@babel/plugin-proposal-class-properties',
+		'@babel/plugin-proposal-object-rest-spread'
+	],
 	env: {
 		test: {
 			presets: [
@@ -18,13 +23,7 @@ module.exports = {
 						useBuiltIns: 'usage',
 						corejs: 3
 					}
-				],
-				'@babel/preset-react',
-				'@babel/preset-typescript'
-			],
-			plugins: [
-				'@babel/plugin-proposal-class-properties',
-				'@babel/plugin-proposal-object-rest-spread'
+				]
 			]
 		}
 	}

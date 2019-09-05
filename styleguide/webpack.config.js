@@ -1,11 +1,10 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 const sourcePath = path.resolve(__dirname, '../src');
 const isDev = process.env.NODE_ENV === 'development';
 let lessLoaders = ['css-loader', 'postcss-loader', 'less-loader'];
-const plugins = [new ForkTsCheckerWebpackPlugin()];
+const plugins = [];
 
 if (isDev) {
 	lessLoaders = lessLoaders.map(loader => `${loader}?sourceMap`);
@@ -23,22 +22,9 @@ const config = {
 	module: {
 		rules: [
 			{
-				test: /\.jsx?$/,
+				test: /\.(t|j)sx?$/,
 				exclude: /node_modules/,
 				use: ['babel-loader']
-			},
-			{
-				test: /\.tsx?$/,
-				exclude: /node_modules/,
-				use: [
-					'babel-loader',
-					{
-						loader: 'ts-loader',
-						options: {
-							transpileOnly: true
-						}
-					}
-				]
 			},
 			{
 				test: /\.less$/,

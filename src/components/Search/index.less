@@ -1,0 +1,45 @@
+@import '../../style/variables/index';
+
+.ts-rc-search {
+	position: relative;
+	line-height: @ts-unit-double;
+	i {
+		position: absolute;
+		top: 0;
+		display: inline-block;
+		width: @ts-unit-double;
+		height: @ts-unit-double;
+		line-height: inherit;
+		vertical-align: middle;
+		font-size: @ts-fontsize-icon;
+	}
+	input {
+		line-height: @ts-unit-double - 2px !important;
+		padding: 0 @ts-unit-double;
+		border: 1px solid @ts-color-gray-light;
+		width: 100%;
+		display: block;
+		border-radius: @ts-unit;
+		&:hover,
+		&:focus {
+			box-shadow: 0 0 0 1px @ts-color-blue-light;
+		}
+		&:hover {
+			border-color: @ts-color-blue-lighter;
+		}
+		&:focus {
+			border-color: @ts-color-blue;
+		}
+	}
+	&-search-icon {
+		// FIXME: the baseline of this icon has a little offset
+		padding-top: 1px;
+		left: 0;
+		font-weight: @ts-fontweight-semibold;
+	}
+	&-remove-icon {
+		right: 0;
+		color: @ts-color-slate-lightest;
+		cursor: pointer;
+	}
+}

@@ -4,6 +4,7 @@ const path = require('path');
 const prompts = require('prompts');
 const mustache = require('mustache');
 const glob = require('glob');
+const rimraf = require('rimraf');
 const componentNameRegex = /^[A-Z][A-Za-z]*$/;
 const sourcePath = path.resolve(__dirname, '../src');
 const templatePath = path.resolve(__dirname, 'template');
@@ -27,12 +28,11 @@ function createComponent({ name, language }) {
 		const content = mustache.render(fs.readFileSync(file, 'utf8'), templateProps);
 		const targetFile = path.join(componentPath, path.relative(fileDir, file));
 
+		fs.mkdirSync(path.dirname(targetFile), { recursive: true });
 		fs.writeFileSync(targetFile, content, 'utf8');
 
 		console.log(`generate ${targetFile}`);
 	};
-
-	fs.mkdirSync(componentPath, { recursive: true });
 
 	try {
 		glob
@@ -56,7 +56,9 @@ function createComponent({ name, language }) {
 		console.log('it seems like something went wrong');
 		console.log('reversing changes...');
 
-		fs.rmdirSync(componentPath);
+		rimraf.sync(componentPath);
+		console.log('reversed successfully, nothing changed');
+		return;
 	}
 
 	const styleFilePath = path.resolve(__dirname, '../src/style/index.less');

@@ -1,9 +1,6 @@
 const path = require('path');
-const reactDocgen = require('react-docgen');
-const reactDocgenTs = require('react-docgen-typescript');
 
 const componentsPath = path.resolve(__dirname, 'styleguide/components');
-const isTsRegex = /\.tsx?$/i;
 
 module.exports = {
 	title: 'Tradeshift React Components',
@@ -62,19 +59,19 @@ module.exports = {
 					}
 				}
 			}
+		},
+		Code: {
+			code: {
+				margin: '0 1px',
+				padding: '.2em .4em',
+				background: '#f2f4f5',
+				border: '1px solid #eee',
+				borderRadius: 3
+			}
 		}
 	},
 	styleguideComponents: {
 		Logo: path.join(componentsPath, 'Logo'),
 		StyleGuideRenderer: path.join(componentsPath, 'StyleGuide')
-	},
-	propsParser(filePath, source, resolver, handlers) {
-		if (isTsRegex.test(filePath)) {
-			return reactDocgenTs
-				.withDefaultConfig('./tsconfig.json')
-				.parse(filePath, source, resolver, handlers);
-		} else {
-			return reactDocgen.parse(source, resolver, handlers);
-		}
 	}
 };

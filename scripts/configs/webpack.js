@@ -13,13 +13,8 @@ module.exports = {
 	module: {
 		rules: [
 			{
-				test: /\.jsx?$/,
+				test: /\.(t|j)sx?$/,
 				use: ['babel-loader'],
-				include: sourcePath
-			},
-			{
-				test: /\.tsx?$/,
-				use: ['babel-loader', 'ts-loader'],
 				include: sourcePath
 			},
 			{

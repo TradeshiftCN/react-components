@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import cx from 'classnames';
 import _ from 'lodash';
+import PropTypes from 'prop-types';
 
-type PaginationProps = {
-	prefixCls?: string;
+export type PaginationProps = {
 	defaultPage?: number;
 	/** current page */
 	page?: number;
@@ -19,11 +19,19 @@ type PaginationState = {
 	numbers: number[];
 };
 
-class Pagination extends Component<PaginationProps, PaginationState> {
-	static defaultProps = {
-		prefixCls: 'ts-rc-pagination'
-	};
+const prefixCls = 'ts-rc-pagination';
 
+class Pagination extends Component<PaginationProps, PaginationState> {
+	static propTypes = {
+		defaultPage: PropTypes.number,
+		/** current page */
+		page: PropTypes.number,
+		/** total pages number */
+		pages: PropTypes.number,
+		className: PropTypes.string,
+		/** (index: number)=> void */
+		onChange: PropTypes.func
+	};
 	state: PaginationState = {
 		internalPage: this.props.defaultPage,
 		prevPropsPage: this.props.page,
@@ -31,7 +39,7 @@ class Pagination extends Component<PaginationProps, PaginationState> {
 	};
 
 	render() {
-		const { prefixCls, pages, className } = this.props;
+		const { pages, className } = this.props;
 		const { numbers } = this.state;
 		const current = this.page;
 

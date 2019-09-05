@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header basic 1`] = `
+<header
+  className="ts-rc-header ts-rc-header--white"
+>
+  <menu
+    className="ts-rc-header-main"
+  >
+    <li
+      className="ts-rc-header-item ts-rc-header-item-navigation"
+      key="back"
+    >
+      <button
+        onClick={[Function]}
+      >
+        <i
+          className="ts-icon-arrowleft"
+        />
+      </button>
+    </li>
+    <li
+      className="ts-rc-header-item ts-rc-header-item-navigation"
+      key="forward"
+    >
+      <button>
+        forward
+      </button>
+    </li>
+    <li
+      className="ts-rc-header-item ts-rc-header-item-title"
+    >
+      <h1>
+        title
+      </h1>
+    </li>
+    <li
+      className="ts-rc-header-item ts-rc-header-item-button"
+      key=".0"
+    >
+      <Button
+        loading={false}
+        type="default"
+      >
+        btn 2
+      </Button>
+    </li>
+    <li
+      className="ts-rc-header-item ts-rc-header-item-button"
+      key=".1"
+    >
+      <Button
+        loading={false}
+        type="default"
+      >
+        btn 1
+      </Button>
+    </li>
+  </menu>
+  <section
+    className="ts-rc-header-tabs"
+  >
+    <Tabs
+      destroyInactiveTabPane={true}
+      renderTabBar={[Function]}
+      renderTabContent={[Function]}
+    />
+  </section>
+  <section
+    className="ts-rc-header-search"
+  >
+    <Search />
+  </section>
+</header>
+`;

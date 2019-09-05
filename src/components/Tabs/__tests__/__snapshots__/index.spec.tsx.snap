@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tabs basic 1`] = `
+<Tabs
+  destroyInactiveTabPane={true}
+  navWrapper={[Function]}
+  onChange={[Function]}
+  prefixCls="ts-rc-tabs"
+  renderTabBar={[Function]}
+  renderTabContent={[Function]}
+  style={Object {}}
+  tabBarPosition="top"
+/>
+`;

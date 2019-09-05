@@ -1,0 +1,31 @@
+@import '../../style/variables/index';
+
+.ts-rc-tabs {
+	font-size: @ts-fontsize;
+	&-bar {
+		position: relative;
+		line-height: @ts-unit-double;
+		color: @ts-color-slate-lightest;
+		font-weight: @ts-fontweight-semibold;
+		user-select: none;
+	}
+	&-tab {
+		position: relative;
+		display: inline-block;
+		padding: 0 @ts-unit-half;
+		transition: @ts-transition-now;
+		cursor: pointer;
+		&-active,
+		&:hover {
+			color: @ts-color-black;
+		}
+	}
+	&-ink-bar {
+		height: 2px;
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		transition: 50ms;
+		background-color: @ts-color-black;
+	}
+}

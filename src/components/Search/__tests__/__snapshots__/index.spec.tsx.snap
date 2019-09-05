@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search basic 1`] = `
+<div
+  className="ts-rc-search"
+>
+  <i
+    className="ts-icon-search ts-rc-search-search-icon"
+  />
+  <input
+    onChange={[Function]}
+    onKeyDown={[Function]}
+    type="text"
+    value=""
+  />
+</div>
+`;

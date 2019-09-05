@@ -2,26 +2,19 @@ import React, { Component } from 'react';
 import cx from 'classnames';
 import RcTable from 'rc-table';
 import _ from 'lodash';
+import PropTypes from 'prop-types';
 import { Column, RowSelection, Order } from './interface';
 import SearchTitle from './SearchTitle';
 import SortTitle from './SortTitle';
 
-type TableProps<T> = {
-	/** 数据 */
+export type TableProps<T> = {
 	data: Array<T>;
-	/** 列配置 */
 	columns: Array<Column<T>>;
-	/** 表格行的唯一 id 的 key */
 	rowKey: keyof T;
-	/** 修改前缀会丢失默认样式 */
-	prefixCls?: string;
 	rowSelection?: RowSelection<T>;
-	/** 自定义行 className */
 	rowClassName?: ((record: T, index: number, indent: string) => string) | string;
-	/** 无数据时显示 */
 	emptyText?: string | React.ReactNode;
 	className?: string;
-	/** identifier of the container div */
 	id?: string;
 	onChange?(query: { search: SearchData; sort: SortData<T> }): void;
 };
@@ -39,18 +32,41 @@ type SortData<T> = {
 };
 type SearchData = { [key: string]: string; [key: number]: string };
 
-const checkboxClassName = (prefixCls: string, isSelected: boolean) =>
+const prefixCls = 'ts-rc-table';
+
+const checkboxClassName = (isSelected: boolean) =>
 	cx({
 		'ts-icon-checkbox': !isSelected,
 		'ts-icon-checkboxon': isSelected,
 		[`${prefixCls}-selection-icon`]: true,
 		[`${prefixCls}-selection-icon--checked`]: isSelected
 	});
-
 class Table<T> extends Component<TableProps<T>, TableState<T>> {
 	static defaultProps = {
-		prefixCls: 'ts-rc-table',
 		emptyText: ''
+	};
+	static propTypes = {
+		...RcTable.propTypes,
+		data: PropTypes.array.isRequired,
+		/** column config */
+		columns: PropTypes.array.isRequired,
+		/** 表格行的唯一 id 的 key */
+		rowKey: PropTypes.string.isRequired,
+		rowSelection: PropTypes.exact({
+			/** (keys: Array<string | number>, rows: Array<T>): void; */
+			onChange: PropTypes.func.isRequired,
+			selectedRowKeys: PropTypes.array.isRequired,
+			type: PropTypes.oneOf(['checkbox'])
+		}),
+		/** 自定义行 className ((record: any, index: number, indent: string) => string) */
+		rowClassName: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+		/** 无数据时显示 */
+		emptyText: PropTypes.node,
+		className: PropTypes.string,
+		/** identifier of the container div */
+		id: PropTypes.string,
+		/** (query: { search; sort }): void */
+		onChange: PropTypes.func
 	};
 	static defaultSortDirections: Order[] = ['asc', 'desc'];
 
@@ -77,7 +93,7 @@ class Table<T> extends Component<TableProps<T>, TableState<T>> {
 			<RcTable
 				{...props}
 				data={data}
-				prefixCls={props.prefixCls}
+				prefixCls={prefixCls}
 				columns={columns}
 				rowClassName={this.getRowClassName}
 			/>
@@ -117,7 +133,7 @@ class Table<T> extends Component<TableProps<T>, TableState<T>> {
 
 	private getRowClassName = (row: T, index: number, indent: string) => {
 		const classNames = [];
-		const { prefixCls, rowSelection, rowClassName } = this.props;
+		const { rowSelection, rowClassName } = this.props;
 
 		// 添加上层的自定义 className
 		if (rowClassName) {
@@ -137,7 +153,6 @@ class Table<T> extends Component<TableProps<T>, TableState<T>> {
 	};
 
 	private renderSearch(columns: Array<Column<T>>) {
-		const { prefixCls } = this.props;
 		const { searchData, searchActiveColumn } = this.state;
 		return columns.map(column => {
 			if (!column.searchTriggers) {
@@ -178,7 +193,6 @@ class Table<T> extends Component<TableProps<T>, TableState<T>> {
 	}
 
 	private renderSort(columns: Array<Column<T>>) {
-		const { prefixCls } = this.props;
 		const { sortData } = this.state;
 		return columns.map(column => {
 			if (!column.sorter) {
@@ -242,14 +256,14 @@ class Table<T> extends Component<TableProps<T>, TableState<T>> {
 	}
 
 	private renderRowSelections(columns: Array<Column<T>>) {
-		const { rowSelection, prefixCls } = this.props;
+		const { rowSelection } = this.props;
 		const columnsClone = columns.slice();
 		if (rowSelection) {
 			columnsClone.unshift({
 				key: 'selection-column',
 				className: prefixCls + '-selection-column',
 				width: 40,
-				title: <i className={checkboxClassName(prefixCls!, this.isAllSelected)} />,
+				title: <i className={checkboxClassName(this.isAllSelected)} />,
 				onCell: this.onSelectionCell,
 				onHeaderCell: this.onSelectionHeaderCell,
 				render: this.renderSelectionBox(this.props.rowSelection!.type || 'checkbox')
@@ -265,7 +279,7 @@ class Table<T> extends Component<TableProps<T>, TableState<T>> {
 		return (value: any, row: T, index: number) => {
 			switch (type) {
 				case 'checkbox':
-					return <i className={checkboxClassName(this.props.prefixCls!, this.isSelected(row))} />;
+					return <i className={checkboxClassName(this.isSelected(row))} />;
 				default:
 					return undefined;
 			}
