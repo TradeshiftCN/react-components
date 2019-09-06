@@ -18,7 +18,7 @@ const prefixCls = 'ts-rc-button';
 
 function genButtonLabel(children: React.ReactNode) {
 	return React.Children.map(children, child => {
-		if (_.isString(child)) {
+		if (_.isString(child) || _.isNumber(child)) {
 			return <span>{child}</span>;
 		}
 

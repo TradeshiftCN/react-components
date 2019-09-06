@@ -91,6 +91,7 @@
     "postcss-preset-env": "^6.7.0",
     "prettier": "^1.18.2",
     "prompts": "^2.2.1",
+    "prop-types": "^15.7.2",
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "react-styleguidist": "^9.1.16",

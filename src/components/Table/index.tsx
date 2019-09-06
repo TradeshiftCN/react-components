@@ -52,7 +52,7 @@ class Table<T> extends Component<TableProps<T>, TableState<T>> {
 		columns: PropTypes.array.isRequired,
 		/** 表格行的唯一 id 的 key */
 		rowKey: PropTypes.string.isRequired,
-		rowSelection: PropTypes.exact({
+		rowSelection: PropTypes.shape({
 			/** (keys: Array<string | number>, rows: Array<T>): void; */
 			onChange: PropTypes.func.isRequired,
 			selectedRowKeys: PropTypes.array.isRequired,
