@@ -30,8 +30,8 @@ document.addEventListener('click', (e: MouseEvent) => {
 	if (
 		el &&
 		activeSearchTitle &&
-		activeSearchTitle.rootRef.current &&
-		!activeSearchTitle.rootRef.current.contains(el as Node)
+		activeSearchTitle.rootRef &&
+		!activeSearchTitle.rootRef.contains(el as Node)
 	) {
 		activeSearchTitle.props.setActiveColumn();
 	}
@@ -39,9 +39,9 @@ document.addEventListener('click', (e: MouseEvent) => {
 
 class SearchTitle<T> extends Component<SearchTitleProps<T>, SearchTitleState> {
 	static defaultTriggers = ['enter'];
-	private titleTextRef = React.createRef<HTMLSpanElement>();
-	private inputRef = React.createRef<HTMLInputElement>();
-	public rootRef = React.createRef<HTMLDivElement>();
+	private titleTextRef?: HTMLSpanElement | null;
+	private inputRef?: HTMLInputElement | null;
+	public rootRef?: HTMLDivElement | null;
 
 	state: SearchTitleState = {
 		originTitleWidth: 80
@@ -62,7 +62,7 @@ class SearchTitle<T> extends Component<SearchTitleProps<T>, SearchTitleState> {
 
 		return (
 			<div
-				ref={this.rootRef}
+				ref={ref => (this.rootRef = ref)}
 				className={cx({
 					[`${prefixCls}-search-title`]: true,
 					[`${prefixCls}-search-title--input`]: showInput
@@ -70,11 +70,11 @@ class SearchTitle<T> extends Component<SearchTitleProps<T>, SearchTitleState> {
 				{...activeEvents}
 			>
 				<i className={cx('ts-icon-search', `${prefixCls}-search-title-search-icon`)}></i>
-				<span ref={this.titleTextRef}>
+				<span ref={ref => (this.titleTextRef = ref)}>
 					{showInput ? (
 						<input
 							style={{ width: this.state.originTitleWidth }}
-							ref={this.inputRef}
+							ref={ref => (this.inputRef = ref)}
 							value={value}
 							autoFocus
 							{...events}
@@ -113,7 +113,7 @@ class SearchTitle<T> extends Component<SearchTitleProps<T>, SearchTitleState> {
 	}
 
 	private updateOriginTitleWidth() {
-		const titleText = this.titleTextRef.current;
+		const titleText = this.titleTextRef;
 		const columnWidth = this.props.column.width;
 		let width = 80;
 

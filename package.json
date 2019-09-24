@@ -5,6 +5,7 @@
   "license": "MIT",
   "main": "dist/react-components.js",
   "module": "dist/react-components.js",
+  "types": "types/index.d.ts",
   "repository": "https://github.com/Tradeshift/react-components",
   "homepage": "https://tradeshift.github.io/react-components",
   "publishConfig": {
