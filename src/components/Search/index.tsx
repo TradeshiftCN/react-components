@@ -32,7 +32,7 @@ class Search extends Component<SearchProps, SearchState> {
 		className: PropTypes.string
 	};
 	public state: SearchState;
-	private inputRef = React.createRef<HTMLInputElement>();
+	private inputRef?: HTMLInputElement | null;
 	private debounceSubmit?: ReturnType<typeof _.debounce>;
 	constructor(props: SearchProps) {
 		super(props);
@@ -63,7 +63,7 @@ class Search extends Component<SearchProps, SearchState> {
 					value={value}
 					onChange={this.handleChange}
 					onKeyDown={this.handleKeyDown}
-					ref={this.inputRef}
+					ref={ref => (this.inputRef = ref)}
 					{...inputProps}
 				/>
 				{!!value && (
@@ -137,8 +137,8 @@ class Search extends Component<SearchProps, SearchState> {
 	};
 
 	private focusInput() {
-		if (this.inputRef.current) {
-			this.inputRef.current.focus();
+		if (this.inputRef) {
+			this.inputRef.focus();
 		}
 	}
 
