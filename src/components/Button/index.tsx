@@ -3,16 +3,17 @@ import PropTypes from 'prop-types';
 import cx from 'classnames';
 import _ from 'lodash';
 
-export type ButtonProps = {
-	type?: 'default' | 'primary' | 'danger' | 'warning';
-	className?: string;
-	loading?: boolean;
-	size?: 'small';
-	children?: React.ReactNode;
-	icon?: string;
-	label?: string;
-	disabled?: boolean;
-} & React.DetailedHTMLProps<React.HTMLAttributes<HTMLButtonElement>, HTMLButtonElement>;
+export type ButtonProps = React.HTMLProps<HTMLButtonElement> &
+	React.HTMLAttributes<HTMLButtonElement> & {
+		type?: 'default' | 'primary' | 'danger' | 'warning';
+		className?: string;
+		loading?: boolean;
+		size?: 'small';
+		children?: React.ReactNode;
+		icon?: string;
+		label?: string;
+		disabled?: boolean;
+	};
 
 const prefixCls = 'ts-rc-button';
 

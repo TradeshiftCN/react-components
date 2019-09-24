@@ -1,6 +1,6 @@
 ### Basic Usage
 
-_Note: Normally onSearch callback will be called when press enter key and click clear btn_
+_Note: Normally onSearch callback will be called when press enter key_
 
 ```jsx
 <Search

@@ -59,7 +59,8 @@ describe('Search', () => {
 		expect(onSearch.mock.calls[0][0]).toBe('value');
 		onSearch.mockClear();
 		wrapper.find('.ts-rc-search-remove-icon').simulate('click');
-		expect(onSearch.mock.calls[0][0]).toBe('');
+		expect(wrapper.state('value')).toBe('');
+		expect(onSearch).not.toHaveBeenCalled();
 	});
 
 	it('debounce', async () => {

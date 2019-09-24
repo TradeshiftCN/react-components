@@ -53,7 +53,10 @@ class Table<T> extends Component<TableProps<T>, TableState<T>> {
 		/** 表格行的唯一 id 的 key */
 		rowKey: PropTypes.string.isRequired,
 		rowSelection: PropTypes.shape({
-			/** (keys: Array<string | number>, rows: Array<T>): void; */
+			/**
+			 * @param {(string|number)[]} keys
+			 * @param {T[]} rows
+			 */
 			onChange: PropTypes.func.isRequired,
 			selectedRowKeys: PropTypes.array.isRequired,
 			type: PropTypes.oneOf(['checkbox'])

@@ -3,14 +3,15 @@ import cx from 'classnames';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 
-export type SearchProps = {
-	value?: string;
-	defaultValue?: string;
-	onChange?(value: string): void;
-	onSearch?(value: string): void;
-	idleTime?: number;
-	className?: string;
-} & React.DetailedHTMLProps<React.HTMLAttributes<HTMLInputElement>, HTMLInputElement>;
+export type SearchProps = React.HTMLProps<HTMLInputElement> &
+	React.HTMLAttributes<HTMLInputElement> & {
+		value?: string;
+		defaultValue?: string;
+		onChange?(value: string): void;
+		onSearch?(value: string): void;
+		idleTime?: number;
+		className?: string;
+	};
 
 type SearchState = {
 	value: string;
@@ -132,7 +133,6 @@ class Search extends Component<SearchProps, SearchState> {
 
 	private handleClickRemoveBtn = () => {
 		this.updateValue('');
-		this.manualSearch('');
 		this.focusInput();
 	};
 

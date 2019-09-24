@@ -3,10 +3,8 @@ import cx from 'classnames';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 
-type HTMLButtonElementProps = React.DetailedHTMLProps<
-	React.ButtonHTMLAttributes<HTMLButtonElement>,
-	HTMLButtonElement
->;
+type HTMLButtonElementProps = React.HTMLProps<HTMLButtonElement> &
+	React.HTMLAttributes<HTMLButtonElement>;
 type NavigationBtn = React.ReactNode | HTMLButtonElementProps | boolean;
 
 export type HeaderProps = {
