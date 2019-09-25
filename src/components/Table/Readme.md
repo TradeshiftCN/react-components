@@ -14,21 +14,21 @@ const columns = [
 	{
 		title: 'CUstom th/td props',
 		dataIndex: 'three',
-		onCell(row){
+		onCell(row) {
 			return {
-				style:{
+				style: {
 					color: 'red'
 				},
 				title: `id: ${row.id}`
-			}
+			};
 		},
-		onHeaderCell(column){
+		onHeaderCell(column) {
 			return {
 				style: {
 					color: 'green'
 				},
 				title: `id: ${column.dataIndex}`
-			}
+			};
 		}
 	},
 	{
