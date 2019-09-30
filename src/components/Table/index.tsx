@@ -10,7 +10,7 @@ import SortTitle from './SortTitle';
 export type TableProps<T> = {
 	data: Array<T>;
 	columns: Array<Column<T>>;
-	rowKey: keyof T;
+	rowKey: string;
 	rowSelection?: RowSelection<T>;
 	rowClassName?: ((record: T, index: number, indent: string) => string) | string;
 	emptyText?: string | React.ReactNode;
