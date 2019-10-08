@@ -8,9 +8,6 @@
   "types": "types/index.d.ts",
   "repository": "https://github.com/Tradeshift/react-components",
   "homepage": "https://tradeshift.github.io/react-components",
-  "publishConfig": {
-    "registry": "https://npm-upload.tradeshift.net/repository/npm-internal/"
-  },
   "engines": {
     "node": ">=8.12.0",
     "npm": ">=6.4.0"
