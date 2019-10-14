@@ -231,6 +231,39 @@ initialState = { data: data };
 />;
 ```
 
+### Fixed Header
+
+```jsx
+const data = [];
+const columns = [
+	{
+		title: 'name',
+		dataIndex: 'name',
+		width: 1500
+	},
+	{
+		title: 'id',
+		dataIndex: 'key',
+		width: 100
+	}
+];
+for (let i = 1; i <= 100; i++) {
+	data.push({
+		name: `row ${i} `.repeat(49),
+		key: i
+	});
+}
+<Table
+	data={data}
+	columns={columns}
+	rowKey="key"
+	scroll={{
+		y: 260,
+		x: 1600
+	}}
+/>;
+```
+
 P.S. 如果列配置中同时启用了 sorter 和 searchTriggers，仅有**查询**功能会生效（因为 ts-ui 的布局冲突）
 
 ### Interface
@@ -242,7 +275,6 @@ export interface Column<T> {
 	key?: string;
 	dataIndex?: string;
 	width?: string | number;
-	fixed?: 'left' | 'right' | boolean;
 	colSpan?: number;
 	className?: string;
 	title: React.ReactNode | string;

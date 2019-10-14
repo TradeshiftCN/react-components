@@ -1,7 +1,9 @@
 @import '../../style/variables/index';
 
 .ts-rc-table {
+	position: relative;
 	font-size: @ts-fontsize;
+	background-color: @ts-color-white;
 	table {
 		width: 100%;
 		line-height: @ts-unit;
@@ -14,11 +16,17 @@
 		vertical-align: inherit;
 	}
 
+	&-layout-fixed table {
+		table-layout: fixed;
+	}
+
 	&-thead {
 		font-size: @ts-fontsize-small;
 		text-transform: uppercase;
+		background-color: @ts-color-white;
 		& > tr > th {
-			padding: @ts-unit-half;
+			padding: @ts-unit-half @ts-unit-half @ts-unit-half - 1px;
+			border-bottom: 1px solid @ts-color-gray-light;
 			text-align: left;
 			font-weight: @ts-fontweight-semibold;
 			&.ts-rc-table-sort-cell {
@@ -28,13 +36,14 @@
 	}
 
 	&-tbody {
+		background-color: @ts-color-white;
 		& > tr > td {
-			padding: @ts-unit-half - 1 @ts-unit-half @ts-unit-half;
-			border-top: 1px solid @ts-color-gray-lighter;
+			padding: @ts-unit-half @ts-unit-half @ts-unit-half - 1px;
+			border-bottom: 1px solid @ts-color-gray-lighter;
 		}
 
-		& > tr:first-child > td {
-			border-color: @ts-color-gray-light;
+		& > tr:last-child > td {
+			border-bottom-color: transparent;
 		}
 	}
 

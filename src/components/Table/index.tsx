@@ -17,6 +17,11 @@ export type TableProps<T> = {
 	className?: string;
 	id?: string;
 	onChange?(query: { search: SearchData; sort: SortData<T> }): void;
+	style?: React.CSSProperties;
+	scroll?: {
+		x?: number;
+		y?: number;
+	};
 };
 
 type TableState<T> = {
@@ -69,7 +74,13 @@ class Table<T> extends Component<TableProps<T>, TableState<T>> {
 		/** identifier of the container div */
 		id: PropTypes.string,
 		/** (query: { search; sort }): void */
-		onChange: PropTypes.func
+		onChange: PropTypes.func,
+		scroll: PropTypes.shape({
+			/** table scroll width */
+			x: PropTypes.number,
+			/** table scroll height */
+			y: PropTypes.number
+		})
 	};
 	static defaultSortDirections: Order[] = ['asc', 'desc'];
 
