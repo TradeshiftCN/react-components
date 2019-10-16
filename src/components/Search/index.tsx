@@ -40,7 +40,7 @@ class Search extends Component<SearchProps, SearchState> {
 		const value = !_.isNil(props.value) ? props.value : props.defaultValue || '';
 		this.state = {
 			value,
-			prevPropsValue: value
+			prevPropsValue: props.value || ''
 		};
 		this.updateDebounceSubmit(props.onSearch, props.idleTime);
 	}

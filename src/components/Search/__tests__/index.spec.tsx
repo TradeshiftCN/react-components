@@ -40,6 +40,8 @@ describe('Search', () => {
 
 		wrapper = shallow(<Search defaultValue="default" />);
 		expect(wrapper.find('input').props().value).toBe('default');
+		wrapper.update();
+		expect(wrapper.find('input').props().value).toBe('default');
 		wrapper = shallow(<Search value="current" defaultValue="default" />);
 		expect(wrapper.find('input').props().value).toBe('current');
 	});
