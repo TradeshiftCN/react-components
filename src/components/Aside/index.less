@@ -1,0 +1,115 @@
+@import '../../style/variables/index';
+
+@keyframes tsrcDrawerFadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+.ts-rc-aside {
+	@duration: 0.3s;
+	@timing-function: cubic-bezier(0.7, 0.2, 0.1, 1);
+	position: fixed;
+	z-index: 1999;
+	width: 0%;
+	height: 100%;
+	transition: transform @duration @timing-function, height 0s ease @duration,
+		width 0s ease @duration;
+	& > * {
+		transition: transform @duration @timing-function, box-shadow @duration @timing-function;
+	}
+	&-content-wrapper {
+		box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+		position: absolute;
+		height: 100%;
+	}
+	&-content {
+		width: 100%;
+		height: 100%;
+	}
+	&-left,
+	&-right {
+		top: 0;
+	}
+	&-right {
+		right: 0;
+		.ts-rc-aside-content-wrapper {
+			right: 0;
+		}
+	}
+	&-left {
+		left: 0;
+		.ts-rc-aside-content-wrapper {
+			left: 0;
+		}
+	}
+	&-open {
+		width: 100%;
+		transition: transform @duration @timing-function;
+		.ts-rc-aside-mask {
+			height: 100%;
+			opacity: 1;
+			transition: none;
+			animation: tsrcDrawerFadeIn @duration @timing-function;
+		}
+	}
+	&-mask {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 0;
+		background-color: rgba(0, 0, 0, 0.71);
+		opacity: 0;
+		filter: ~'alpha(opacity=45)';
+		transition: opacity @duration linear, height 0s ease @duration;
+	}
+	&-content {
+		width: 100%;
+		height: 100%;
+		background-color: @ts-color-white;
+		display: flex;
+		flex-direction: column;
+	}
+	&-header {
+		border-bottom: 1px solid @ts-color-gray-light;
+		padding-left: @ts-unit;
+		padding-right: @ts-unit;
+		height: @ts-unit * 3 + 1px;
+		line-height: @ts-unit * 3;
+		position: relative;
+		font-size: @ts-fontsize-big;
+	}
+	&-close-btn {
+		width: @ts-unit-double;
+		height: @ts-unit-double;
+		line-height: @ts-unit-double;
+		border-radius: 50%;
+		position: absolute;
+		right: @ts-unit-half;
+		top: @ts-unit-half;
+		color: inherit;
+		font-size: 0px;
+		text-decoration: none !important;
+		transition: 0.2s;
+		&:hover {
+			background-color: @ts-color-gray-lighter;
+		}
+		i {
+			vertical-align: middle;
+		}
+	}
+	&-body {
+		padding: @ts-unit;
+		flex: 1;
+		overflow: auto;
+	}
+	&--closable {
+		.ts-rc-aside-header {
+			padding-right: 55px;
+		}
+	}
+}

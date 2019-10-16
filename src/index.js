@@ -6,3 +6,4 @@ export { default as Header } from './components/Header';
 export { default as Button } from './components/Button';
 export { default as Tabs } from './components/Tabs';
 export { default as Search } from './components/Search';
+export { default as Aside } from './components/Aside';

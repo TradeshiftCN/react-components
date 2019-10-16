@@ -44,6 +44,7 @@
   "dependencies": {
     "classnames": "2.x",
     "lodash": "4.x",
+    "rc-drawer": "3.x",
     "rc-table": "6.x",
     "rc-tabs": "9.x"
   },
