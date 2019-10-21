@@ -178,6 +178,8 @@ initialState = { data: data };
 
 ### Sort
 
+_note: If you want to enable sort and search by set `sorter` and `searchTriggers`, **only search** will work because there are some UI conflicts. for more information, please view [tradeshift-ui](http://ui.tradeshift.com/v12/#components/table/searching.html)_
+
 ```jsx
 const columns = [
 	{
@@ -271,12 +273,10 @@ _Note: If you want to hide expand icon of special row, you can add a className `
 ```jsx
 const data = [
 	{
-		id: 1,
-		data: [11, 12, 13]
+		id: 1
 	},
 	{
-		id: 2,
-		data: [21]
+		id: 2
 	},
 	{
 		id: 3
@@ -288,36 +288,115 @@ const columns = [
 		dataIndex: 'id'
 	}
 ];
-const renderSubRow = row => {
-	if (row.data) {
-		return (
-			<table>
-				<tbody>
-					{row.data.map(v => (
-						<tr key={v}>
-							<td>child: {v}</td>
-						</tr>
-					))}
-				</tbody>
-			</table>
-		);
-	}
-};
+
 <Table
 	data={data}
 	columns={columns}
 	rowKey="id"
 	rowClassName={row => {
-		if (!row.data) {
+		if (row.id === 3) {
 			return 'ts-rc-table-row--unexpandable';
 		}
 	}}
-	expandedRowRender={renderSubRow}
-	defaultExpandedRowKeys={[1, 2, 3]}
+	expandedRowRender={row => <p style={{ color: 'red' }}>Parent ID: {row.id}</p>}
+	defaultExpandedRowKeys={[1, 2]}
 />;
 ```
 
-P.S. 如果列配置中同时启用了 sorter 和 searchTriggers，仅有**查询**功能会生效（因为 ts-ui 的布局冲突）
+### Tree Data
+
+Display tree structure data in Table when there is field key `children` in dataSource, try to customize `childrenColumnName` property to avoid tree table structure.
+
+_Note: If only 1 child level, we recommend to set `expandIconAsCell` to `true`_
+
+```jsx
+const data = [
+	{
+		id: 1,
+		children: [
+			{
+				id: 11
+			},
+			{
+				id: 12
+			}
+		]
+	},
+	{
+		id: 2,
+		children: [
+			{
+				id: 21
+			}
+		]
+	},
+	{
+		id: 3
+	}
+];
+const columns = [
+	{
+		title: 'id',
+		dataIndex: 'id'
+	},
+	{
+		title: 'second id',
+		dataIndex: 'id',
+		key: 'second'
+	},
+	{
+		title: 'third id',
+		dataIndex: 'id',
+		key: 'third'
+	}
+];
+
+<Table data={data} columns={columns} rowKey="id" expandIconAsCell />;
+```
+
+```jsx
+const data = [
+	{
+		id: 1,
+		data: [
+			{
+				id: 11
+			},
+			{
+				id: 12,
+				data: [
+					{
+						id: 121
+					}
+				]
+			}
+		]
+	},
+	{
+		id: 2,
+		data: [
+			{
+				id: 21
+			}
+		]
+	},
+	{
+		id: 3
+	}
+];
+const columns = [
+	{
+		title: 'id',
+		dataIndex: 'id'
+	}
+];
+
+<Table data={data} columns={columns} rowKey="id" childrenColumnName="data" />;
+```
+
+#### Difference with expandable table
+
+Tree table will share the thead of parent table but expandable table not, that's meaning you can't align with parent in expandable table.
 
 ### Interface
 

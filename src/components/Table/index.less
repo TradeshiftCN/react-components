@@ -141,11 +141,26 @@
 		cursor: pointer;
 	}
 
+	&-row > td:not(&-row-expand-icon-cell) {
+		.ts-rc-table-expand-icon {
+			margin-right: 0;
+		}
+		.ts-rc-table-row-spaced {
+			margin-right: @ts-unit-half;
+		}
+	}
+
 	&-row {
 		&--unexpandable {
 			.ts-rc-table-expand-icon {
 				display: none;
 			}
 		}
+	}
+
+	&-row-spaced {
+		width: 15px;
+		visibility: hidden;
+		display: inline-block;
 	}
 }

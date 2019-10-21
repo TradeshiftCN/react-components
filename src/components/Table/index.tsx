@@ -22,13 +22,16 @@ export type TableProps<T> = {
 		x?: number;
 		y?: number;
 	};
-	expandedRowRender?(recode: T, index: number, indent: string, expanded: boolean): React.ReactNode;
+	expandedRowRender?(record: T, index: number, indent: string, expanded: boolean): React.ReactNode;
 	expandIconColumnIndex?: number;
 	expandedRowKeys?: Key[];
 	defaultExpandedRowKeys?: Key[];
 	defaultExpandAllRows?: boolean;
 	onExpand?(expanded: boolean, record: T): void;
-	expandedRowClassName?(recode: T, index: number, indent: string): string;
+	onExpandedRowsChange?(expandedRows: Key[]): void;
+	expandedRowClassName?(record: T, index: number, indent: string): string;
+	childrenColumnName?: string;
+	expandIconAsCell?: boolean;
 };
 export type TableState<T> = {
 	searchActiveColumn?: Key;
@@ -56,7 +59,8 @@ const checkboxClassName = (isSelected: boolean) =>
 class Table<T> extends Component<TableProps<T>, TableState<T>> {
 	static defaultProps = {
 		emptyText: '',
-		rowKey: 'key'
+		rowKey: 'key',
+		childrenColumnName: 'children'
 	};
 	static propTypes = {
 		...RcTable.propTypes,
@@ -86,13 +90,17 @@ class Table<T> extends Component<TableProps<T>, TableState<T>> {
 			/** table scroll height */
 			y: PropTypes.number
 		}),
-		/** (recode: T, index: number, indent: string, expanded: boolean) => React.ReactNode; */
+		/** (record: T, index: number, indent: string, expanded: boolean) => React.ReactNode; */
 		expandedRowRender: PropTypes.func,
 		expandedRowKeys: PropTypes.array,
 		defaultExpandedRowKeys: PropTypes.array,
 		defaultExpandAllRows: PropTypes.bool,
 		/** (expanded: boolean, record: T) => void; */
-		onExpand: PropTypes.func
+		onExpand: PropTypes.func,
+		/** function to call when the expanded rows change (expandedRows: Key[]) => void; */
+		onExpandedRowsChange: PropTypes.func,
+		childrenColumnName: PropTypes.string,
+		expandIconAsCell: PropTypes.bool
 	};
 	static defaultSortDirections: Order[] = ['asc', 'desc'];
 
@@ -107,6 +115,7 @@ class Table<T> extends Component<TableProps<T>, TableState<T>> {
 		const columns = this.renderRowSelections(this.renderSearch(this.renderSort(props.columns)));
 		let data = props.data;
 		let expandIconColumnIndex = columns[0].key === 'selection-column' ? 1 : 0;
+		let expandIconAsCell = !!this.props.expandedRowRender;
 		const { field, order, sorter } = this.state.sortData;
 
 		if (!_.isNil(field) && order && _.isFunction(sorter)) {
@@ -120,6 +129,10 @@ class Table<T> extends Component<TableProps<T>, TableState<T>> {
 			expandIconColumnIndex = props.expandIconColumnIndex!;
 		}
 
+		if ('expandIconAsCell' in props) {
+			expandIconAsCell = props.expandIconAsCell!;
+		}
+
 		return (
 			<RcTable
 				{...props}
@@ -127,7 +140,7 @@ class Table<T> extends Component<TableProps<T>, TableState<T>> {
 				prefixCls={prefixCls}
 				columns={columns}
 				rowClassName={this.getRowClassName}
-				expandIconAsCell={!!this.props.expandedRowRender}
+				expandIconAsCell={expandIconAsCell}
 				expandIcon={this.renderExpandIcon}
 				expandIconColumnIndex={expandIconColumnIndex}
 			/>
@@ -390,7 +403,13 @@ class Table<T> extends Component<TableProps<T>, TableState<T>> {
 		});
 	}
 
-	private renderExpandIcon({ record, expanded, expandable, onExpand }: ExpandIconProps<T>) {
+	private renderExpandIcon({
+		record,
+		expanded,
+		expandable,
+		onExpand,
+		needIndentSpaced
+	}: ExpandIconProps<T>) {
 		if (expandable) {
 			return (
 				<i
@@ -403,6 +422,10 @@ class Table<T> extends Component<TableProps<T>, TableState<T>> {
 					}}
 				/>
 			);
+		}
+
+		if (needIndentSpaced) {
+			return <span className={`${prefixCls}-row-spaced`}>.</span>;
 		}
 	}
 }

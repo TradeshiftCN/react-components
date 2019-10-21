@@ -3,6 +3,7 @@
 exports[`Table basic 1`] = `
 <Table
   bodyStyle={Object {}}
+  childrenColumnName="children"
   columns={
     Array [
       Object {
