@@ -1,7 +1,9 @@
+export type Key = string | number;
+
 export type Order = 'desc' | 'asc';
 
 export interface Column<T> {
-	key?: string;
+	key?: Key;
 	dataIndex?: string;
 	width?: string | number;
 	fixed?: 'left' | 'right' | boolean;
@@ -23,7 +25,16 @@ export interface Column<T> {
 }
 
 export interface RowSelection<T> {
-	onChange(keys: Array<string | number>, rows: Array<T>): void;
-	selectedRowKeys: Array<string>;
+	onChange(keys: Array<Key>, rows: Array<T>): void;
+	selectedRowKeys: Array<Key>;
 	type?: 'checkbox';
+}
+
+export interface ExpandIconProps<T> {
+	prefixCls: string;
+	expanded: boolean;
+	record: T;
+	needIndentSpaced: boolean;
+	expandable: boolean;
+	onExpand: (record: T, event?: React.MouseEvent) => void;
 }

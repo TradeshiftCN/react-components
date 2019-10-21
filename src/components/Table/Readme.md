@@ -264,6 +264,59 @@ for (let i = 1; i <= 100; i++) {
 />;
 ```
 
+### Expandable Row
+
+_Note: If you want to hide expand icon of special row, you can add a className `ts-rc-table-row--unexpandable` [Set Table expandable property at row level](https://github.com/ant-design/ant-design/issues/7817)_
+
+```jsx
+const data = [
+	{
+		id: 1,
+		data: [11, 12, 13]
+	},
+	{
+		id: 2,
+		data: [21]
+	},
+	{
+		id: 3
+	}
+];
+const columns = [
+	{
+		title: 'id',
+		dataIndex: 'id'
+	}
+];
+const renderSubRow = row => {
+	if (row.data) {
+		return (
+			<table>
+				<tbody>
+					{row.data.map(v => (
+						<tr key={v}>
+							<td>child: {v}</td>
+						</tr>
+					))}
+				</tbody>
+			</table>
+		);
+	}
+};
+<Table
+	data={data}
+	columns={columns}
+	rowKey="id"
+	rowClassName={row => {
+		if (!row.data) {
+			return 'ts-rc-table-row--unexpandable';
+		}
+	}}
+	expandedRowRender={renderSubRow}
+	defaultExpandedRowKeys={[1, 2, 3]}
+/>;
+```
+
 P.S. 如果列配置中同时启用了 sorter 和 searchTriggers，仅有**查询**功能会生效（因为 ts-ui 的布局冲突）
 
 ### Interface
@@ -272,9 +325,10 @@ P.S. 如果列配置中同时启用了 sorter 和 searchTriggers，仅有**查�
 export type Order = 'desc' | 'asc';
 
 export interface Column<T> {
-	key?: string;
+	key?: Key;
 	dataIndex?: string;
 	width?: string | number;
+	fixed?: 'left' | 'right' | boolean;
 	colSpan?: number;
 	className?: string;
 	title: React.ReactNode | string;
@@ -290,11 +344,5 @@ export interface Column<T> {
 	onCell?(record: T, index: number): any;
 	onHeaderCell?(column: Column<T>): any;
 	render?(value: any, row: T, index: number): React.ReactNode | string;
-}
-
-export interface RowSelection<T> {
-	onChange(keys: Array<string | number>, rows: Array<T>): void;
-	selectedRowKeys: Array<string>;
-	type?: 'checkbox';
 }
 ```

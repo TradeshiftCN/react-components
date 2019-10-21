@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 export type {{name}}Props = {};
-type {{name}}State = {};
+export type {{name}}State = {};
 
 const prefixCls = '{{className}}';
 

@@ -126,4 +126,16 @@ describe('Table', () => {
 		expect(wrapper.find('.ts-rc-table-sort-title-icon--asc').exists()).toBe(false);
 		expect(wrapper.find('.ts-rc-table-sort-title-icon--desc').exists()).toBe(false);
 	});
+
+	it('expand', () => {
+		const wrapper = shallow(
+			<Table
+				data={[{ key: 1 }, { key: 2 }]}
+				columns={[{ title: 'key', dataIndex: 'key' }]}
+				expandedRowRender={row => <div>{row.key}</div>}
+			/>
+		);
+
+		expect(wrapper.isEmptyRender()).toBe(false);
+	});
 });

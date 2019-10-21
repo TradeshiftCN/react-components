@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import cx from 'classnames';
 import _ from 'lodash';
-import { Column } from './interface';
+import { Column, Key } from './interface';
 
 type SearchTitleProps<T> = {
 	column: Column<T>;
 	prefixCls: string;
-	activeColumn?: string | number;
+	activeColumn?: Key;
 	isActive: boolean;
-	columnKey: string | number;
-	setActiveColumn(key?: string | number): void;
+	columnKey: Key;
+	setActiveColumn(key?: Key): void;
 	value: string;
 	/** 用于和上层传入的 value 双向绑定 */
 	onChange(text: string): void;

@@ -28,6 +28,9 @@ exports[`Table basic 1`] = `
     ]
   }
   emptyText=""
+  expandIcon={[Function]}
+  expandIconAsCell={false}
+  expandIconColumnIndex={0}
   onHeaderRow={[Function]}
   onRow={[Function]}
   prefixCls="ts-rc-table"

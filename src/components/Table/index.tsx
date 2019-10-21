@@ -3,14 +3,14 @@ import cx from 'classnames';
 import RcTable from 'rc-table';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
-import { Column, RowSelection, Order } from './interface';
+import { Column, RowSelection, Order, ExpandIconProps, Key } from './interface';
 import SearchTitle from './SearchTitle';
 import SortTitle from './SortTitle';
 
 export type TableProps<T> = {
 	data: Array<T>;
 	columns: Array<Column<T>>;
-	rowKey: string;
+	rowKey?: string;
 	rowSelection?: RowSelection<T>;
 	rowClassName?: ((record: T, index: number, indent: string) => string) | string;
 	emptyText?: string | React.ReactNode;
@@ -22,16 +22,22 @@ export type TableProps<T> = {
 		x?: number;
 		y?: number;
 	};
+	expandedRowRender?(recode: T, index: number, indent: string, expanded: boolean): React.ReactNode;
+	expandIconColumnIndex?: number;
+	expandedRowKeys?: Key[];
+	defaultExpandedRowKeys?: Key[];
+	defaultExpandAllRows?: boolean;
+	onExpand?(expanded: boolean, record: T): void;
+	expandedRowClassName?(recode: T, index: number, indent: string): string;
 };
-
-type TableState<T> = {
-	searchActiveColumn?: string | number;
+export type TableState<T> = {
+	searchActiveColumn?: Key;
 	searchData: SearchData;
 	sortData: SortData<T>;
 };
 
 type SortData<T> = {
-	field?: string | number;
+	field?: Key;
 	order?: Order | false;
 	sorter?: Column<T>['sorter'];
 };
@@ -46,41 +52,47 @@ const checkboxClassName = (isSelected: boolean) =>
 		[`${prefixCls}-selection-icon`]: true,
 		[`${prefixCls}-selection-icon--checked`]: isSelected
 	});
+
 class Table<T> extends Component<TableProps<T>, TableState<T>> {
 	static defaultProps = {
-		emptyText: ''
+		emptyText: '',
+		rowKey: 'key'
 	};
 	static propTypes = {
 		...RcTable.propTypes,
 		data: PropTypes.array.isRequired,
-		/** column config */
+		/** The columns config of table, see table below */
 		columns: PropTypes.array.isRequired,
-		/** 表格行的唯一 id 的 key */
-		rowKey: PropTypes.string.isRequired,
+		/** If rowKey is string, `record[rowKey]` will be used as key. If rowKey is function, the return value of `rowKey(record)` will be use as key. */
+		rowKey: PropTypes.string,
 		rowSelection: PropTypes.shape({
-			/**
-			 * @param {(string|number)[]} keys
-			 * @param {T[]} rows
-			 */
+			/** (keys: Key, rows: T[]) => void; */
 			onChange: PropTypes.func.isRequired,
 			selectedRowKeys: PropTypes.array.isRequired,
 			type: PropTypes.oneOf(['checkbox'])
 		}),
-		/** 自定义行 className ((record: any, index: number, indent: string) => string) */
+		/** get row's className (record: T, index: number, indent: string) => string; */
 		rowClassName: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
-		/** 无数据时显示 */
+		/** Display text when data is empty */
 		emptyText: PropTypes.node,
 		className: PropTypes.string,
 		/** identifier of the container div */
 		id: PropTypes.string,
-		/** (query: { search; sort }): void */
+		/** ({ search, sort }) => void; */
 		onChange: PropTypes.func,
 		scroll: PropTypes.shape({
 			/** table scroll width */
 			x: PropTypes.number,
 			/** table scroll height */
 			y: PropTypes.number
-		})
+		}),
+		/** (recode: T, index: number, indent: string, expanded: boolean) => React.ReactNode; */
+		expandedRowRender: PropTypes.func,
+		expandedRowKeys: PropTypes.array,
+		defaultExpandedRowKeys: PropTypes.array,
+		defaultExpandAllRows: PropTypes.bool,
+		/** (expanded: boolean, record: T) => void; */
+		onExpand: PropTypes.func
 	};
 	static defaultSortDirections: Order[] = ['asc', 'desc'];
 
@@ -94,6 +106,7 @@ class Table<T> extends Component<TableProps<T>, TableState<T>> {
 		const props = this.props;
 		const columns = this.renderRowSelections(this.renderSearch(this.renderSort(props.columns)));
 		let data = props.data;
+		let expandIconColumnIndex = columns[0].key === 'selection-column' ? 1 : 0;
 		const { field, order, sorter } = this.state.sortData;
 
 		if (!_.isNil(field) && order && _.isFunction(sorter)) {
@@ -103,6 +116,10 @@ class Table<T> extends Component<TableProps<T>, TableState<T>> {
 			}
 		}
 
+		if ('expandIconColumnIndex' in props) {
+			expandIconColumnIndex = props.expandIconColumnIndex!;
+		}
+
 		return (
 			<RcTable
 				{...props}
@@ -110,6 +127,9 @@ class Table<T> extends Component<TableProps<T>, TableState<T>> {
 				prefixCls={prefixCls}
 				columns={columns}
 				rowClassName={this.getRowClassName}
+				expandIconAsCell={!!this.props.expandedRowRender}
+				expandIcon={this.renderExpandIcon}
+				expandIconColumnIndex={expandIconColumnIndex}
 			/>
 		);
 	}
@@ -134,7 +154,7 @@ class Table<T> extends Component<TableProps<T>, TableState<T>> {
 	}
 
 	private getColumnKey(column: Column<T>) {
-		return (!_.isNil(column.key) ? column.key : column.dataIndex) as string | number;
+		return (!_.isNil(column.key) ? column.key : column.dataIndex) as Key;
 	}
 
 	private getRowKey(row: T) {
@@ -142,7 +162,7 @@ class Table<T> extends Component<TableProps<T>, TableState<T>> {
 			return this.props.rowKey(row);
 		}
 
-		return _.get(row, this.props.rowKey);
+		return _.get(row, this.props.rowKey!);
 	}
 
 	private getRowClassName = (row: T, index: number, indent: string) => {
@@ -353,7 +373,7 @@ class Table<T> extends Component<TableProps<T>, TableState<T>> {
 		rowSelection!.onChange(keys, rows);
 	}
 
-	private setActiveColumn = (key?: string | number) => {
+	private setActiveColumn = (key?: Key) => {
 		this.setState({
 			searchActiveColumn: key
 		});
@@ -368,6 +388,22 @@ class Table<T> extends Component<TableProps<T>, TableState<T>> {
 				});
 			}
 		});
+	}
+
+	private renderExpandIcon({ record, expanded, expandable, onExpand }: ExpandIconProps<T>) {
+		if (expandable) {
+			return (
+				<i
+					className={cx(`${prefixCls}-expand-icon`, {
+						'ts-icon-triangledown': expanded,
+						'ts-icon-triangleright': !expanded
+					})}
+					onClick={e => {
+						onExpand(record, e);
+					}}
+				/>
+			);
+		}
 	}
 }
 

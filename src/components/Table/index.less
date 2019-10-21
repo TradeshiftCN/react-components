@@ -127,4 +127,25 @@
 	&-placeholder {
 		text-align: center;
 	}
+
+	&-row-expand-icon-cell {
+		width: 35px;
+		font-size: 0;
+	}
+
+	&-expand-icon {
+		padding: @ts-unit-half;
+		margin: -@ts-unit-half;
+		font-size: @ts-fontsize-medium;
+		vertical-align: middle;
+		cursor: pointer;
+	}
+
+	&-row {
+		&--unexpandable {
+			.ts-rc-table-expand-icon {
+				display: none;
+			}
+		}
+	}
 }
