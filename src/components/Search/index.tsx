@@ -2,16 +2,19 @@ import React, { Component } from 'react';
 import cx from 'classnames';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
+import { Overwrite } from '../../helper';
 
-export type SearchProps = React.HTMLProps<HTMLInputElement> &
-	React.HTMLAttributes<HTMLInputElement> & {
+export type SearchProps = Overwrite<
+	React.HTMLProps<HTMLInputElement>,
+	{
 		value?: string;
 		defaultValue?: string;
 		onChange?(value: string): void;
 		onSearch?(value: string): void;
 		idleTime?: number;
 		className?: string;
-	};
+	}
+>;
 
 type SearchState = {
 	value: string;
@@ -94,10 +97,11 @@ class Search extends Component<SearchProps, SearchState> {
 
 	private updateValue(value: string) {
 		const { onChange } = this.props;
-
-		this.setState({
-			value
-		});
+		if (_.isNil(this.props.value)) {
+			this.setState({
+				value
+			});
+		}
 
 		if (onChange) {
 			onChange(value);
