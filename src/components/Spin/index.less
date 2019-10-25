@@ -1,0 +1,62 @@
+@import '../../style/variables/index';
+
+@keyframes spinFadeIn {
+	0% {
+		opacity: 0.5;
+	}
+	25% {
+		opacity: 0.9;
+	}
+	100% {
+		opacity: 0.5;
+	}
+}
+.ts-rc-spin {
+	display: inline-block;
+	position: relative;
+	&__strip {
+		position: absolute;
+		left: 0;
+		top: 50%;
+		background-color: rgb(85, 85, 85);
+		box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 1px;
+		animation: spinFadeIn linear infinite;
+		border-radius: ~'10.7% / 50%';
+		opacity: 0.5;
+	}
+	&__container {
+		position: relative;
+	}
+	&__spinning {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		font-size: 0px;
+	}
+
+	&__mask {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-color: rgba(0, 0, 0, 0.71);
+		& + .ts-rc-spin__spinning {
+			.ts-rc-spin__strip {
+				background-color: @ts-color-white;
+			}
+			.ts-rc-spin__tip {
+				color: @ts-color-white;
+			}
+		}
+	}
+
+	&__tip {
+		width: 100%;
+		text-align: center;
+		position: absolute;
+		top: 50%;
+		font-size: @ts-fontsize;
+	}
+}
