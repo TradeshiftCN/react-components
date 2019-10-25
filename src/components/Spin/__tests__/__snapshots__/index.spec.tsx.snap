@@ -2,7 +2,6 @@
 
 exports[`Spin embed 1`] = `
 <div
-  blocking={false}
   className="ts-rc-spin__container"
 >
   text
@@ -11,7 +10,6 @@ exports[`Spin embed 1`] = `
 
 exports[`Spin embed 2`] = `
 <div
-  blocking={false}
   className="ts-rc-spin__container"
 >
   text
@@ -28,7 +26,6 @@ exports[`Spin embed 2`] = `
 
 exports[`Spin embed 3`] = `
 <div
-  blocking={true}
   className="ts-rc-spin__container"
 >
   text
@@ -51,6 +48,7 @@ exports[`Spin icon 1`] = `
   className="test"
 >
   <div
+    className="test__strips"
     style={
       Object {
         "height": 100,
@@ -233,11 +231,6 @@ exports[`Spin icon 1`] = `
 exports[`Spin icon 2`] = `
 <div
   className="test__tip"
-  style={
-    Object {
-      "marginTop": 58,
-    }
-  }
 >
   tip
 </div>
@@ -260,7 +253,6 @@ exports[`Spin tip 1`] = `
 
 exports[`Spin tip 2`] = `
 <div
-  blocking={false}
   className="ts-rc-spin__container"
 >
   text

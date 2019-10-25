@@ -34,6 +34,7 @@ export default function SpinIcon(props: SpinIconProps) {
 	return (
 		<div className={cx(props.prefixCls, props.className)} style={props.style}>
 			<div
+				className={`${props.prefixCls}__strips`}
 				style={{
 					width: size,
 					height: size
@@ -41,16 +42,7 @@ export default function SpinIcon(props: SpinIconProps) {
 			>
 				{strips}
 			</div>
-			{props.tip && (
-				<div
-					className={`${props.prefixCls}__tip`}
-					style={{
-						marginTop: Math.floor(size / 2 + 0.08 * size)
-					}}
-				>
-					{props.tip}
-				</div>
-			)}
+			{props.tip && <div className={`${props.prefixCls}__tip`}>{props.tip}</div>}
 		</div>
 	);
 }

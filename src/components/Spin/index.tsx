@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import cx from 'classnames';
 import SpinIcon from './SpinIcon';
 import _ from 'lodash';
+import PropTypes from 'prop-types';
 import { Overwrite } from '../../helper';
 
 export type SpinProps = Overwrite<
@@ -22,6 +23,12 @@ const sizes = {
 	large: 100
 };
 class Spin extends Component<SpinProps, SpinState> {
+	static propTypes = {
+		spinning: PropTypes.bool,
+		size: PropTypes.oneOf(['small', 'default', 'large']),
+		blocking: PropTypes.bool,
+		tip: PropTypes.string
+	};
 	static defaultProps = {
 		size: 'default',
 		spinning: false,
@@ -38,7 +45,7 @@ class Spin extends Component<SpinProps, SpinState> {
 				<SpinIcon {...spinIconProps} className={this.props.className} style={this.props.style} />
 			);
 		}
-		const containerProps = _.omit(this.props, ['className', 'spinning', 'size', 'tip']);
+		const containerProps = _.omit(this.props, ['className', 'spinning', 'size', 'tip', 'blocking']);
 		return (
 			<div className={cx(`${prefixCls}__container`, this.props.className)} {...containerProps}>
 				{this.props.children}
