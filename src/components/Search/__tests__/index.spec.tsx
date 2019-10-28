@@ -48,7 +48,8 @@ describe('Search', () => {
 
 	it('search', () => {
 		const onSearch = jest.fn();
-		const wrapper = shallow(<Search onSearch={onSearch} value="test" />);
+		const onChange = jest.fn();
+		const wrapper = shallow(<Search onSearch={onSearch} onChange={onChange} value="test" />);
 		const input = wrapper.find('input');
 		input.simulate('keyDown', {
 			currentTarget: {
@@ -61,7 +62,7 @@ describe('Search', () => {
 		expect(onSearch.mock.calls[0][0]).toBe('value');
 		onSearch.mockClear();
 		wrapper.find('.ts-rc-search-remove-icon').simulate('click');
-		expect(wrapper.state('value')).toBe('');
+		expect(onChange.mock.calls[0][0]).toBe('');
 		expect(onSearch).not.toHaveBeenCalled();
 	});
 

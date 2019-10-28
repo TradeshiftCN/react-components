@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Aside render 1`] = `
+<DrawerWrapper
+  afterVisibleChange={[Function]}
+  className="ts-rc-aside--closable"
+  defaultOpen={false}
+  duration=".3s"
+  ease="cubic-bezier(0.78, 0.14, 0.15, 0.86)"
+  forceRender={false}
+  getContainer="body"
+  handler={false}
+  keyboard={true}
+  level={null}
+  maskClosable={true}
+  maskStyle={Object {}}
+  onChange={[Function]}
+  placement="right"
+  prefixCls="ts-rc-aside"
+  showMask={true}
+  width={320}
+  wrapperClassName=""
+>
+  <header
+    className="ts-rc-aside-header"
+  >
+    <button
+      className="ts-rc-aside-close-btn"
+      onClick={[Function]}
+      type="button"
+    >
+      <i
+        className="ts-icon-close"
+      />
+    </button>
+  </header>
+  <div
+    className="ts-rc-aside-body"
+  />
+</DrawerWrapper>
+`;

@@ -1,0 +1,269 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Spin embed 1`] = `
+<div
+  className="ts-rc-spin__container"
+>
+  text
+</div>
+`;
+
+exports[`Spin embed 2`] = `
+<div
+  className="ts-rc-spin__container"
+>
+  text
+  <div
+    className="ts-rc-spin__spinning"
+  >
+    <SpinIcon
+      prefixCls="ts-rc-spin"
+      size={65}
+    />
+  </div>
+</div>
+`;
+
+exports[`Spin embed 3`] = `
+<div
+  className="ts-rc-spin__container"
+>
+  text
+  <div
+    className="ts-rc-spin__mask"
+  />
+  <div
+    className="ts-rc-spin__spinning"
+  >
+    <SpinIcon
+      prefixCls="ts-rc-spin"
+      size={65}
+    />
+  </div>
+</div>
+`;
+
+exports[`Spin icon 1`] = `
+<div
+  className="test"
+>
+  <div
+    className="test__strips"
+    style={
+      Object {
+        "height": 100,
+        "width": 100,
+      }
+    }
+  >
+    <div
+      className="test__strip"
+      key="0"
+      style={
+        Object {
+          "animationDelay": "0s",
+          "animationDuration": "0.96s",
+          "height": 6,
+          "transform": "rotate(0deg) translateY(-50%)",
+          "transformOrigin": "50px 0px",
+          "width": 28.000000000000004,
+        }
+      }
+    />
+    <div
+      className="test__strip"
+      key="1"
+      style={
+        Object {
+          "animationDelay": "0.08s",
+          "animationDuration": "0.96s",
+          "height": 6,
+          "transform": "rotate(30deg) translateY(-50%)",
+          "transformOrigin": "50px 0px",
+          "width": 28.000000000000004,
+        }
+      }
+    />
+    <div
+      className="test__strip"
+      key="2"
+      style={
+        Object {
+          "animationDelay": "0.16s",
+          "animationDuration": "0.96s",
+          "height": 6,
+          "transform": "rotate(60deg) translateY(-50%)",
+          "transformOrigin": "50px 0px",
+          "width": 28.000000000000004,
+        }
+      }
+    />
+    <div
+      className="test__strip"
+      key="3"
+      style={
+        Object {
+          "animationDelay": "0.24s",
+          "animationDuration": "0.96s",
+          "height": 6,
+          "transform": "rotate(90deg) translateY(-50%)",
+          "transformOrigin": "50px 0px",
+          "width": 28.000000000000004,
+        }
+      }
+    />
+    <div
+      className="test__strip"
+      key="4"
+      style={
+        Object {
+          "animationDelay": "0.32s",
+          "animationDuration": "0.96s",
+          "height": 6,
+          "transform": "rotate(120deg) translateY(-50%)",
+          "transformOrigin": "50px 0px",
+          "width": 28.000000000000004,
+        }
+      }
+    />
+    <div
+      className="test__strip"
+      key="5"
+      style={
+        Object {
+          "animationDelay": "0.4s",
+          "animationDuration": "0.96s",
+          "height": 6,
+          "transform": "rotate(150deg) translateY(-50%)",
+          "transformOrigin": "50px 0px",
+          "width": 28.000000000000004,
+        }
+      }
+    />
+    <div
+      className="test__strip"
+      key="6"
+      style={
+        Object {
+          "animationDelay": "0.48s",
+          "animationDuration": "0.96s",
+          "height": 6,
+          "transform": "rotate(180deg) translateY(-50%)",
+          "transformOrigin": "50px 0px",
+          "width": 28.000000000000004,
+        }
+      }
+    />
+    <div
+      className="test__strip"
+      key="7"
+      style={
+        Object {
+          "animationDelay": "0.56s",
+          "animationDuration": "0.96s",
+          "height": 6,
+          "transform": "rotate(210deg) translateY(-50%)",
+          "transformOrigin": "50px 0px",
+          "width": 28.000000000000004,
+        }
+      }
+    />
+    <div
+      className="test__strip"
+      key="8"
+      style={
+        Object {
+          "animationDelay": "0.64s",
+          "animationDuration": "0.96s",
+          "height": 6,
+          "transform": "rotate(240deg) translateY(-50%)",
+          "transformOrigin": "50px 0px",
+          "width": 28.000000000000004,
+        }
+      }
+    />
+    <div
+      className="test__strip"
+      key="9"
+      style={
+        Object {
+          "animationDelay": "0.72s",
+          "animationDuration": "0.96s",
+          "height": 6,
+          "transform": "rotate(270deg) translateY(-50%)",
+          "transformOrigin": "50px 0px",
+          "width": 28.000000000000004,
+        }
+      }
+    />
+    <div
+      className="test__strip"
+      key="10"
+      style={
+        Object {
+          "animationDelay": "0.8s",
+          "animationDuration": "0.96s",
+          "height": 6,
+          "transform": "rotate(300deg) translateY(-50%)",
+          "transformOrigin": "50px 0px",
+          "width": 28.000000000000004,
+        }
+      }
+    />
+    <div
+      className="test__strip"
+      key="11"
+      style={
+        Object {
+          "animationDelay": "0.88s",
+          "animationDuration": "0.96s",
+          "height": 6,
+          "transform": "rotate(330deg) translateY(-50%)",
+          "transformOrigin": "50px 0px",
+          "width": 28.000000000000004,
+        }
+      }
+    />
+  </div>
+</div>
+`;
+
+exports[`Spin icon 2`] = `
+<div
+  className="test__tip"
+>
+  tip
+</div>
+`;
+
+exports[`Spin render 1`] = `
+<SpinIcon
+  prefixCls="ts-rc-spin"
+  size={65}
+/>
+`;
+
+exports[`Spin tip 1`] = `
+<SpinIcon
+  prefixCls="ts-rc-spin"
+  size={65}
+  tip="tip"
+/>
+`;
+
+exports[`Spin tip 2`] = `
+<div
+  className="ts-rc-spin__container"
+>
+  text
+  <div
+    className="ts-rc-spin__spinning"
+  >
+    <SpinIcon
+      prefixCls="ts-rc-spin"
+      size={65}
+      tip="tip"
+    />
+  </div>
+</div>
+`;

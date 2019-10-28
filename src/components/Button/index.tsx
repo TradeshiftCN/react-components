@@ -2,18 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 import _ from 'lodash';
+import { Overwrite } from '../../helper';
 
-export type ButtonProps = React.HTMLProps<HTMLButtonElement> &
-	React.HTMLAttributes<HTMLButtonElement> & {
+export type ButtonProps = Overwrite<
+	React.HTMLProps<HTMLButtonElement>,
+	{
 		type?: 'default' | 'primary' | 'danger' | 'warning';
-		className?: string;
 		loading?: boolean;
 		size?: 'small';
-		children?: React.ReactNode;
 		icon?: string;
 		label?: string;
-		disabled?: boolean;
-	};
+	}
+>;
 
 const prefixCls = 'ts-rc-button';
 

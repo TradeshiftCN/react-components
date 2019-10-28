@@ -10,8 +10,8 @@
 }
 
 .ts-rc-aside {
-	@duration: 0.3s;
-	@timing-function: cubic-bezier(0.7, 0.2, 0.1, 1);
+	@duration: 0.2s;
+	@timing-function: ease;
 	position: fixed;
 	z-index: 1999;
 	width: 0%;
@@ -19,10 +19,9 @@
 	transition: transform @duration @timing-function, height 0s ease @duration,
 		width 0s ease @duration;
 	& > * {
-		transition: transform @duration @timing-function, box-shadow @duration @timing-function;
+		transition: transform @duration @timing-function;
 	}
 	&-content-wrapper {
-		box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
 		position: absolute;
 		height: 100%;
 	}

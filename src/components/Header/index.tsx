@@ -3,8 +3,7 @@ import cx from 'classnames';
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 
-type HTMLButtonElementProps = React.HTMLProps<HTMLButtonElement> &
-	React.HTMLAttributes<HTMLButtonElement>;
+type HTMLButtonElementProps = React.HTMLProps<HTMLButtonElement>;
 type NavigationBtn = React.ReactNode | HTMLButtonElementProps | boolean;
 
 export type HeaderProps = {
@@ -103,11 +102,13 @@ export function Header(props: HeaderProps) {
 						<img src={props.icon} alt="icon" className={`${prefixCls}-icon`} />
 					</li>
 				)}
-				{!!props.title && (
-					<li className={genItemClassName('title')}>
-						{React.isValidElement(props.title) ? props.title : <h1>{props.title}</h1>}
-					</li>
-				)}
+				<li className={genItemClassName('title')}>
+					{!!props.title && React.isValidElement(props.title) ? (
+						props.title
+					) : (
+						<h1>{props.title}</h1>
+					)}
+				</li>
 				{Array.isArray(props.buttons) &&
 					React.Children.map(
 						props.buttons.slice().reverse(),

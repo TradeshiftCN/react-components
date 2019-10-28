@@ -70,15 +70,20 @@
 
 	&-search-title {
 		padding-left: 1.5 * @ts-unit;
+		padding-right: 1.5 * @ts-unit;
 		&--input {
-			padding-right: 1.5 * @ts-unit;
-			font-weight: normal;
+			.ts-rc-table-search-title__text {
+				visibility: hidden;
+			}
 		}
 		input {
-			display: inline-block;
-			width: auto;
+			font-weight: normal;
 			height: @ts-unit;
 			border: 0;
+			position: absolute;
+			left: @ts-unit-double;
+			top: @ts-unit-half;
+			width: calc(100% - 80px);
 		}
 		i {
 			position: absolute;
@@ -128,7 +133,8 @@
 		text-align: center;
 	}
 
-	&-row-expand-icon-cell {
+	&-row-expand-icon-cell,
+	&-expand-icon-th {
 		width: 35px;
 		font-size: 0;
 	}

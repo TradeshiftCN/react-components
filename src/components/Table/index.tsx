@@ -10,7 +10,7 @@ import SortTitle from './SortTitle';
 export type TableProps<T> = {
 	data: Array<T>;
 	columns: Array<Column<T>>;
-	rowKey?: string;
+	rowKey?: ((record: T) => string) | string;
 	rowSelection?: RowSelection<T>;
 	rowClassName?: ((record: T, index: number, indent: string) => string) | string;
 	emptyText?: string | React.ReactNode;
@@ -68,7 +68,7 @@ class Table<T> extends Component<TableProps<T>, TableState<T>> {
 		/** The columns config of table, see table below */
 		columns: PropTypes.array.isRequired,
 		/** If rowKey is string, `record[rowKey]` will be used as key. If rowKey is function, the return value of `rowKey(record)` will be use as key. */
-		rowKey: PropTypes.string,
+		rowKey: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
 		rowSelection: PropTypes.shape({
 			/** (keys: Key, rows: T[]) => void; */
 			onChange: PropTypes.func.isRequired,
@@ -211,7 +211,6 @@ class Table<T> extends Component<TableProps<T>, TableState<T>> {
 					<SearchTitle
 						column={column}
 						prefixCls={prefixCls!}
-						activeColumn={searchActiveColumn}
 						setActiveColumn={this.setActiveColumn}
 						columnKey={key}
 						isActive={searchActiveColumn === key}

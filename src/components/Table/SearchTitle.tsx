@@ -6,7 +6,6 @@ import { Column, Key } from './interface';
 type SearchTitleProps<T> = {
 	column: Column<T>;
 	prefixCls: string;
-	activeColumn?: Key;
 	isActive: boolean;
 	columnKey: Key;
 	setActiveColumn(key?: Key): void;
@@ -17,35 +16,16 @@ type SearchTitleProps<T> = {
 };
 
 type SearchTitleState = {
-	originTitleWidth: number;
 	debounceSearch?(text: string): void;
 };
 
 type EventCallback = (e: Event) => void;
 
-let activeSearchTitle: SearchTitle<any>;
-
-document.addEventListener('click', (e: MouseEvent) => {
-	const el = e.target;
-	if (
-		el &&
-		activeSearchTitle &&
-		activeSearchTitle.rootRef &&
-		!activeSearchTitle.rootRef.contains(el as Node)
-	) {
-		activeSearchTitle.props.setActiveColumn();
-	}
-});
-
 class SearchTitle<T> extends Component<SearchTitleProps<T>, SearchTitleState> {
 	static defaultTriggers = ['enter'];
-	private titleTextRef?: HTMLSpanElement | null;
-	private inputRef?: HTMLInputElement | null;
 	public rootRef?: HTMLDivElement | null;
 
-	state: SearchTitleState = {
-		originTitleWidth: 80
-	};
+	state: SearchTitleState = {};
 
 	render() {
 		const { column, prefixCls, setActiveColumn, isActive, columnKey, value } = this.props;
@@ -55,7 +35,6 @@ class SearchTitle<T> extends Component<SearchTitleProps<T>, SearchTitleState> {
 
 		if (!showInput) {
 			activeEvents.onClick = () => {
-				activeSearchTitle = this;
 				setActiveColumn(columnKey);
 			};
 		}
@@ -70,26 +49,26 @@ class SearchTitle<T> extends Component<SearchTitleProps<T>, SearchTitleState> {
 				{...activeEvents}
 			>
 				<i className={cx('ts-icon-search', `${prefixCls}-search-title-search-icon`)}></i>
-				<span ref={ref => (this.titleTextRef = ref)}>
-					{showInput ? (
-						<input
-							style={{ width: this.state.originTitleWidth }}
-							ref={ref => (this.inputRef = ref)}
-							value={value}
-							autoFocus
-							{...events}
-						/>
-					) : (
-						column.title
-					)}
-				</span>
+				<span className={`${prefixCls}-search-title__text`}>{column.title}</span>
+				{showInput && (
+					<input
+						value={value}
+						type="text"
+						autoFocus
+						onBlur={() => {
+							if (this.props.isActive) {
+								this.props.setActiveColumn();
+							}
+						}}
+						{...events}
+					/>
+				)}
 				{!!value && (
 					<i
 						className={cx('ts-icon-remove', `${prefixCls}-search-title-clear-icon`)}
 						onClick={() => {
 							this.props.onChange('');
 							(this.state.debounceSearch || this.search)('');
-							setActiveColumn();
 						}}
 					></i>
 				)}
@@ -98,37 +77,12 @@ class SearchTitle<T> extends Component<SearchTitleProps<T>, SearchTitleState> {
 	}
 
 	componentDidMount() {
-		this.updateOriginTitleWidth();
 		this.updateDebounceSearch();
 	}
 
 	componentDidUpdate(prevProps: SearchTitleProps<T>) {
-		if (prevProps.isActive && !this.props.isActive) {
-			this.updateOriginTitleWidth();
-		}
-
 		if (prevProps.column.searchDebounceTime !== this.props.column.searchDebounceTime) {
 			this.updateDebounceSearch();
-		}
-	}
-
-	private updateOriginTitleWidth() {
-		const titleText = this.titleTextRef;
-		const columnWidth = this.props.column.width;
-		let width = 80;
-
-		if (columnWidth && _.isNumber(columnWidth)) {
-			width = (this.props.column.width as number) - 20 - 30; // parent padding and search btn
-		} else if (titleText && !this.props.isActive) {
-			width = titleText.getBoundingClientRect().width;
-		}
-
-		width -= 30; // clear btn
-
-		if (width > 0) {
-			this.setState({
-				originTitleWidth: width
-			});
 		}
 	}
 
@@ -165,6 +119,13 @@ class SearchTitle<T> extends Component<SearchTitleProps<T>, SearchTitleState> {
 					break;
 				case 'blur':
 					k = 'onBlur';
+					v = (e: Event) => {
+						const text = (e.target as HTMLInputElement).value;
+						if (this.props.isActive) {
+							this.props.setActiveColumn();
+						}
+						callback(text);
+					};
 					break;
 				case 'enter':
 					k = 'onKeyDown';
