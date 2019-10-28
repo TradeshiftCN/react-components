@@ -2,8 +2,10 @@ import React from 'react';
 import RcDrawer from 'rc-drawer';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
+import _ from 'lodash';
 
-type AsideParent = React.RefObject<Aside>;
+type AsideParent = React.RefObject<Aside> | Array<React.RefObject<Aside>>;
+
 export type AsideProps = {
 	className?: string;
 	children?: React.ReactNode;
@@ -16,7 +18,7 @@ export type AsideProps = {
 	style?: React.CSSProperties;
 	closable?: boolean;
 	onClose?(): void;
-	parent?: AsideParent | AsideParent[];
+	parent?: AsideParent;
 	onChange?(open?: boolean): void;
 };
 
@@ -34,7 +36,9 @@ class Aside extends React.Component<AsideProps> {
 		title: PropTypes.node,
 		style: PropTypes.object,
 		closable: PropTypes.bool,
-		onClose: PropTypes.func
+		onClose: PropTypes.func,
+		parent: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+		onChange: PropTypes.func
 	};
 	static defaultProps = {
 		width: 320,
@@ -46,8 +50,7 @@ class Aside extends React.Component<AsideProps> {
 	public asideChildren: Aside[] = [];
 
 	render() {
-		const { visible, children, title, closable, className, ...drawerProps } = this.props;
-
+		const { visible, children, title, closable, className, parent, ...drawerProps } = this.props;
 		return (
 			<RcDrawer
 				{...drawerProps}
@@ -56,7 +59,6 @@ class Aside extends React.Component<AsideProps> {
 				open={this.asideChildren.some(v => v.props.visible) ? false : visible}
 				handler={false}
 				level={null}
-				onChange={this.handleChange}
 			>
 				<header className={`${prefixCls}-header`}>
 					{title}
@@ -80,16 +82,47 @@ class Aside extends React.Component<AsideProps> {
 	}
 
 	componentDidMount() {
-		this.parents.forEach(aside => {
-			if (!aside.asideChildren.includes(this)) {
-				aside.asideChildren.push(this);
-				aside.forceUpdate();
-			}
-		});
+		this.updateParent(this.props.parent, undefined);
+	}
+
+	componentDidUpdate(prevProps: AsideProps) {
+		this.updateParent(this.props.parent, prevProps.parent);
+		if (this.props.visible !== prevProps.visible) {
+			setTimeout(() => {
+				this.getParents(this.props.parent).forEach(aside => {
+					aside.forceUpdate();
+				});
+			});
+		}
 	}
 
 	componentWillUnmount() {
-		this.parents.forEach(aside => {
+		this.updateParent(undefined, this.props.parent);
+	}
+
+	private getParents(parent?: AsideParent) {
+		if (!parent) {
+			return [];
+		}
+		const parents = Array.isArray(parent) ? parent.map(v => v.current) : [parent.current];
+		return _.compact(parents);
+	}
+
+	private updateParent(parent?: AsideParent, prevParent?: AsideParent) {
+		if (parent === prevParent) {
+			return;
+		}
+		const parents = this.getParents(parent);
+		const prevParents = this.getParents(prevParent);
+		const increase = _.difference(parents, prevParents);
+		const decrease = _.difference(prevParents, parents);
+
+		increase.forEach(aside => {
+			if (!aside.asideChildren.includes(this)) {
+				aside.asideChildren.push(this);
+			}
+		});
+		decrease.forEach(aside => {
 			const index = aside.asideChildren.indexOf(this);
 			if (index >= 0) {
 				aside.asideChildren.splice(index, 1);
@@ -97,28 +130,6 @@ class Aside extends React.Component<AsideProps> {
 			}
 		});
 	}
-
-	get parents() {
-		const { parent } = this.props;
-		if (this.props.parent) {
-			const parents = Array.isArray(parent)
-				? parent.map(v => v.current)
-				: [(parent as AsideParent).current];
-			return parents.filter(v => !!v) as Aside[];
-		}
-
-		return [];
-	}
-
-	private handleChange = (open?: boolean) => {
-		if (this.props.onChange) {
-			this.props.onChange(open);
-		}
-
-		this.parents.forEach(aside => {
-			aside.forceUpdate();
-		});
-	};
 }
 
 export default Aside;
