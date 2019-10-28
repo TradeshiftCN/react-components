@@ -211,7 +211,6 @@ class Table<T> extends Component<TableProps<T>, TableState<T>> {
 					<SearchTitle
 						column={column}
 						prefixCls={prefixCls!}
-						activeColumn={searchActiveColumn}
 						setActiveColumn={this.setActiveColumn}
 						columnKey={key}
 						isActive={searchActiveColumn === key}

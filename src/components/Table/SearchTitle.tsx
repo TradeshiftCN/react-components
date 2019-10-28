@@ -6,7 +6,6 @@ import { Column, Key } from './interface';
 type SearchTitleProps<T> = {
 	column: Column<T>;
 	prefixCls: string;
-	activeColumn?: Key;
 	isActive: boolean;
 	columnKey: Key;
 	setActiveColumn(key?: Key): void;
@@ -21,8 +20,6 @@ type SearchTitleState = {
 };
 
 type EventCallback = (e: Event) => void;
-
-let activeSearchTitle: SearchTitle<any>;
 
 class SearchTitle<T> extends Component<SearchTitleProps<T>, SearchTitleState> {
 	static defaultTriggers = ['enter'];
