@@ -59,17 +59,18 @@ pipeline {
                 expression { return pullRequest.comments.any { it.body == 'npm publish' } }
             }
             environment {
-                NPM_TOKEN = credentials 'jenkins-npm-rw-token'
+                NPM_TOKEN = credentials 'tradeshiftci-npm-readwrite-token'
+                NPM_CONFIG_REGISTRY = 'https://npm.pkg.github.com/'
             }
             steps {
                 npmPublish()
             }
-
         }
 
         stage('Semantic release') {
             environment {
-                NPM_TOKEN = credentials 'jenkins-npm-rw-token'
+                NPM_TOKEN = credentials 'tradeshiftci-npm-readwrite-token'
+                NPM_CONFIG_REGISTRY = 'https://npm.pkg.github.com/'
             }
             steps {
                 semanticVersion()
