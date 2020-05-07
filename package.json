@@ -1,5 +1,6 @@
 {
   "name": "@tradeshift/react-components",
+  "version": "0.0.0-semantically-released",
   "description": "React components library",
   "author": "Tradeshift",
   "license": "MIT",
